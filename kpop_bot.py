@@ -99,6 +99,21 @@ class KpopIntelligenceBot:
             pub_date = item.pubDate.text
             description = item.description.text if item.description else ""
             
+            # Extract Image from description or media extensions
+            image_url = ""
+            
+            # Try media:content or enclosure first (higher quality)
+            media_content = item.find("media:content")
+            if media_content and media_content.get("url"):
+                image_url = media_content["url"]
+            
+            # Fallback to description parsing
+            if not image_url and description:
+                desc_soup = BeautifulSoup(description, "html.parser")
+                img_tag = desc_soup.find("img")
+                if img_tag and img_tag.get("src"):
+                    image_url = img_tag["src"]
+
             # Combined text for analysis
             full_text = f"{title} {description}"
 
@@ -126,6 +141,7 @@ class KpopIntelligenceBot:
                 "source": source_name,
                 "url": link,
                 "published_at": pub_date,
+                "image_url": image_url,
                 "extracted_cities": metadata["cities"],
                 "extracted_dates": metadata["dates"]
             })
@@ -141,8 +157,45 @@ class KpopIntelligenceBot:
                 return True
         return False
 
+    def fetch_og_image(self, url: str) -> str:
+        """Fetch Open Graph image from a URL."""
+        try:
+            # Short timeout, user agent to avoid bot blocks
+            headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'}
+            resp = requests.get(url, headers=headers, timeout=3)
+            if resp.status_code == 200:
+                soup = BeautifulSoup(resp.content, "html.parser")
+                og_image = soup.find("meta", property="og:image")
+                if og_image and og_image.get("content"):
+                    return og_image["content"]
+        except Exception as e:
+            logger.debug(f"Failed to fetch OG image for {url}: {e}")
+        return ""
+
+    def enrich_with_images(self, items: List[Dict], limit_per_artist: int = 4):
+        """Post-process items to add images by scraping source URL."""
+        logger.info("Enriching news metadata (Scanning for images)...")
+        
+        # Track counts to limit scraping
+        artist_counts = {} 
+        
+        updated_items = []
+        for item in items:
+            key = f"{item['artist']}_{item['topic']}"
+            count = artist_counts.get(key, 0)
+            
+            if count < limit_per_artist and not item.get("image_url"):
+                # Fetch only if we don't have one and haven't hit limit
+                item["image_url"] = self.fetch_og_image(item["url"])
+                artist_counts[key] = count + 1
+                logger.info(f"Scraped image for {item['artist']} - {item['title'][:20]}...")
+            
+            updated_items.append(item)
+            
+        return updated_items
+
     def deduplicate(self, items: List[Dict]) -> List[Dict]:
-        """Deduplicate news items based on Title Similarity."""
+        """Deduplicate news items based on Title similarity."""
         unique_items = []
         seen_titles = set()
         
@@ -167,18 +220,22 @@ class KpopIntelligenceBot:
             
         clean_news = self.deduplicate(all_news)
         
+        # Enrich with images (Scrape OG tags for top items)
+        # We only enrich the top N items per artist/category to save time
+        enriched_news = self.enrich_with_images(clean_news, limit_per_artist=3)
+        
         # Output JSON
         with open("kpop_intelligence.json", "w") as f:
-            json.dump(clean_news, f, indent=2)
+            json.dump(enriched_news, f, indent=2)
             
         # Output Markdown Summary
-        self.generate_markdown(clean_news)
+        self.generate_markdown(enriched_news)
         
         # Output HTML Web Report
-        self.generate_html(clean_news, targets)
+        self.generate_html(enriched_news, targets)
         
-        logger.info(f"Scan complete. Found {len(clean_news)} relevant intelligence items.")
-        print(json.dumps(clean_news, indent=2))
+        logger.info(f"Scan complete. Found {len(enriched_news)} relevant intelligence items.")
+        print(json.dumps(enriched_news, indent=2))
 
     def generate_markdown(self, items: List[Dict]):
         md_lines = ["# K-pop Intelligence Report", f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}", ""]
@@ -319,9 +376,19 @@ class KpopIntelligenceBot:
             padding: 16px 20px;
             border-bottom: 1px solid var(--border);
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 16px; /* Increased gap */
             background: #fff;
+        }
+
+        .artist-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            background: #f3f4f6;
+            flex-shrink: 0;
         }
 
         .artist-name {
@@ -333,102 +400,6 @@ class KpopIntelligenceBot:
         .sub-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-        }
-
-        .sub-col {
-            padding: 20px;
-        }
-        
-        .sub-col-tour { border-right: 1px solid var(--border); }
-
-        .sub-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* News Item with Image */
-        .news-card {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            background: #fff;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed var(--border);
-        }
-        
-        .news-card:last-child { border-bottom: none; }
-
-        .news-thumb {
-            width: 80px;
-            height: 60px;
-            border-radius: 6px;
-            object-fit: cover;
-            background: #e2e8f0;
-            flex-shrink: 0;
-        }
-
-        .news-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .news-link {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.3;
-        }
-        
-        .news-link:hover { color: var(--accent); }
-
-        .news-meta {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* Ticket Buttons */
-        .btn-group {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        
-        .btn {
-            font-size: 0.8rem;
-            padding: 6px 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            color: white;
-        }
-        .tm { background: #026cdf; }
-        .sh { background: #6432a1; }
-        .btn:hover { opacity: 0.9; }
-
-        /* Folded/Accordion Logic via JS */
-        .hidden { display: none !important; }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .dashboard-container { grid-template-columns: 1fr; height: auto; }
-            .panel { height: 800px; }
-        }
-        @media (max-width: 768px) {
-            .sub-grid { grid-template-columns: 1fr; }
-            .sub-col-tour { border-right: none; border-bottom: 1px solid var(--border); }
         }
     </style>
 </head>
@@ -486,9 +457,22 @@ class KpopIntelligenceBot:
 </body>
 </html>
 """
-        
-        # Helper to build artist block
         def build_artist_block(artist_name, data):
+            # Find best image for avatar (priority: Comeback -> Tour)
+            avatar_url = ""
+            # Check comeback first for freshest look
+            for item in data['comeback']:
+                if item.get("image_url"):
+                    avatar_url = item["image_url"]
+                    break
+            if not avatar_url:
+                for item in data['tour']:
+                    if item.get("image_url"):
+                        avatar_url = item["image_url"]
+                        break
+            
+            avatar_html = f'<img src="{avatar_url}" class="artist-avatar">' if avatar_url else '<div class="artist-avatar" style="display:flex;align-items:center;justify-content:center;">🎵</div>'
+
             # Tour Section
             tour_rows = []
             
@@ -547,6 +531,7 @@ class KpopIntelligenceBot:
             return f'''
             <div class="artist-group" data-artist="{artist_name}">
                 <div class="artist-header-row">
+                    {avatar_html}
                     <span class="artist-name">{artist_name}</span>
                 </div>
                 <div class="sub-grid">

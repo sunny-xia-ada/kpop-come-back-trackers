@@ -1,5 +1,5 @@
 # K-pop Intelligence Report
-Generated: 2026-01-27 18:49
+Generated: 2026-01-27 18:59
 
 | Artist | Topic | Source | Title | Cities/Dates |
 |---|---|---|---|---|
@@ -111,7 +111,6 @@ Generated: 2026-01-27 18:49
 | **ITZY** | US Tour | *NME* | [ITZY on making their comeback with ‘Checkmate’: “It would be a lie if we said we felt no pressure at all” - NME](https://news.google.com/rss/articles/CBMisgFBVV95cUxPbG9FM3V4NnNVMDFSZVJ6Q29OczQybUpZek1jdWVYVy1yS2hXNmlBdFFHR1hiRjlxYVNlWnQzNFpCRkh1VEV2VnNLRnVkODRLZ0hpZm1DclAxcUtTZ3YyYnJOR1AyYWY0Q09OTkt3VW8xdDZKZkNSdjh4T1BUdXVPdWxRdThQTEFHOWVLSFlNd0E1YjdFdjNVcUR4bWVXMHdicjY4QWQyOGp1c2ljakRqeXBR?oc=5) | - |
 | **ITZY** | Comeback | *NME* | [ITZY to release music as a full group this October - NME](https://news.google.com/rss/articles/CBMihAFBVV95cUxNQmM5MElBXzJYVzFuamJfVmZBckJ0Rk5xYTVTYzVQX0JoNExsc1ZZcW01OXJYRTZuWWFBU3F2SzluSGk5MTJoQTl4TnRkMVRTeENlRHowY195Qkx4R3lXUXJUdl9sRW90Rk8xN3pXcU9HVmNIYXB5Q1MyVWIxWmo2U2FlOUg?oc=5) | - |
 | **ITZY** | Comeback | *NME* | [ITZY announce comeback, to release English single ‘Boys Like You’ this week - NME](https://news.google.com/rss/articles/CBMinwFBVV95cUxQTURmYXRoMl9wVUdJMlFxWGtpQnFkZGJLeTlfcGQwRHJOWG5KbmY4Zlhjc0Y5U05JZ3ZSWm85SHBUV29Ic0VMSVZYdTVLdncxdkdCeVpuZHNMU0I0ZDNfQXliUmFhSHFVRW1kMEJSWjhzNm1LNnZPdlZHWmFaTzVfRVhQbm8tMXU2LU1Sbkpxd2Vnck5pbmlDaHZmUzliTWc?oc=5) | - |
-| **ITZY** | Comeback | *Billboard* | [ITZY Announces Comeback With New Mini Album ‘Cheshire’ - Billboard](https://news.google.com/rss/articles/CBMiiwFBVV95cUxQbEZzMHh3Um82blZVWVo0cTNrYTlBOFNrSEZxTERXU2N2QVRJNG1uLUcwWkhTVWZ5MHB5UHd4WFdjZlVnTVliWGJMUEg1RUlzMWUyczdnbndJRzhubmdDMVZwWFRVS29DaUp0TUYxOWZSTHJveTVxUDZNTzdaanQwZUUtX0dzOXpqRHo4?oc=5) | - |
 | **NewJeans** | US Tour | *Koreaboo* | [SEVENTEEN’s “Disappointing” Ticket Sales Point To The “Problem” With K-Pop - Koreaboo](https://news.google.com/rss/articles/CBMijwFBVV95cUxNWXA3blZXelpCRjNaT1pFaWpwSDZ4RlkxZE1JV1ZuNDJ6RjRaeVFRU3BwS3N5WDBHY2hHZTJqTkFDb3ZISm9JVHp6RlVzejA1MktzV1dudktmNGtLWkpnNXV6VlRYMUZLYks2LWlGdmtPdDU1WFZJRUhUN1VCbGZubC0yU21DS1FVbXh2QlV5Zw?oc=5) | - |
 | **NewJeans** | Comeback | *NME* | [NewJeans to carry on with comeback plans despite spat between HYBE and ADOR - NME](https://news.google.com/rss/articles/CBMijwFBVV95cUxPeUtBQjd4NG1Yal9jVGhuSzdtTndvd1I3eWZkMXZvUl9GSXNGOXlLY0l4TVBXcTBHbF9LU0kxZ2IzMFk5QWIzdEp5eWVQZExLbHI2Y1BHenFTb0pCSUVOTk5KZzJSZVU1Yy1mRzFXbEFla0NDSEFTMjJTcUlCSlU5TjlpZFprMFkyQmZCTWZlbw?oc=5) | - |
 | **aespa** | US Tour | *NME* | [Rain announces new North American tour dates - NME](https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZ2JzcTFXVDJ3UjlvdnZMU1RUYjBzcHZvTEpxV1hhQVdMYmNWd05VcE5wUGZMOHdoNmpvNGRmeHJIeGVCbkJ2VkdQUmc0N1JnNDlfd0NrTG5sQzRMQk8wNkUzYVoxdXF5LWpsYUdWbXF5X3Y0M3k3ektMakpHWUtNVHQzR0RSTGtEUFhB?oc=5) | - |
