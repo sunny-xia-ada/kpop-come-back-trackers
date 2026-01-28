@@ -449,6 +449,50 @@
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* CUTE BACKGROUND DECORATIONS */
+        body::before {
+            content: '⭐ ✨ 🌟 ⭐ ✨ 🌟 ⭐ ✨ 🌟 ⭐ ✨ 🌟 ⭐ ✨ 🌟 ⭐ ✨ 🌟';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 2rem;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            word-wrap: break-word;
+            line-height: 4rem;
+            padding: 2rem;
+        }
+
+        body::after {
+            content: '🐱 😺 🐈 🐾 🐱 😺 🐈 🐾 🐱 😺 🐈 🐾 🐱 😺 🐈 🐾';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+            word-wrap: break-word;
+            line-height: 5rem;
+            padding: 3rem;
+            transform: rotate(-5deg);
+        }
+
+        header, .main-stage {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
     </style>
 </head>
 <body>
