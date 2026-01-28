@@ -363,7 +363,7 @@ class KpopIntelligenceBot:
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0b0f1a;
+            --bg: #0f172a; /* Midnight Navy */
             --surface: #1e293b;
             --surface-glass: rgba(30, 41, 59, 0.4);
             --text: #f8fafc;
@@ -846,7 +846,7 @@ class KpopIntelligenceBot:
                 {
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
                     distance_miles: 800,
-                    prices: { "StubHub": 257, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
+                    prices: { "StubHub": 372, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
                     url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Stanford"
                 },
                 // LOS ANGELES (West Coast)
@@ -1092,7 +1092,7 @@ class KpopIntelligenceBot:
                 const badge = hasSeattle ? `<span class="local-badge">📍 SEATTLE</span>` : '';
                 
                 const actionBtn = tab === 'comeback' ? 
-                    `<a href="${ytLink}" target="_blank" class="btn-yt">▶ Official MV</a>` : '';
+                    `<a href="${ytLink}" target="_blank" class="btn-yt">▶ Watch on YouTube</a>` : '';
 
                 return `
                     <a href="${item.url}" target="_blank" class="news-item">
