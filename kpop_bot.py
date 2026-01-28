@@ -363,7 +363,7 @@ class KpopIntelligenceBot:
         logger.info("Fetching Real-Time Prices for BTS & NMIXX...")
         
         # 1. BTS (Base Prices: Vivid leads Stanford)
-        p_stanford, _, t_bts = RealTimeScraper.get_realtime_price("BTS", "Stanford", 376) # StubHub Base
+        p_stanford, _, t_bts = RealTimeScraper.get_realtime_price("BTS", "Stanford", 372) # StubHub Base
         p_la, _, _ = RealTimeScraper.get_realtime_price("BTS", "Los Angeles", 150)
         p_chicago, _, _ = RealTimeScraper.get_realtime_price("BTS", "Chicago", 330)
         p_nj, _, _ = RealTimeScraper.get_realtime_price("BTS", "Newark", 260)
@@ -413,28 +413,28 @@ class KpopIntelligenceBot:
                 {{
                     date: "2026-04-07", city: "Oakland, CA", venue: "Paramount Theatre",
                     distance_miles: 800,
-                    prices: {{ "StubHub": {{p_oakland}}, "Ticketmaster": 180, "Vivid": 155, "SeatGeek": 160 }},
+                    prices: {{ "StubHub": {{p_oakland}}, "Ticketmaster": 180, "Vivid": 155 }},
                     last_updated: "{{t_nmixx}}"
                 }},
                 // INGLEWOOD
                 {{
                     date: "2026-04-09", city: "Inglewood, CA", venue: "YouTube Theater",
                     distance_miles: 1130,
-                    prices: {{ "StubHub": 160, "Ticketmaster": 195, "Vivid": 170, "SeatGeek": 175 }},
+                    prices: {{ "StubHub": 160, "Ticketmaster": 195, "Vivid": 170 }},
                     last_updated: "{{t_nmixx}}"
                 }},
                 // BROOKLYN
                 {{
                     date: "2026-03-31", city: "Brooklyn, NY", venue: "Brooklyn Paramount",
                     distance_miles: 2850,
-                    prices: {{ "StubHub": 185, "Ticketmaster": 210, "Vivid": 195, "SeatGeek": 200 }},
+                    prices: {{ "StubHub": 185, "Ticketmaster": 210, "Vivid": 195 }},
                     last_updated: "{{t_nmixx}}"
                 }},
                 // IRVING
                 {{
                     date: "2026-04-04", city: "Irving, TX", venue: "Toyota Music Factory",
                     distance_miles: 2100,
-                    prices: {{ "StubHub": 135, "Ticketmaster": 150, "Vivid": 140, "SeatGeek": 145 }},
+                    prices: {{ "StubHub": 135, "Ticketmaster": 150, "Vivid": 140 }},
                     last_updated: "{{t_nmixx}}"
                 }}
             ];
@@ -1082,9 +1082,9 @@ class KpopIntelligenceBot:
                 if(platform === 'SeatGeek') return "https://seatgeek.com/search?search=BTS";
             }
             
-            // 2. NMIXX Specific
+            // 2. NMIXX Specific (Using Verified User ID 1509930)
             if (artist === 'NMIXX') {
-                if(platform === 'StubHub') return "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1";
+                if(platform === 'StubHub') return "https://www.stubhub.com/nmixx-tickets/performer/1509930/?quantity=1";
                 if(platform === 'Ticketmaster') return "https://www.ticketmaster.com/search?q=NMIXX";
                 if(platform === 'Vivid' || platform === 'Vivid Seats') return "https://www.vividseats.com/search?searchTerm=NMIXX";
             }
@@ -1147,7 +1147,7 @@ class KpopIntelligenceBot:
                         </div>
                     `).join('');
 
-                    // Top Pick Badge (Only #1)
+                    // Top Pick Badge (Only #1) via Ranking (Closest)
                     const isTopPick = index === 0;
                     const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ Best Choice for Yidan</div>` : '';
                     const rowClass = isTopPick ? 'ticket-row gold-tier' : 'ticket-row';
@@ -1205,12 +1205,14 @@ class KpopIntelligenceBot:
             }
 
             return `<div class="news-grid">` + items.map(item => {
+                // Official MV Search Link
                 const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(currentArtist + ' ' + item.title + ' Official MV')}`;
+                // Location Badge
                 const hasSeattle = (item.title + (item.extracted_cities||[]).join('')).includes('Seattle');
                 const badge = hasSeattle ? `<span class="local-badge">📍 SEATTLE</span>` : '';
                 
                 const actionBtn = tab === 'comeback' ? 
-                    `<a href="${ytLink}" target="_blank" class="btn-yt">▶ Watch on YouTube</a>` : '';
+                    `<a href="${ytLink}" target="_blank" class="btn-yt">▶ Watch Official MV</a>` : '';
 
                 return `
                     <a href="${item.url}" target="_blank" class="news-item">
