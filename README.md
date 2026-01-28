@@ -11,6 +11,11 @@ A Python-based automated tracker for K-Pop artist comebacks and tours. This bot 
 - **Data Extraction**: Uses Regex to automatically extract:
   - **Tour Cities**: Identifies major US cities (e.g., LA, NYC, Chicago).
   - **Dates**: Extracts upcoming dates from article text.
+- **Interactive Dashboard**: Split-screen layout (Boy Groups vs. Girl Groups) with dropdown filtering.
+- **US Tour & Comeback Tracking**: Separate columns for tour dates (with Ticketmaster/StubHub links) and comeback news.
+- **Visual Intelligence**: Displays images from news articles where available.
+- **Multi-Source Scraping**: Fetches news from major K-pop outlets via Google News RSS.
+- **City & Date Extraction**: Automatically detects US tour stops and dates.
 - **Multi-Format Reporting**:
   - `kpop_intelligence.json`: Raw structured data for programmatic use.
   - `summary.md`: A clean Markdown table summary.
@@ -89,10 +94,14 @@ After running the bot, three files will be generated in the root directory:
 - **数据提取**：使用正则表达式自动提取：
   - **巡演城市**：识别美国主要城市（如 LA, NYC, Chicago）。
   - **日期**：从文章正文中提取即将到来的日期。
-- **多格式报告**：
-  - `kpop_intelligence.json`：供程序使用的原始结构化数据。
-  - `summary.md`：清晰的 Markdown 表格摘要。
-  - `report.html`：美观的暗黑主题 HTML 仪表盘，方便查看。
+- **交互式仪表盘**: 分屏布局（男团 vs 女团），支持下拉筛选。
+- **巡演与回归追踪**: 分栏显示巡演信息（含 Ticketmaster/StubHub 购票链接）和回归新闻。
+- **可视化情报**: 支持显示新闻配图。
+- **多源抓取**: 通过 Google News RSS 聚合主流 K-pop 媒体新闻。
+- **智能提取**: 自动识别美国巡演城市和日期。
+- **多格式报告**:
+  - `kpop_intelligence.json`: 原始数据。
+  - `report.html`: 交互式网页报告。
 
 ## 安装指南 (Installation)
 

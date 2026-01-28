@@ -211,7 +211,7 @@ class KpopIntelligenceBot:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-pop Intelligence Report</title>
+    <title>K-pop Intelligence Dashboard</title>
     <style>
         :root {
             --bg-color: #f9fafb;
@@ -219,10 +219,8 @@ class KpopIntelligenceBot:
             --text-primary: #111827;
             --text-secondary: #4b5563;
             --accent: #d946ef;
-            --accent-glow: rgba(217, 70, 239, 0.3);
             --border: #e5e7eb;
-            --tour-color: #3b82f6;
-            --comeback-color: #ec4899;
+            --header-height: 80px;
         }
 
         body {
@@ -230,286 +228,383 @@ class KpopIntelligenceBot:
             background-color: var(--bg-color);
             color: var(--text-primary);
             margin: 0;
-            padding: 40px 20px;
-            line-height: 1.6;
+            padding: 20px;
+            line-height: 1.5;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            background: linear-gradient(135deg, #111 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin: 40px 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-        }
-
-        .meta {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .artist-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .artist-header {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .artist-badge {
-            font-size: 0.8rem;
-            padding: 4px 8px;
-            border-radius: 999px;
-            background: #f3f4f6;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .split-layout {
+        /* Layout */
+        .dashboard-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+            height: calc(100vh - 40px);
         }
 
-        @media (max-width: 768px) {
-            .split-layout { grid-template-columns: 1fr; }
+        .panel {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .column h3 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin: 0 0 16px 0;
+        .panel-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            background: #f8fafc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .column-content {
-            min-height: 100px;
+        .select-wrapper {
+            position: relative;
+            min-width: 200px;
         }
 
-        .news-item {
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px dashed var(--border);
+        select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            background: white;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
         }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-title {
-            font-weight: 600;
-            margin-bottom: 4px;
-            display: block;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .news-title:hover {
-            color: var(--accent);
-        }
-
-        .news-source {
+        
+        /* Custom arrow for select */
+        .select-wrapper::after {
+            content: '▼';
             font-size: 0.8rem;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
             color: var(--text-secondary);
         }
 
-        .cities-list {
-            margin: 10px 0;
-            font-size: 0.95rem;
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f1f5f9;
         }
 
-        .ticket-buttons {
+        /* Artist Card */
+        .artist-group {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        
+        .artist-header-row {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
             display: flex;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .btn {
-            display: inline-flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 6px 12px;
+            background: #fff;
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .sub-col {
+            padding: 20px;
+        }
+        
+        .sub-col-tour { border-right: 1px solid var(--border); }
+
+        .sub-title {
             font-size: 0.85rem;
-            font-weight: 500;
-            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* News Item with Image */
+        .news-card {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            background: #fff;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .news-card:last-child { border-bottom: none; }
+
+        .news-thumb {
+            width: 80px;
+            height: 60px;
             border-radius: 6px;
-            transition: background 0.2s;
+            object-fit: cover;
+            background: #e2e8f0;
+            flex-shrink: 0;
         }
 
-        .btn-tm {
-            background-color: #026cdf;
+        .news-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .news-link {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.3;
+        }
+        
+        .news-link:hover { color: var(--accent); }
+
+        .news-meta {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Ticket Buttons */
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .btn {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
             color: white;
         }
-        .btn-tm:hover { background-color: #0257b4; }
+        .tm { background: #026cdf; }
+        .sh { background: #6432a1; }
+        .btn:hover { opacity: 0.9; }
 
-        .btn-sh {
-            background-color: #6432a1;
-            color: white;
+        /* Folded/Accordion Logic via JS */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .dashboard-container { grid-template-columns: 1fr; height: auto; }
+            .panel { height: 800px; }
         }
-        .btn-sh:hover { background-color: #4b267a; }
-
-        .empty-col {
-            color: #d1d5db;
-            font-style: italic;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            .sub-grid { grid-template-columns: 1fr; }
+            .sub-col-tour { border-right: none; border-bottom: 1px solid var(--border); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div>
-                <h1>K-pop Intelligence</h1>
-                <div class="meta">Live Tracker Report</div>
+
+<div class="dashboard-container">
+    <!-- Left Panel: Boy Groups -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title">🕺 Boy Groups</div>
+            <div class="select-wrapper">
+                <select id="boys-select" onchange="filterList('boys-content', this.value)">
+                    <option value="all">Show All</option>
+                    {boys_options}
+                </select>
             </div>
-            <div class="meta">Generated: {generated_time}</div>
-        </header>
-
-        {content}
-
+        </div>
+        <div class="panel-content" id="boys-content">
+            {boys_html}
+        </div>
     </div>
+
+    <!-- Right Panel: Girl Groups -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title">💃 Girl Groups</div>
+            <div class="select-wrapper">
+                <select id="girls-select" onchange="filterList('girls-content', this.value)">
+                    <option value="all">Show All</option>
+                    {girls_options}
+                </select>
+            </div>
+        </div>
+        <div class="panel-content" id="girls-content">
+            {girls_html}
+        </div>
+    </div>
+</div>
+
+<script>
+    function filterList(containerId, selectedArtist) {
+        const container = document.getElementById(containerId);
+        const groups = container.getElementsByClassName('artist-group');
+        
+        for (let group of groups) {
+            if (selectedArtist === 'all' || group.getAttribute('data-artist') === selectedArtist) {
+                group.classList.remove('hidden');
+            } else {
+                group.classList.add('hidden');
+            }
+        }
+    }
+</script>
+
 </body>
 </html>
 """
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
         
-        # Group items by Artist
+        # Helper to build artist block
+        def build_artist_block(artist_name, data):
+            # Tour Section
+            tour_rows = []
+            
+            # Ticket Buttons
+            tm_link = f"https://www.ticketmaster.com/search?q={requests.utils.quote(artist_name)}"
+            sh_link = f"https://www.stubhub.com/secure/search?q={requests.utils.quote(artist_name)}"
+            buttons_html = f'''
+                <div class="btn-group">
+                    <a href="{tm_link}" target="_blank" class="btn tm">Ticketmaster</a>
+                    <a href="{sh_link}" target="_blank" class="btn sh">StubHub</a>
+                </div>
+            '''
+            
+            if data['tour']:
+                cities = set()
+                for item in data['tour']:
+                    cities.update(item['extracted_cities'])
+                
+                cities_html = ""
+                if cities:
+                    cities_html = f"<div style='font-size:0.85rem; margin-bottom:10px;'>🏙️ {', '.join(sorted(cities))}</div>"
+
+                for item in data['tour'][:3]:
+                    img_html = f'<img src="{item["image_url"]}" class="news-thumb">' if item.get("image_url") else '<div class="news-thumb"></div>'
+                    tour_rows.append(f'''
+                        <div class="news-card">
+                            {img_html}
+                            <div class="news-info">
+                                <a href="{item["url"]}" target="_blank" class="news-link">{item["title"]}</a>
+                                <div class="news-meta">{item["source"]}</div>
+                            </div>
+                        </div>
+                    ''')
+                tour_content = f"{buttons_html}{cities_html}{''.join(tour_rows)}"
+            else:
+                tour_content = f"{buttons_html}<div style='color:#9ca3af; font-style:italic;'>No active tour news.</div>"
+
+            # Comeback Section
+            comeback_rows = []
+            if data['comeback']:
+                for item in data['comeback'][:4]:
+                    img_html = f'<img src="{item["image_url"]}" class="news-thumb">' if item.get("image_url") else '<div class="news-thumb"></div>'
+                    comeback_rows.append(f'''
+                        <div class="news-card">
+                            {img_html}
+                            <div class="news-info">
+                                <a href="{item["url"]}" target="_blank" class="news-link">{item["title"]}</a>
+                                <div class="news-meta">{item["source"]}</div>
+                            </div>
+                        </div>
+                    ''')
+                comeback_content = "".join(comeback_rows)
+            else:
+                comeback_content = "<div style='color:#9ca3af; font-style:italic;'>No recent comeback news.</div>"
+
+            return f'''
+            <div class="artist-group" data-artist="{artist_name}">
+                <div class="artist-header-row">
+                    <span class="artist-name">{artist_name}</span>
+                </div>
+                <div class="sub-grid">
+                    <div class="sub-col sub-col-tour">
+                        <div class="sub-title">🌍 US Tour & Tickets</div>
+                        {tour_content}
+                    </div>
+                    <div class="sub-col">
+                        <div class="sub-title">🎵 Latest Comeback</div>
+                        {comeback_content}
+                    </div>
+                </div>
+            </div>
+            '''
+
+        # Group Data
         artist_data = {}
         for item in items:
             name = item['artist']
             if name not in artist_data:
                 artist_data[name] = {"tour": [], "comeback": []}
             
-            if "Tour" in item['topic']:
-                artist_data[name]["tour"].append(item)
-            else:
-                artist_data[name]["comeback"].append(item)
+            key = "tour" if "Tour" in item['topic'] else "comeback"
+            artist_data[name][key].append(item)
+
+        # Separate by Side
+        boys_html = []
+        boys_options = []
+        girls_html = []
+        girls_options = []
         
-        # Build Content separated by Category
-        categories_order = ["Girl Group", "Boy Group", "Co-ed Group", "Soloist"]
-        grouped_html = []
-
-        # Sort artists alphabetically within current active artists list
-        active_artists = sorted(artist_data.keys())
-
-        # Iterate by Category
-        for cat in categories_order:
-            cat_artists = [a for a in active_artists if categories.get(a, "Unknown") == cat]
-            if not cat_artists:
-                continue
-
-            section_html = [f"<h2>{cat}s</h2>"]
+        # Sort artists
+        sorted_artists = sorted(artist_data.keys())
+        
+        for artist in sorted_artists:
+            cat = categories.get(artist, "Unknown")
+            # Map categories to sides
+            is_boy_side = cat == "Boy Group"
+            is_girl_side = cat in ["Girl Group", "Co-ed Group", "Soloist"] # Map others to Right for now (or split logic)
             
-            for artist in cat_artists:
-                data = artist_data[artist]
-                
-                # --- TOUR COLUMN ---
-                tour_html = []
-                if not data["tour"]:
-                    tour_html.append('<div class="empty-col">No active tour news found.</div>')
-                else:
-                    # Collect all unique cities
-                    all_cities = set()
-                    for t in data["tour"]:
-                        all_cities.update(t['extracted_cities'])
-                    
-                    if all_cities:
-                        tour_html.append(f'<div class="cities-list"><strong>Cities:</strong> {", ".join(sorted(all_cities))}</div>')
-                    
-                    # Ticket Buttons
-                    tm_link = f"https://www.ticketmaster.com/search?q={requests.utils.quote(artist)}"
-                    sh_link = f"https://www.stubhub.com/secure/search?q={requests.utils.quote(artist)}"
-                    
-                    tour_html.append(f'''
-                        <div class="ticket-buttons">
-                            <a href="{tm_link}" target="_blank" class="btn btn-tm">Ticketmaster</a>
-                            <a href="{sh_link}" target="_blank" class="btn btn-sh">StubHub</a>
-                        </div>
-                    ''')
-
-                    # List Articles
-                    for t in data["tour"][:3]: # Limit to 3 recent articles
-                         tour_html.append(f'''
-                            <div class="news-item">
-                                <a href="{t['url']}" target="_blank" class="news-title">{t['title']}</a>
-                                <span class="news-source">{t['source']} • {t['published_at'][:16]}</span>
-                            </div>
-                        ''')
-
-                # --- COMEBACK COLUMN ---
-                comeback_html = []
-                if not data["comeback"]:
-                    comeback_html.append('<div class="empty-col">No recent comeback news.</div>')
-                else:
-                    for c in data["comeback"][:5]: # Limit to 5
-                         comeback_html.append(f'''
-                            <div class="news-item">
-                                <a href="{c['url']}" target="_blank" class="news-title">{c['title']}</a>
-                                <span class="news-source">{c['source']} • {c['published_at'][:16]}</span>
-                            </div>
-                        ''')
-
-                artist_block = f"""
-                <div class="artist-section">
-                    <div class="artist-header">
-                        {artist}
-                        <span class="artist-badge">{categories.get(artist, "Artist")}</span>
-                    </div>
-                    <div class="split-layout">
-                        <div class="column">
-                            <h3>🌍 US Tour</h3>
-                            <div class="column-content">{''.join(tour_html)}</div>
-                        </div>
-                        <div class="column">
-                            <h3>🎵 New Comeback</h3>
-                            <div class="column-content">{''.join(comeback_html)}</div>
-                        </div>
-                    </div>
-                </div>
-                """
-                section_html.append(artist_block)
+            # Specific Check for known genders if Category is Soloist
+            # BIBI -> Female
+            # We assume Right Side unless Boy Group.
             
-            grouped_html.append("".join(section_html))
+            html_block = build_artist_block(artist, artist_data[artist])
+            option_block = f'<option value="{artist}">{artist}</option>'
             
-        final_content = "".join(grouped_html) if grouped_html else '<div class="empty-state">No meaningful intelligence found for any targets.</div>'
-        final_html = html_template.replace("{generated_time}", timestamp).replace("{content}", final_content)
+            if is_boy_side:
+                boys_html.append(html_block)
+                boys_options.append(option_block)
+            else:
+                girls_html.append(html_block)
+                girls_options.append(option_block)
+
+        final_html = html_template.replace("{boys_options}", "".join(boys_options)) \
+                                  .replace("{boys_html}", "".join(boys_html) if boys_html else '<div style="padding:20px; text-align:center;">No data</div>') \
+                                  .replace("{girls_options}", "".join(girls_options)) \
+                                  .replace("{girls_html}", "".join(girls_html) if girls_html else '<div style="padding:20px; text-align:center;">No data</div>')
         
         with open("report.html", "w") as f:
             f.write(final_html)
