@@ -1,27 +1,51 @@
-# K-Pop Intelligence Bot 🎵🎤
+# KPOP追星机器人 from 一丹 🎵✨
 
-A Python-based automated tracker for K-Pop artist comebacks and tours. This bot scans news sources, filters for relevant intelligence, and generates structured reports.
+> A beautiful, intelligent K-Pop tracking dashboard with kawaii aesthetics! Track your favorite artists' comebacks, tours, and get style inspiration from their latest looks.
 
-## Features
+![Baby Pink Theme](https://img.shields.io/badge/Theme-Baby%20Pink%20%26%20Blue-FFB6C1?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-- **Multi-Source Tracking**: Scans Google News RSS for specific keywords combining artist names with "Comeback" or "US Tour".
-- **Intelligence Filtering**:
-  - **Whitelisting**: Only trusts news from reputable K-Pop sources (e.g., Soompi, Billboard, NME, Weverse).
-  - **Keyword Validation**: Ensures articles contain confirmation keywords (e.g., "confirmed", "schedule", "unveils") to reduce noise.
-- **Data Extraction**: Uses Regex to automatically extract:
-  - **Tour Cities**: Identifies major US cities (e.g., LA, NYC, Chicago).
-  - **Dates**: Extracts upcoming dates from article text.
-- **Interactive Dashboard**: Split-screen layout (Boy Groups vs. Girl Groups) with dropdown filtering.
-- **US Tour & Comeback Tracking**: Separate columns for tour dates (with Ticketmaster/StubHub links) and comeback news.
-- **Visual Intelligence**: Displays images from news articles where available.
-- **Multi-Source Scraping**: Fetches news from major K-pop outlets via Google News RSS.
-- **City & Date Extraction**: Automatically detects US tour stops and dates.
-- **Multi-Format Reporting**:
-  - `kpop_intelligence.json`: Raw structured data for programmatic use.
-  - `summary.md`: A clean Markdown table summary.
-  - `report.html`: A beautiful, dark-themed HTML dashboard for easy viewing.
+## ✨ Features
 
-## Installation
+### 🎤 Live Tour Tracking (巡演)
+- **Smart Proximity Sorting**: Tours sorted by distance from Seattle, WA
+- **Best Value Detection**: Automatic "⭐⭐⭐⭐⭐ Best Value" badge for closest shows
+- **Multi-Platform Price Comparison**: Compare prices across StubHub, Vivid Seats, Ticketmaster, and SeatGeek
+- **Bulletproof Deep Links**: Direct links to performer pages with city-specific search
+- **Top 4 Cities**: Shows only the best 4 unique cities per artist
+
+### 🎵 New Comeback Stage (新歌和舞台)
+- **6-Month Filter**: Only shows releases from the last 6 months
+- **YouTube Integration**: "▶ Watch Official MV" button for each song
+- **News Aggregation**: Pulls from trusted K-Pop sources (Soompi, Billboard, NME, Weverse)
+- **Smart Filtering**: Keyword validation ensures only confirmed news
+
+### 🛍️ Idol Closet (偶像衣橱)
+**NEW!** Get the look of your favorite idols!
+- **Style Recommendations**: Curated outfit suggestions inspired by latest MVs and stages
+- **Multi-Store Shopping**: One-click links to W Concept, Musinsa, and Lewkin
+- **Artist-Specific Looks**: 
+  - BTS: Vintage Denim, Oversized Hoodies, Bucket Hats
+  - NMIXX: Y2K Pleated Skirts, Crop Tees, Platform Boots
+  - And more for each artist!
+
+### 🎨 Beautiful UI Design
+- **Baby Pink & Blue Theme**: Soft, kawaii-inspired color palette
+- **Cute Decorations**: Floating stars ⭐ and cats 🐱 in the background
+- **Bilingual Interface**: English + Chinese (中文) labels
+- **Responsive Design**: Works perfectly on all screen sizes
+- **Glass-morphism Effects**: Modern, premium aesthetic
+
+### 🤖 Intelligent Data Processing
+- **Multi-Source Scraping**: Google News RSS aggregation
+- **City & Date Extraction**: Automatic detection of US tour stops
+- **Image Enrichment**: Fetches artist profile images
+- **Real-Time Updates**: Fresh data on every run
+
+## 🚀 Quick Start
+
+### Installation
 
 1. **Clone the repository**
    ```bash
@@ -29,10 +53,10 @@ A Python-based automated tracker for K-Pop artist comebacks and tours. This bot 
    cd kpop-come-back-trackers
    ```
 
-2. **Set up a virtual environment** (recommended)
+2. **Set up virtual environment**
    ```bash
    python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies**
@@ -40,127 +64,189 @@ A Python-based automated tracker for K-Pop artist comebacks and tours. This bot 
    pip install -r requirements.txt
    ```
 
-4. **Environment Variables**
-   Copy the example environment file:
+4. **Configure environment** (optional)
    ```bash
    cp .env.example .env
+   # Edit .env to set LOG_LEVEL if needed
    ```
-   (Optional) Edit `.env` to configure log levels.
 
-## Usage
+### Usage
 
-Run the bot with:
-
+Run the bot:
 ```bash
 python kpop_bot.py
 ```
 
-### Configuring Artists
-Currently, the list of artists to track is defined in the `__main__` block at the bottom of `kpop_bot.py`:
+Then open `report.html` in your browser to see the beautiful dashboard! 🎉
 
+## 🎯 Tracked Artists
+
+### Boy Groups (男团)
+- BTS
+- ENHYPEN
+- SEVENTEEN
+- Stray Kids
+- TOMORROW X TOGETHER (TXT)
+- ATEEZ
+
+### Girl Groups (女团)
+- BLACKPINK
+- ITZY
+- NewJeans
+- aespa
+- IVE
+- NMIXX
+- LE SSERAFIM
+- (G)I-DLE
+
+### Soloists (独唱)
+- IU
+- Taeyeon
+- Jungkook
+- V (BTS)
+- Lisa (BLACKPINK)
+
+**Want to add more artists?** Edit the `targets` dictionary in `kpop_bot.py`!
+
+## 📁 Output Files
+
+After running, you'll get:
+
+| File | Description |
+|------|-------------|
+| `report.html` | 🌟 **Main dashboard** - Open this in your browser! |
+| `kpop_intelligence.json` | Raw data for programmatic use |
+| `summary.md` | Text-based summary |
+
+## 🎨 UI Features
+
+### Three Tabs
+1. **Live Tour (巡演)** - Concert dates and ticket prices
+2. **New Comeback Stage (新歌和舞台)** - Latest music releases
+3. **Idol Closet (偶像衣橱)** - Style inspiration and shopping
+
+### Smart Features
+- **Independent Dropdowns**: Select from Girl Groups, Boy Groups, or Soloists
+- **Default View**: Automatically shows Live Tour tab
+- **Proximity Ranking**: Seattle-based distance sorting
+- **Price Intelligence**: Always shows the cheapest option first
+
+## 🛠️ Technical Details
+
+### Built With
+- **Python 3.9+**
+- **BeautifulSoup4** - HTML parsing
+- **Requests** - HTTP requests
+- **Python-dotenv** - Environment management
+
+### Data Sources
+- Google News RSS feeds
+- Trusted K-Pop media outlets
+- DiceBear API for placeholder images
+
+### Architecture
+- **Data Layer**: News scraping and filtering
+- **Processing Layer**: City/date extraction, price comparison
+- **Presentation Layer**: Dynamic HTML generation with embedded JavaScript
+
+## 🎯 Customization
+
+### Adding New Artists
+Edit `kpop_bot.py`:
 ```python
 targets = {
-    # Boy Groups
-    "BTS": "Boy Group", "ENHYPEN": "Boy Group", "SEVENTEEN": "Boy Group", 
-    
-    # Girl Groups
-    "BLACKPINK": "Girl Group", "ITZY": "Girl Group", "NewJeans": "Girl Group",
-    
-    #... Add others as needed
+    "YOUR_ARTIST": "Boy Group",  # or "Girl Group" or "Soloist"
+    # ... add more
 }
 ```
 
-Edit this list in `kpop_bot.py` to add or remove artists you want to track.
+### Changing Home Location
+Update the proximity sorting in `getProfessionalSort()` function to use your city instead of Seattle.
 
-## Output
+### Modifying Color Theme
+Edit the CSS `:root` variables in `kpop_bot.py`:
+```css
+:root {
+    --bg: #FFE4E8;  /* Baby pink background */
+    --baby-blue: #89CFF0;
+    --pink: #FFB6C1;
+    /* ... customize colors */
+}
+```
 
-After running the bot, three files will be generated in the root directory:
-- **`report.html`**: Open this in your browser to see the visual report.
-- **`summary.md`**: Text-based summary suitable for notes or GitHub rendering.
-- **`kpop_intelligence.json`**: Full data dump including metadata.
+## 🐛 Troubleshooting
+
+**Issue**: No data showing up
+- **Solution**: Check your internet connection. The bot needs to fetch from Google News.
+
+**Issue**: Images not loading
+- **Solution**: Some artists may not have cached images. The bot will use fallback avatars.
+
+**Issue**: Prices seem outdated
+- **Solution**: Prices are simulated for demo purposes. For real-time prices, integrate with ticketing APIs.
+
+## 📝 License
+
+MIT License - feel free to use and modify!
+
+## 🙏 Acknowledgments
+
+- K-Pop news sources: Soompi, Billboard, NME, Weverse
+- Ticketing platforms: StubHub, Vivid Seats, Ticketmaster, SeatGeek
+- Fashion retailers: W Concept, Musinsa, Lewkin
+
+## 💖 Made with Love
+
+Created by 一丹 (Yidan) for K-Pop fans worldwide! 
 
 ---
 
 # 中文说明 (Chinese Instructions)
 
-这是一个基于 Python 的自动化工具，用于追踪 K-Pop 艺人的回归（Comeback）和演唱会巡演（Tours）消息。该机器人会扫描新闻源，筛选相关情报，并生成结构化报告。
+## 功能特性
 
-## 功能特性 (Features)
+### 🎤 巡演追踪
+- 按距离西雅图的远近排序
+- 自动标记"最佳选择"
+- 多平台票价对比
+- 智能购票链接
 
-- **多源追踪**：结合艺人名称和关键词（如 "Comeback" 或 "US Tour"）扫描 Google News RSS。
-- **智能筛选**：
-  - **白名单机制**：仅信任来自知名 K-Pop 媒体（如 Soompi, Billboard, NME, Weverse）的新闻。
-  - **关键词验证**：确保文章包含确认性词汇（如 "confirmed", "schedule", "unveils"）以减少噪音。
-- **数据提取**：使用正则表达式自动提取：
-  - **巡演城市**：识别美国主要城市（如 LA, NYC, Chicago）。
-  - **日期**：从文章正文中提取即将到来的日期。
-- **交互式仪表盘**: 分屏布局（男团 vs 女团），支持下拉筛选。
-- **巡演与回归追踪**: 分栏显示巡演信息（含 Ticketmaster/StubHub 购票链接）和回归新闻。
-- **可视化情报**: 支持显示新闻配图。
-- **多源抓取**: 通过 Google News RSS 聚合主流 K-pop 媒体新闻。
-- **智能提取**: 自动识别美国巡演城市和日期。
-- **多格式报告**:
-  - `kpop_intelligence.json`: 原始数据。
-  - `report.html`: 交互式网页报告。
+### 🎵 新歌和舞台
+- 仅显示最近6个月的发布
+- YouTube MV 直达链接
+- 可信新闻源聚合
 
-## 安装指南 (Installation)
+### 🛍️ 偶像衣橱
+**全新功能！** 获取爱豆同款穿搭灵感
+- 根据最新 MV 和舞台推荐服装
+- 一键购物链接（W Concept、Musinsa、Lewkin）
+- 每位艺人专属风格推荐
 
-1. **克隆仓库**
-   ```bash
-   git clone https://github.com/sunny-xia-ada/kpop-come-back-trackers.git
-   cd kpop-come-back-trackers
-   ```
+### 🎨 精美界面
+- 粉蓝配色主题
+- 可爱装饰（星星和小猫）
+- 中英双语标签
+- 响应式设计
 
-2. **设置虚拟环境**（推荐）
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # Windows 用户请使用: venv\Scripts\activate
-   ```
+## 快速开始
 
-3. **安装依赖**
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. 克隆仓库并安装依赖（见上方英文说明）
+2. 运行 `python kpop_bot.py`
+3. 在浏览器中打开 `report.html`
 
-4. **环境变量**
-   复制示例环境文件：
-   ```bash
-   cp .env.example .env
-   ```
-   （可选）编辑 `.env` 文件以配置日志级别。
+## 自定义
 
-## 使用说明 (Usage)
+### 添加艺人
+编辑 `kpop_bot.py` 中的 `targets` 字典
 
-运行机器人：
+### 修改主题颜色
+编辑 CSS 变量中的颜色值
 
-```bash
-python kpop_bot.py
-```
+## 输出文件
+- `report.html` - 主仪表盘（在浏览器中打开）
+- `kpop_intelligence.json` - 原始数据
+- `summary.md` - 文本摘要
 
-### 配置艺人名单
-目前，需要追踪的艺人列表定义在 `kpop_bot.py` 底部的 `__main__` 代码块中：
+---
 
-```python
-targets = {
-    # Boy Groups (男团)
-    "BTS": "Boy Group", "ENHYPEN": "Boy Group", "SEVENTEEN": "Boy Group", 
-    
-    # Girl Groups (女团)
-    "BLACKPINK": "Girl Group", "ITZY": "Girl Group", "NewJeans": "Girl Group",
-    
-    #... Add others as needed
-}
-```
-
-如需添加或删除追踪的艺人，请直接修改 `kpop_bot.py` 中的此列表。
-
-## 输出文件 (Output)
-
-运行机器人后，根目录下将生成三个文件：
-- **`report.html`**：在浏览器中打开此文件查看可视化报告。
-- **`summary.md`**：适合做笔记或 GitHub 渲染的文本摘要。
-- **`kpop_intelligence.json`**：包含完整元数据的用于数据转储。
-
-## License
-
-[MIT](LICENSE)
+**用爱制作** 💖 by 一丹
