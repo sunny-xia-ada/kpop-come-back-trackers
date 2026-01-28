@@ -372,8 +372,8 @@ class KpopIntelligenceBot:
                     distance_miles: 800,
                     prices: {{ "StubHub": 159.50, "Vivid Seats": 175, "Ticketmaster": 290, "SeatGeek": 275 }},
                     links: {{
-                        "StubHub": "https://www.stubhub.com/secure/search.us?q=BTS+Stanford+Stadium",
-                        "Vivid Seats": "https://www.vividseats.com/bts---bangtan-boys-tickets-stanford-stanford-stadium-5-16-2026--concerts-k-pop/production/6517063?utm_content=%7BGOOGLE-ADS-CLICK-SOURCE%7D"
+                        "StubHub": "https://www.stubhub.com/bts-tickets/performer/1503185/?q=Stanford",
+                        "Vivid Seats": "https://www.vividseats.com/bts-tickets/performer/1503185?q=Stanford"
                     }},
                     last_updated: "Verified Match"
                 }},
@@ -471,6 +471,29 @@ class KpopIntelligenceBot:
                 avatar = f"https://ui-avatars.com/api/?name={safe_name}&background=random&color=fff&size=200"
             
             artist_data[name]["avatar"] = avatar
+            
+            # ---------------------------------------------------------
+            # IDOL CLOSET (MOCK DATA MVP)
+            # ---------------------------------------------------------
+            closet = []
+            if name == "BTS":
+                closet = [
+                    {"item": "Vintage Denim Jacket", "price": "$120", "source": "Musinsa", "url": "https://global.musinsa.com/us/search/goods?keyword=Vintage%20Denim%20Jacket", "img": "https://image.msscdn.net/global/images/goods_img/20211223/2280655/2280655_1_500.jpg"},
+                    {"item": "Oversized Logo Hoodie", "price": "$85", "source": "W Concept", "url": "https://us.wconcept.com/catalogsearch/result/?q=Oversized%20Hoodie", "img": "https://img.ltwebstatic.com/images3_pi/2022/09/26/1664156689add89f9252c8c41460114060851e4313_thumbnail_600x.webp"},
+                    {"item": "Bucket Hat", "price": "$45", "source": "Lewkin", "url": "https://lewkin.com/search?q=Bucket+Hat", "img": "https://m.media-amazon.com/images/I/61N+qX-XynL._AC_UY1000_.jpg"}
+                ]
+            elif name == "NMIXX":
+                closet = [
+                    {"item": "Y2K Pleated Skirt", "price": "$58", "source": "W Concept", "url": "https://us.wconcept.com/catalogsearch/result/?q=Pleated%20Skirt", "img": "https://m.media-amazon.com/images/I/61Kq-g+-1GL._AC_UY1000_.jpg"},
+                    {"item": "Crop Graphic Tee", "price": "$35", "source": "Musinsa", "url": "https://global.musinsa.com/us/search/goods?keyword=Crop%20Tee", "img": "https://media.boohoo.com/i/boohoo/fzz03639_black_xl?w=900&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit"},
+                    {"item": "Chunky Platform Boots", "price": "$110", "source": "Lewkin", "url": "https://lewkin.com/search?q=Platform+Boots", "img": "https://m.media-amazon.com/images/I/71p+Z+gX-pL._AC_UY1000_.jpg"}
+                ]
+            else:
+                closet = [
+                    {"item": "K-Pop Style Tee", "price": "$40", "source": "W Concept", "url": "https://us.wconcept.com/catalogsearch/result/?q=Kpop+Style", "img": "https://m.media-amazon.com/images/I/61p-lM-qZ8L._AC_UX569_.jpg"},
+                    {"item": "Streetwear Joggers", "price": "$65", "source": "Musinsa", "url": "https://global.musinsa.com/us/search/goods?keyword=Joggers", "img": "https://m.media-amazon.com/images/I/51+Tq5-g+ML._AC_UY1000_.jpg"}
+                ]
+            artist_data[name]["closet"] = closet
         
         # Sort for dropdown
         sorted_artists = sorted(list(processed_artists))
@@ -1049,6 +1072,7 @@ class KpopIntelligenceBot:
                         <div class="tabs">
                             <button class="tab-btn ${currentTab === 'tour' ? 'active' : ''}" onclick="switchTab('tour')">Live Tour</button>
                             <button class="tab-btn ${currentTab === 'comeback' ? 'active' : ''}" onclick="switchTab('comeback')">New Music</button>
+                            <button class="tab-btn ${currentTab === 'closet' ? 'active' : ''}" onclick="switchTab('closet')">Idol Closet 🛍️</button>
                         </div>
                         <div id="tab-content">
                             ${renderTabContent(data, currentTab)}
@@ -1063,7 +1087,10 @@ class KpopIntelligenceBot:
         window.switchTab = function(tab) {
             currentTab = tab;
             document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.toggle('active', b.innerText.toLowerCase().includes(tab === 'tour' ? 'tour' : 'music'));
+                const t = b.innerText.toLowerCase();
+                if(tab === 'tour') b.classList.toggle('active', t.includes('tour'));
+                else if(tab === 'comeback') b.classList.toggle('active', t.includes('music'));
+                else if(tab === 'closet') b.classList.toggle('active', t.includes('closet'));
             });
             const data = KPOP_DATA[currentArtist];
             document.getElementById('tab-content').innerHTML = renderTabContent(data, tab);
@@ -1199,6 +1226,24 @@ class KpopIntelligenceBot:
                 sixMonthsAgo.setMonth(today.getMonth() - 6);
                 
                 items = items.filter(item => new Date(item.published_at) > sixMonthsAgo);
+            }
+            
+            // 3. IDOL CLOSET LOGIC
+            if(tab === 'closet') {
+                 if(!data.closet || data.closet.length === 0) return '<div class="fallback-box">No outfit data available yet.</div>';
+                 
+                 return `<div class="news-grid" style="grid-template-columns: repeat(3, 1fr); display:grid; gap:20px;">` + data.closet.map(item => `
+                    <a href="${item.url}" target="_blank" class="ticket-row" style="display:flex; flex-direction:column; padding:0; height:300px; border:none; background:rgba(255,255,255,0.05);">
+                        <div style="height:180px; width:100%; overflow:hidden;">
+                            <img src="${item.img}" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <div style="padding:16px; display:flex; flex-direction:column; gap:8px;">
+                            <div style="font-weight:700; font-size:1.1rem;">${item.item}</div>
+                            <div style="color:var(--text-muted); font-size:0.9rem;">From ${item.source}</div>
+                            <div style="color:var(--emerald); font-weight:800;">${item.price}</div>
+                        </div>
+                    </a>
+                 `).join('') + `</div>`;
             }
             
             if(items.length === 0) {
