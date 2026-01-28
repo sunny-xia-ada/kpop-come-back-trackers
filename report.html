@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-pop Intelligence Report</title>
+    <style>
+        :root {
+            --bg-color: #0f0f13;
+            --card-bg: #1a1a23;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent: #d946ef; /* Pink/Purple */
+            --accent-glow: rgba(217, 70, 239, 0.3);
+            --border: #2e2e3a;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .tag.tour { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .tag.comeback { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
+
+        .artist {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            line-height: 1.4;
+        }
+
+        .title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .title a:hover {
+            color: var(--accent);
+        }
+
+        .source {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .source::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+
+        .metadata {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .metadata-item {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>K-pop Intelligence</h1>
+                <div class="meta">Live Tracker Report</div>
+            </div>
+            <div class="meta">Generated: 2026-01-27 17:51</div>
+        </header>
+
+        <div class="grid">
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxQQVpHWGlQdWJvbEo4ZGo5dXRNV0w2VktSR1lmWmlQTzZMZHhqeUwzU3dXeVFjUW5fTzdKMDF5Wk4yVzA2RmZFbzJiVkJuTnZQTlAxclFaMkwzLTVHdHlGVmlIR2VCMXhwMzBFcGtNNzd5MFBaUWsyWHJkUlNXQ0VkMDZhTnZqajRlTXY5ekdCWlIxc1dBc1JUMHdIVVNkczYydGpGUE5Pd3BiTUxYMFRBMUlFYXZxU0Q2Smxjcml5VElXeTZ1QlhMSzQxc1M?oc=5" target="_blank">How to Buy BTS World Tour Tickets Online (Even for Sold Out Shows) - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPQnl1cFdQcGplYl9NZXZWQ1VfOTlHZnplY19MVFZWd0tBX3BpbmpJX04waTVZLWF2YUJsSFlMMDJZdTJyMVUyVUE3aHV6UVhZSlF6a0dIT1FnZV9sVEhPUVV4Q1Ezd1M5a3p6Sm5WbWxyY0kwZEJYLXFLVXRNaTNvN0dsZEY?oc=5" target="_blank">BTS announce cities and dates for huge 2026-2027 world tour - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ3hJQ2NFRWljNEszM3hxalFTbzVha2hFZEp4ak1VdURpdEZwWC0yUlZPZXFGTVo3UlYtRkgxcWhkWjc2T3VDTXBYVnFLZkpUNHJ3cS1ZSXMxQXdXVkZGSUQxUUhXRnF6dGtXY0daZ0hkMzlVMFJVVEIza2gzSExiSC10T2RlMDZJQkRnV3pSclJrQQ?oc=5" target="_blank">BTS Unveil Highly Anticipated Comeback World Tour Dates - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOd3diejA3TUVLMEk0WlBQNXpMel93QUFiNmhzYkNfQVVfemZ2Qmlla3NyekhOQWxQX2VWS29GVE5qZVZWWE9ybDRreTlWTjc2R21kRGgyLWF2c3FpbXU5NFFiNEFJd0d2Mi1tUDRXWXM0MEh6QlFsa1h4Z0xreTBINVBCRXlfbDNZdzFYaU9JRXMtNE1FNkZTdlpoUHp1aU5kekMwUFlEcw?oc=5" target="_blank">The Year of BTS: Everything We Know About the Band’s Comeback - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNSDdNUmZxa1ZHTXk2dWdERXNYdWI3YlIzR0R0bUltQnpjMVFkbjNpSlFQUERUZVBmTlQzZGJ0NDV4cDRBRzJoaS1vMHRfSi05OU1EdE90N1dQa2FMaDN4TjhQMWJ5RHBCaWQ5ZkRpUmhURVlpWS14MElCa1ZUdHItRTlNS1dvRGF4MV94cVNmRmJwa0tNMzlKX2VvUnAzWERSZ1E?oc=5" target="_blank">BTS Officially Announces Fifth Album, Unveils New Countdown Website & Teases Upcoming Tour - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOLTQ3Z2NVQlpDLThkMktleVhKSS1zdmt4aXRFOTd4ZG9qSFpYQjR2NEl6QVFIOXFQNGpmV0Q0Q2YyRVZCdE1xclZUNi0xRnF6bjE4WkRIVzc5aXdlUjhIUjdmZ3ptYjExUC1tQ21VNlBWZ3oySVN5RkViRmh5aFNLY1pQMjc?oc=5" target="_blank">BTS Confirms March 2026 Comeback - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BTS</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPSDQ4RmRwQ09ZMmtYY0l0X0gtTVMxbWpaNjFreHlHWDdiU0JCNnVrVFVOMDNtRE9YWWhrUFRfWjVMd0tWUjBZbWl3YjdiRmNtM3llb2dlSkhGTmVoZGtVb1hXNnJDc0ZnMGNwMnJYMVRNZHFrQXJvZTFCMVY3eGRuaWloWUt2N3ZUT2c?oc=5" target="_blank">BTS Reveal ‘Deeply Reflective’ Title for Their Comeback Album - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BLACKPINK</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNd0FXbGRxMERYeGluMUJJODhuMjZrakRHRUE0OWR0WEE2bWdpVnVFZ0JlM2tTbUJ0QWRQVE5wRmVjV3N6UzhhMDJ6TDRtUXZHR0hFemRxNldORk12aFZwUEZpNHdMT3ExaE9VaHVaXzJxbHF2QlhycGJjb3RkM3h4S293QmxqMVFyYTd5N1g4VXMtVk5NX2RINw?oc=5" target="_blank">BLACKPINK Add Five More Dates to 2025 World Tour - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BLACKPINK</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPVnR3V1h3em5pVkIwTzNVS2p6VVNZbndVYnlWQ18wbE5UQkVTR2JDSHU3UXZtSV9MbFFzQ1JqYnRVQmltemFRQm9HRUxRdW5TZGd6OUNEZ3hrazV4Y0puNFNzQUxrLWdQZXNrNE1uemJ6cWJDcVhPaVV1Q1RmSGJJdmlMU0hDQS01dE5WVzhKQ01fRERfcl9vV3d5c1Y?oc=5" target="_blank">BLACKPINK’s 2025 World Tour Dates Announced - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BLACKPINK</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPSTdMbUppUDdLM1JpS1dYN3Fobm5GYXNCMTV4dVJuV2Nma200UVN1bjZLZHBSb0JVUWVkVElmeWFTR3dEamdqUDZpTjkzMjFEb29YWHJGSWZ1Vm5hWnRfZ05WYlU4bE84UmVVR3lIRXlleTdYeERMellKRjN2V3l0dmdjR2M1UDFCUkZaRmxiWDhqcWo1cGlLdklyYUhSUQ?oc=5" target="_blank">BLACKPINK Reveals Dates for 2025 Asia Leg of World Tour - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BLACKPINK</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQZmJRMVJ1LVRZVWY3dTFGenl3R0xVOXlTZ0tnOEE1WmNKcDRIMEU4a3VfVXB2WUxiUjBQMllYTFJrbGpGTlJuQlROaDBseVFkWHpjQWpFVXZ3b2RMWGpKNHRFRjloR19HMTFNRmxxZVktR2xZMktpV0lJeERQRlZDWHpYQUlUTndSU05iQTNnaC1DTmQtenUwTXlNR3RXXzYtY3c?oc=5" target="_blank">BLACKPINK Sets a ‘Deadline’ for Band’s Comeback in Intense World Tour Teaser - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BLACKPINK</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNR0VVdGJheEZmWnl1aUJjcHdzblVGM3pBdkl4UldKdGV1WXN2V3RKTkVITUYySndSZFM2OEEzTEZmSVRfemNENlJVTS16WkgyOGNBdUVqcWxJb29hRDZsSmk2YUFPeFJXTWdnQkhKbDh2VDE4bFFDS2tUNjN1S1JRdW9Oa0FwaDdzdFh0RWE3RzNTcUdEZDRLRjgyVFR0NFFDdnc?oc=5" target="_blank">Blackpink Announce Release Date for Mini Album ‘Deadline’ - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">BLACKPINK</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOVjBNczVQNFVFRVVEZEZvTTV6N01BblJZREpaTEFIdWp5UmtMV1lPNWh3Ulp1eXlXRTVKSERLV0FoYW5DLVd6Y3AycGJRRGRnVkVGdVJNYUYwRWJnMjEzdkxYbXg4Ui02RGUxbzV6X2h3YmRENlUyQ2p6aGxfNXdVNVFkdlhpSG5IcEpyNGdQWEJKOXlRcWI4UC1VRlBZd0cyTlExcVV0OTMtclhtRmJUN0h0OA?oc=5" target="_blank">YG responds to reports that BLACKPINK will release a new album in December - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ITZY</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPQVZnaEFSdjB5R3V6bFp1Qm9VdkFxalNsQ2N6bUtNUTkySWpGOGxhaThWNFJEWldBckhJd0tJTE5WMEFOdEVkMEd1RkJmWVNyVnNCUlB6bHgyLW53bGNFNThlVjRtTHJKbWV0b0p2VjlkZzV4QW9obS15QXlDa25PQnMxbkFOZkU?oc=5" target="_blank">ITZY Announce Dates For 2024 Spring/Summer Born To Be World Tour - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ITZY</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPUk9qZG1JQ2ZFVTZhLUlkSWhKMzMtTnZPQ243al9Mb3J6U291LVh3N1dLX0NHeXo1Q2Z4cXBkYXlEUDFCU2Q3OTd4S2xtMloydi13RElnSnRxOXhDUHNvUFRDcUV1cEtrbC1xVzlXRlkwbG8tSFNrcUxVUnN0Z1BXVlhfXzR0VFZkVEloczV6NjlxU2ZxaVktWk5Ub2ZNZEgzNVI3NzFnd3diT2RNS0ZTYg?oc=5" target="_blank">ITZY Share Mental Health Tips, Reflect on Team Growth Ahead of U.S. Dates For ‘Born to Be World Tour’ - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ITZY</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNQmM5MElBXzJYVzFuamJfVmZBckJ0Rk5xYTVTYzVQX0JoNExsc1ZZcW01OXJYRTZuWWFBU3F2SzluSGk5MTJoQTl4TnRkMVRTeENlRHowY195Qkx4R3lXUXJUdl9sRW90Rk8xN3pXcU9HVmNIYXB5Q1MyVWIxWmo2U2FlOUg?oc=5" target="_blank">ITZY to release music as a full group this October - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ITZY</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQTURmYXRoMl9wVUdJMlFxWGtpQnFkZGJLeTlfcGQwRHJOWG5KbmY4Zlhjc0Y5U05JZ3ZSWm85SHBUV29Ic0VMSVZYdTVLdncxdkdCeVpuZHNMU0I0ZDNfQXliUmFhSHFVRW1kMEJSWjhzNm1LNnZPdlZHWmFaTzVfRVhQbm8tMXU2LU1Sbkpxd2Vnck5pbmlDaHZmUzliTWc?oc=5" target="_blank">ITZY announce comeback, to release English single ‘Boys Like You’ this week - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ITZY</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQbEZzMHh3Um82blZVWVo0cTNrYTlBOFNrSEZxTERXU2N2QVRJNG1uLUcwWkhTVWZ5MHB5UHd4WFdjZlVnTVliWGJMUEg1RUlzMWUyczdnbndJRzhubmdDMVZwWFRVS29DaUp0TUYxOWZSTHJveTVxUDZNTzdaanQwZUUtX0dzOXpqRHo4?oc=5" target="_blank">ITZY Announces Comeback With New Mini Album ‘Cheshire’ - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ENHYPEN</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOamhkN2lCUmdETTNRT3ZLNmU5c01CN0k4NUNKWjJmVlBoZ1JpSDhXYU1CLTRvMXM0NEhKc1YxUWY0YXUxeE5xczM0YlJNRGlMcG1rM1BGOXJpS2U3WFdlenQ5dDFuRVlra3I1OFZVQmxmX2VYck5Yb2cxMy03MHA4N0FIRHFnRF9WRXpOZE9qSmlLRmtxREpZbHlVYWpzd0tNMDA1TEJ6TDhnRTRnV3p1bnFR?oc=5" target="_blank">ENHYPEN Announce Dates For U.S./European Leg of Walk the Line World Tour - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ENHYPEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQaU5WTGRrYm5Qdlo3TXJ1eEZvemx0dTdldHJYclpmcFA3ZnpRaVM0QkpKWGVzQzJaTE9kSkFJQTRIU2xub3BrSHVSY3dUemYwckhNamtaZ3E3bnRnTXhoc2JvdnhkWDUtaUsyc0xsSFlOQWZDN1Z2TnA3bU95aXA2SUJ4VHRubDBOY2hyNkNZdTdnWGRIMHM5OA?oc=5" target="_blank">ENHYPEN Announces Comeback Album ‘Manifesto : Day 1’ - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ENHYPEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPNW41c05RTXlVRUxHSGprWFpCOS1QdmNIajNWMHdpUExXTGxvRi1WcTVmbTJONnFRRC04dnRXSVB4WG53dDJEemRmNEVTYlBCRFRvQXZXbjlHUE1NRnNGeFlvZTBPQmlfNFVuOUtHcjM1OTlWbE9pNnVNa191bTYxRVlzVmNYekNfWUhFWGc4VkkwNDBqSWc?oc=5" target="_blank">ENHYPEN Drops ‘Manifesto : Day 1’ Comeback Mini Album: Stream It Now - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">ENHYPEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPMzZyQjhxYUFJVjF0QTY5cTNwWm42eU45V3JpWlVtSE43X1RKRzdDMm0xNFU4MllfMFdqRjhrMnNWWHZLeVlpcWNORFJxeXBnSk5HTDZVbHljaThwdlZpOGZkUXZ6RU00VnQySENOeURpVXdfMV9WSWg5YVRmd1duVERGOGlHYVgydmtIdnZMZGdZZTBQX1I1MlJFckc0LW5w?oc=5" target="_blank">ENHYPEN Talks Comeback, Mini Album ‘Manifesto : Day 1’ & Upcoming Tour: Watch - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQb0ZWRy11WkJZcUpDMlE1M3lBN2dEcXM2aVYtRmZXeEp4OVB4VU80Nm1JR2haN1BxaHNkZ0tTODRCODlhb3U5MllpdExVNnZWVGNLa01xT3FCVEwyQl8yc3NqZWhhb2oyeTV6ZTVpcmpvZTJHNVBwcDVlQklrQzg3eTJZSks2NlpqV00yZkx2QjRBb1pBSGJ0Y1daUDFlLUt2?oc=5" target="_blank">SEVENTEEN Announce Dates For U.S. Leg of 2025 World Tour - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOamNCbDJSaWpHbC02NGpNWXZfS2pHUU1CR19TejBUNGlYa3pha3lGQ3pNelV6eTctZFRfdFQwbXpWbjE0RTJ6d3JxM3RXbDgwZXJsblJ2RWJ0R1gwWTcweTBvalN4ZDNfS2EwOHAtbHRlQzNsR2VraWVYcG5jdDRRVVNrYTVLQ29YTUtN?oc=5" target="_blank">SEVENTEEN Reveals U.S. RIGHT HERE World Tour Dates - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQTV92Q0JNVTBOUEZWNEI2eEhFRS1OX1pqUnAxRGpmWVRGdHVFTkRHbW9nbFg0MlV6UnN3XzNyYkVIWGZHSDQzWUY0QWgtelpkVTJQUUN6bkl5cmdCU1JCRGI1ZzhIRW40SENiSnhtWThVQjBlQ29xMzhQUl9Zd04zWDRYaEx1ZHdhblZtbGdrOXh3LXRBbnVmeW1CNjR5akNtUllTNWtFM2RtS28?oc=5" target="_blank">Seventeen Announces ‘Right Here’ U.S. Tour Dates - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNWEpVbGNBX2dfYlB1SlVpNWgyVHhsT3hWaXBaMl94c0VVME1xZjM1NDVTVV9Ja0JDVVBGeDNhU2RlRGF3UmwzeGtEZVVBblBoN3NGdWlEWmNWM0prQUFyTUZ3OTFwVDRRYTRxemxhcUhDZ3E5LVk4UVhNUGZ1NTFnRlZyX0FGeUF1WDhfcXZXV3N5ODNzZWkxeVBn?oc=5" target="_blank">SEVENTEEN add new dates to 2024 to 2025 ‘Right Here’ world tour - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOcFJESmhQWGhUUVFlMmw2RzRWdEJmU2ZtQ0F5cTgtUFVST1hiWWFuRHlrV0dYZ2tHWWk5WkM3bkY0VW96cldrQlhObC1WVmFuZkQzMUVmUXAwOVZZZkpFQUhfMXVJSUcwaFVZMG9tVUtYZm5UckViT2k2TXE5MkhmdW5hUzJxQzVJcTNISGRQUTJsYzVN?oc=5" target="_blank">SEVENTEEN Announce North American Tour Dates - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQdExRVk9Uc1ozOVhoYzdDbDlBUng2M0Z1dlgyOWpNUmkzXy0xbmwzdkpDQ1hWX3ZJTndlQXhaSGx3WmVYaGdsNzFIRDZoOFBwYmNKV2Jza2dtM20zLUFGTXo0SHE2Njl3c2t3MXVYVGVWZXZNeENSMm5Wb2VtQzg1QTFuUHZZXzhOV2lOSDA1b25mM3cwb0RoMEx0UQ?oc=5" target="_blank">SEVENTEEN to release full-length album in celebration of 10th anniversary - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQRXlya3c2ZXZYTi1EbTVSMlNkenlsdk1tV2ljSTIxRHRwNUFZbU03R2ljcFY1V3VfcXlSUnVkeDdCZXVsTjQwcTB6eTVScUJfV29ZSm1adWRLY2VVdWtveEtnQUp5OFJUcnJtNkEtNWkta0p4SjZqalhPRlFQN0ZFSHJJUFc0SncteWFVTW1DWE03R2RFLVZRZ2JkRXRRQzlRMk9INDd3?oc=5" target="_blank">SEVENTEEN’s BSS Launch 2025 Comeback With ‘Teleparty’ EP: Stream It Now - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQd2FDcmNJLW55akMycmcwVDE5dlh6aVYxWlhPQlZnQjMzb1JmVk93dF96Q3pFeVFWSjNaS0Jib2ExUUp0eUJ4NEtiVTdWNUFkVGJMMFJqcVIwZjhvcmhOMDRldGpvN09lS09OUWJGekpack5ycjRGaFg5N1MyUTQyUjltaw?oc=5" target="_blank">SEVENTEEN’s Comeback Album ‘Face the Sun’ Is Here: Stream It Now - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQRHVFQnEzeU4tLUY2dW5hMnJUSWVsRU5PWVZxSXkyV3lRckVlLVZGS1pEUWxXRmNqNUEzYWg2cmJta0dSVTF5N1Nlc2NQUW5fS2RySzdxcnJLN3FPQkpieUlIUjlueExKV1VLbGxDUkdORzZUcmctbEttYUFNU3RELTZycm9PVktqZjRCdEgxLUlvdXQ0cEIyMExlWQ?oc=5" target="_blank">ROSÉ ‘Rosie’ Confessions & SEVENTEEN BSS ‘Teleparty’ Comeback - Billboard</a></h3>
+                    <div class="source">Billboard</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPWWp0ck91VnNuc2QyWmZFeFJ2Z2JuSHo0NndObkg4cC15d19maG5BbVJJWEl1NmdKdEcwbTNfSnNKZW4xQXJ3UE15N0JkbUNWaUlkUG5oZmwyRFdBMmVEUGNVU3VGVlpaTjNTTXRpOU0zWUg3MGJfXzJSNlU3d3RJRzkycU9fWW14Qkh2MVJiTWl6SVJsQkRIRjhONGprWFhY?oc=5" target="_blank">SEVENTEEN to release their fourth full-length album in May - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPd2NQUzdJSkx1cmpIdGdVZk5TN2pGTFBIMzdVejUzLVpBNzNTSHdmUTh3V0JLMkQxbTYybUE3aFgzTVRCUzlaS29RTTlyTW5kRTVXQktEQk5lZExKX2JFTzdRSTFCTmpObnY5WWhCY0h6UFQ3NkI0eVg5X1htM2d6STc3Y1dWRnFJRE5ILW1CSHpFVHNRbWc4U3pGbHZJUlE?oc=5" target="_blank">Seventeen Sets April Comeback With ‘FML’ Mini-Album Announcement - Rolling Stone</a></h3>
+                    <div class="source">Rolling Stone</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">SEVENTEEN</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPVU9vYVFBbFp1bGRPdHVjdHZkYXhhb2Y4ZnZ0UUFKblBPT3VFY0xpTnRGLXgtZlhOT3J0RTk4YUlId0xNQjZxVGYxNlNmWFVDakx0TGZKdDUtNk40TUc3a3AwNmM5ZThXWk1mR2N1OXlXODVFTFJyQUM0SHNLSDF4RGppRHlTX1hjRjVtdzVya1Mwd2c5WnRQRnNB?oc=5" target="_blank">Seungkwan to rejoin SEVENTEEN for October comeback after hiatus for health issues - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">NewJeans</span>
+                    <span class="tag tour">US Tour</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNWXA3blZXelpCRjNaT1pFaWpwSDZ4RlkxZE1JV1ZuNDJ6RjRaeVFRU3BwS3N5WDBHY2hHZTJqTkFDb3ZISm9JVHp6RlVzejA1MktzV1dudktmNGtLWkpnNXV6VlRYMUZLYks2LWlGdmtPdDU1WFZJRUhUN1VCbGZubC0yU21DS1FVbXh2QlV5Zw?oc=5" target="_blank">SEVENTEEN’s “Disappointing” Ticket Sales Point To The “Problem” With K-Pop - Koreaboo</a></h3>
+                    <div class="source">Koreaboo</div>
+                    
+                </div>
+                
+                <div class="card">
+                    <span class="artist">NewJeans</span>
+                    <span class="tag comeback">Comeback</span>
+                    <h3 class="title"><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPeUtBQjd4NG1Yal9jVGhuSzdtTndvd1I3eWZkMXZvUl9GSXNGOXlLY0l4TVBXcTBHbF9LU0kxZ2IzMFk5QWIzdEp5eWVQZExLbHI2Y1BHenFTb0pCSUVOTk5KZzJSZVU1Yy1mRzFXbEFla0NDSEFTMjJTcUlCSlU5TjlpZFprMFkyQmZCTWZlbw?oc=5" target="_blank">NewJeans to carry on with comeback plans despite spat between HYBE and ADOR - NME</a></h3>
+                    <div class="source">NME</div>
+                    
+                </div>
+                </div>
+
+    </div>
+</body>
+</html>
