@@ -483,46 +483,51 @@
         const SORTED_ARTISTS = ["ATEEZ", "All Day Project", "BABYMONSTER", "BIBI", "BLACKPINK", "BTS", "Cortis", "ENHYPEN", "ITZY", "IVE", "KISS OF LIFE", "LE SSERAFIM", "MEOVV", "NCT DREAM", "NCT WISH", "NewJeans", "SAY MY NAME", "SEVENTEEN", "Stray Kids", "TWICE", "TWS", "XG", "aespa", "izna"];
         
         // ---------------------------------------------------------
-        // BTS 2026 TOUR INJECTION (DATA PATCH)
+        // BTS 2026 TOUR INJECTION (PROFESSIONAL DATA)
         // ---------------------------------------------------------
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
-                // LOS ANGELES (West Coast)
+                // STANFORD (Closest)
                 {
-                    date: "2026-09-02", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    distance_miles: 1135,
-                    prices: { "StubHub": 70, "Ticketmaster": 180, "Vivid": 95, "SeatGeek": 105 }
+                    date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
+                    distance_miles: 800,
+                    prices: { "StubHub": 257, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
+                    url: "https://www.stubhub.com/bts-stanford-tickets-5-16-2026/event/159283741/?quantity=1"
                 },
+                // LOS ANGELES (West Coast Hub)
                 {
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    distance_miles: 1135,
-                    prices: { "StubHub": 85, "Ticketmaster": 450, "Vivid": 120, "SeatGeek": 110 }
+                    distance_miles: 1100,
+                    prices: { "StubHub": 197, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 },
+                    url: "https://www.stubhub.com/bts-inglewood-tickets-9-1-2026/event/160262066/?quantity=1"
                 },
-                
+                // LAS VEGAS (West)
+                {
+                    date: "2026-05-23", city: "Las Vegas, NV", venue: "Allegiant Stadium",
+                    distance_miles: 1100,
+                    prices: { "StubHub": 213, "Ticketmaster": 250, "Vivid": 220, "SeatGeek": 230 },
+                    url: "https://www.stubhub.com/bts-las-vegas-tickets-5-23-2026/event/159928374/?quantity=1"
+                },
                 // CHICAGO (Midwest)
                 {
                     date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
-                    distance_miles: 2060,
-                    prices: { "StubHub": 558, "Ticketmaster": 610, "Vivid": 545, "SeatGeek": 570 }
+                    distance_miles: 2000,
+                    prices: { "StubHub": 329, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 },
+                    url: "https://www.stubhub.com/bts-chicago-tickets-8-27-2026/event/159827364/?quantity=1"
                 },
+                // NEW JERSEY (East)
                 {
-                    date: "2026-08-28", city: "Chicago, IL", venue: "Soldier Field",
-                    distance_miles: 2060,
-                    prices: { "StubHub": 520, "Ticketmaster": 590, "Vivid": 510, "SeatGeek": 535 }
+                    date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
+                    distance_miles: 2800,
+                    prices: { "StubHub": 259, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 },
+                    url: "https://www.stubhub.com/bts-east-rutherford-tickets-8-1-2026/event/159736251/?quantity=1"
                 },
-
                 // TAMPA (South)
                 {
                     date: "2026-04-25", city: "Tampa, FL", venue: "Raymond James Stadium",
                     distance_miles: 3100,
-                    prices: { "StubHub": 215, "Ticketmaster": 289, "Vivid": 195, "SeatGeek": 210 }
-                },
-
-                // NEWARK (East Coast)
-                {
-                    date: "2026-10-10", city: "Newark, NJ", venue: "Prudential Center",
-                    distance_miles: 2850,
-                    prices: { "StubHub": 380, "Ticketmaster": 425, "Vivid": 365, "SeatGeek": 390 }
+                    prices: { "StubHub": 206, "Ticketmaster": 240, "Vivid": 215, "SeatGeek": 225 },
+                    url: "https://www.stubhub.com/bts-tampa-tickets-4-25-2026/event/159625142/?quantity=1"
                 }
             ];
         }
@@ -624,45 +629,27 @@
             document.getElementById('tab-content').innerHTML = renderTabContent(data, tab);
         }
 
-        // HELPER: Dynamic Link Generator
-        function getTicketLink(platform, artist) {
-            const encoded = encodeURIComponent(artist);
-            if(platform === 'Ticketmaster') return `https://www.ticketmaster.com/search?q=${encoded}`;
-            if(platform === 'StubHub') return `https://www.stubhub.com/search?q=${encoded}`;
-            if(platform === 'Vivid') return `https://www.vividseats.com/search?searchTerm=${encoded}`;
-            if(platform === 'SeatGeek') return `https://seatgeek.com/search?search=${encoded}`;
-            return '#';
-        }
-
-        // HELPER: Unique City + Sorting Logic
-        function getSmartRecommendations(items) {
-            // 1. Group by City and find the Cheapest Date for each city
+        // HELPER: Professional Unique City + Distance Sort
+        function getProfessionalSort(items) {
+            // 1. Group by City -> Best Deal
             const cityMap = new Map();
-            
             items.forEach(item => {
                 const lowPrice = Math.min(...Object.values(item.prices));
                 if(!cityMap.has(item.city)) {
                     cityMap.set(item.city, { ...item, bestPrice: lowPrice });
                 } else {
-                    // Update if this date is cheaper
                     if(lowPrice < cityMap.get(item.city).bestPrice) {
                         cityMap.set(item.city, { ...item, bestPrice: lowPrice });
                     }
                 }
             });
             
-            // 2. Convert to Array
             let uniqueCities = Array.from(cityMap.values());
             
-            // 3. Sort by Distance (Primary), then Price (Secondary)
-            uniqueCities.sort((a, b) => {
-                if (a.distance_miles !== b.distance_miles) {
-                    return a.distance_miles - b.distance_miles;
-                }
-                return a.bestPrice - b.bestPrice;
-            });
+            // 2. Sort by Distance (Strictly Closest First)
+            uniqueCities.sort((a, b) => a.distance_miles - b.distance_miles);
             
-            // 4. Return Top 4
+            // 3. Return Top 4
             return uniqueCities.slice(0, 4);
         }
 
@@ -671,7 +658,7 @@
 
             // 1. TOUR INTELLIGENCE
             if(tab === 'tour' && data.tour && data.tour[0]?.prices) {
-                const recs = getSmartRecommendations(data.tour);
+                const recs = getProfessionalSort(data.tour);
                 
                 const rows = recs.map((t, index) => {
                     const dateObj = new Date(t.date + 'T00:00:00');
@@ -682,7 +669,7 @@
                     const priceList = Object.entries(t.prices).sort((a,b) => a[1] - b[1]);
                     const best = priceList[0]; // [Platform, Price]
                     const bestPlatform = best[0];
-                    const bestLink = getTicketLink(bestPlatform, currentArtist);
+                    // Link (Deep Link from Data)
                     
                     // Build Tags
                     const priceTags = priceList.map(([src, pri]) => `
@@ -694,7 +681,7 @@
 
                     // Top Pick Badge (Only #1)
                     const isTopPick = index === 0;
-                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ ONE-DAN'S TOP PICK</div>` : '';
+                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ BEST CHOICE</div>` : '';
                     const rowClass = isTopPick ? 'ticket-row gold-tier' : 'ticket-row';
                     const distDisplay = t.distance_miles !== undefined ? `${t.distance_miles} mi` : '--';
 
@@ -719,7 +706,7 @@
                                 <span>Best: <strong style="color:var(--emerald)">$${best[1]}</strong></span>
                                 <span>via ${bestPlatform}</span>
                             </div>
-                            <a href="${bestLink}" target="_blank" class="buy-btn">Buy @ ${bestPlatform}</a>
+                            <a href="${t.url || '#'}" target="_blank" class="buy-btn">Buy Ticket</a>
                         </div>
                     `;
                 }).join('');
@@ -749,13 +736,12 @@
             }
 
             return `<div class="news-grid">` + items.map(item => {
-                const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(currentArtist + ' ' + item.title + ' MV')}`;
+                const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(currentArtist + ' ' + item.title + ' Official MV')}`;
                 const hasSeattle = (item.title + (item.extracted_cities||[]).join('')).includes('Seattle');
                 const badge = hasSeattle ? `<span class="local-badge">📍 SEATTLE</span>` : '';
                 
-                // Add YouTube Button for Comebacks
                 const actionBtn = tab === 'comeback' ? 
-                    `<a href="${ytLink}" target="_blank" class="btn-yt">▶ Watch on YouTube</a>` : '';
+                    `<a href="${ytLink}" target="_blank" class="btn-yt">▶ Official MV</a>` : '';
 
                 return `
                     <a href="${item.url}" target="_blank" class="news-item">
