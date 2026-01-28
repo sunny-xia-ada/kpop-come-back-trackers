@@ -481,42 +481,42 @@ class KpopIntelligenceBot:
             closet = []
             if name == "BTS":
                 closet = [
-                    {"item": "Vintage Denim Jacket", "price": "$120", "search": "BTS Style Vintage Denim", "style_analysis": "Corecore Aesthetic", "seattle_ready": True, "best_store": "musinsa", "why_it_works": "Adds layered texture to any simple base"},
-                    {"item": "Oversized Logo Hoodie", "price": "$85", "search": "BTS Oversized Hoodie", "style_analysis": "Streetwear Casual", "seattle_ready": True, "best_store": "wconcept", "why_it_works": "Perfect for Seattle's unpredictable weather"},
-                    {"item": "Bucket Hat", "price": "$45", "search": "BTS Bucket Hat", "style_analysis": "Y2K Revival", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Instantly elevates casual streetwear looks"},
-                    {"item": "Cargo Pants", "price": "$95", "search": "BTS Cargo Pants", "style_analysis": "Urban Utility", "seattle_ready": False, "best_store": "musinsa", "why_it_works": "Functional pockets meet runway aesthetics"},
-                    {"item": "Leather Bomber Jacket", "price": "$280", "search": "BTS Leather Jacket", "style_analysis": "Rock Chic", "seattle_ready": True, "best_store": "wconcept", "why_it_works": "Timeless investment piece with edge"},
-                    {"item": "Chunky Sneakers", "price": "$150", "search": "BTS Chunky Sneakers", "style_analysis": "Dad Shoe Trend", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Balances proportions in oversized fits"},
-                    {"item": "Graphic Band Tee", "price": "$40", "search": "BTS Graphic Tee", "style_analysis": "Vintage Rock", "seattle_ready": False, "best_store": "musinsa", "why_it_works": "Adds personality without overwhelming"},
-                    {"item": "Wool Trench Coat", "price": "$220", "search": "BTS Trench Coat", "style_analysis": "Classic Tailored", "seattle_ready": True, "best_store": "wconcept", "why_it_works": "Sophisticated layering for PNW rain"},
-                    {"item": "Chain Necklace", "price": "$35", "search": "BTS Chain Necklace", "style_analysis": "Hip-Hop Luxe", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Subtle statement that catches light"},
-                    {"item": "Distressed Jeans", "price": "$110", "search": "BTS Distressed Jeans", "style_analysis": "Grunge Revival", "seattle_ready": False, "best_store": "musinsa", "why_it_works": "Effortless cool with lived-in appeal"}
+                    {"item_cn": "破洞牛仔夹克", "item_en": "Vintage Denim Jacket", "price": "$120", "search": "BTS Style Vintage Denim", "style_analysis": "Corecore Aesthetic", "seattle_ready": True, "seattle_score": 75, "best_store": "musinsa", "why_it_works_cn": "为任何简约造型增添层次质感", "why_it_works_en": "Adds layered texture to any simple base"},
+                    {"item_cn": "超大Logo卫衣", "item_en": "Oversized Logo Hoodie", "price": "$85", "search": "BTS Oversized Hoodie", "style_analysis": "Streetwear Casual", "seattle_ready": True, "seattle_score": 95, "best_store": "wconcept", "why_it_works_cn": "完美应对西雅图多变天气", "why_it_works_en": "Perfect for Seattle's unpredictable weather"},
+                    {"item_cn": "渔夫帽", "item_en": "Bucket Hat", "price": "$45", "search": "BTS Bucket Hat", "style_analysis": "Y2K Revival", "seattle_ready": False, "seattle_score": 40, "best_store": "lewkin", "why_it_works_cn": "瞬间提升休闲街头造型", "why_it_works_en": "Instantly elevates casual streetwear looks"},
+                    {"item_cn": "工装裤", "item_en": "Cargo Pants", "price": "$95", "search": "BTS Cargo Pants", "style_analysis": "Urban Utility", "seattle_ready": False, "seattle_score": 60, "best_store": "musinsa", "why_it_works_cn": "功能口袋遇见T台美学", "why_it_works_en": "Functional pockets meet runway aesthetics"},
+                    {"item_cn": "皮质飞行员夹克", "item_en": "Leather Bomber Jacket", "price": "$280", "search": "BTS Leather Jacket", "style_analysis": "Rock Chic", "seattle_ready": True, "seattle_score": 85, "best_store": "wconcept", "why_it_works_cn": "永恒的投资单品，带有锋芒", "why_it_works_en": "Timeless investment piece with edge"},
+                    {"item_cn": "厚底老爹鞋", "item_en": "Chunky Sneakers", "price": "$150", "search": "BTS Chunky Sneakers", "style_analysis": "Dad Shoe Trend", "seattle_ready": False, "seattle_score": 70, "best_store": "lewkin", "why_it_works_cn": "平衡oversized造型的比例", "why_it_works_en": "Balances proportions in oversized fits"},
+                    {"item_cn": "复古乐队T恤", "item_en": "Graphic Band Tee", "price": "$40", "search": "BTS Graphic Tee", "style_analysis": "Vintage Rock", "seattle_ready": False, "seattle_score": 50, "best_store": "musinsa", "why_it_works_cn": "增添个性而不压倒造型", "why_it_works_en": "Adds personality without overwhelming"},
+                    {"item_cn": "羊毛风衣", "item_en": "Wool Trench Coat", "price": "$220", "search": "BTS Trench Coat", "style_analysis": "Classic Tailored", "seattle_ready": True, "seattle_score": 90, "best_store": "wconcept", "why_it_works_cn": "适合PNW雨季的精致叠穿", "why_it_works_en": "Sophisticated layering for PNW rain"},
+                    {"item_cn": "链条项链", "item_en": "Chain Necklace", "price": "$35", "search": "BTS Chain Necklace", "style_analysis": "Hip-Hop Luxe", "seattle_ready": False, "seattle_score": 30, "best_store": "lewkin", "why_it_works_cn": "捕捉光线的精致点缀", "why_it_works_en": "Subtle statement that catches light"},
+                    {"item_cn": "破洞牛仔裤", "item_en": "Distressed Jeans", "price": "$110", "search": "BTS Distressed Jeans", "style_analysis": "Grunge Revival", "seattle_ready": False, "seattle_score": 55, "best_store": "musinsa", "why_it_works_cn": "自然磨损感的轻松酷劲", "why_it_works_en": "Effortless cool with lived-in appeal"}
                 ]
             elif name == "NMIXX":
                 closet = [
-                    {"item": "Y2K Pleated Skirt", "price": "$58", "search": "NMIXX Pleated Skirt", "style_analysis": "Y2K Office Siren", "seattle_ready": False, "best_store": "wconcept", "why_it_works": "Sharp silhouette with playful movement"},
-                    {"item": "Crop Graphic Tee", "price": "$35", "search": "NMIXX Crop Top", "style_analysis": "Cyber-Punk Grunge", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Balances high-waist bottoms perfectly"},
-                    {"item": "Chunky Platform Boots", "price": "$110", "search": "NMIXX Platform Boots", "style_analysis": "Edgy Feminine", "seattle_ready": True, "best_store": "musinsa", "why_it_works": "Waterproof style for Seattle streets"},
-                    {"item": "Oversized Blazer", "price": "$145", "search": "NMIXX Oversized Blazer", "style_analysis": "Power Dressing", "seattle_ready": True, "best_store": "wconcept", "why_it_works": "Structured yet comfortable layering"},
-                    {"item": "Mini Shoulder Bag", "price": "$65", "search": "NMIXX Mini Bag", "style_analysis": "Micro Bag Trend", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Compact chic for essentials only"},
-                    {"item": "Fishnet Tights", "price": "$18", "search": "NMIXX Fishnet", "style_analysis": "Alt Fashion", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Adds texture without bulk"},
-                    {"item": "Leather Jacket", "price": "$195", "search": "NMIXX Leather Jacket", "style_analysis": "Biker Chic", "seattle_ready": True, "best_store": "musinsa", "why_it_works": "Wind-resistant with attitude"},
-                    {"item": "High-Waist Shorts", "price": "$48", "search": "NMIXX High Waist Shorts", "style_analysis": "Sporty Glam", "seattle_ready": False, "best_store": "wconcept", "why_it_works": "Elongates legs with clean lines"},
-                    {"item": "Chunky Rings Set", "price": "$28", "search": "NMIXX Rings", "style_analysis": "Maximalist Jewelry", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Instant edge to minimal outfits"},
-                    {"item": "Plaid Mini Skirt", "price": "$52", "search": "NMIXX Plaid Skirt", "style_analysis": "School Girl Chic", "seattle_ready": False, "best_store": "wconcept", "why_it_works": "Nostalgic yet modern aesthetic"}
+                    {"item_cn": "Y2K百褶裙", "item_en": "Y2K Pleated Skirt", "price": "$58", "search": "NMIXX Pleated Skirt", "style_analysis": "Y2K Office Siren", "seattle_ready": False, "seattle_score": 35, "best_store": "wconcept", "why_it_works_cn": "利落廓形搭配俏皮动感", "why_it_works_en": "Sharp silhouette with playful movement"},
+                    {"item_cn": "短款图案T恤", "item_en": "Crop Graphic Tee", "price": "$35", "search": "NMIXX Crop Top", "style_analysis": "Cyber-Punk Grunge", "seattle_ready": False, "seattle_score": 45, "best_store": "lewkin", "why_it_works_cn": "完美平衡高腰下装", "why_it_works_en": "Balances high-waist bottoms perfectly"},
+                    {"item_cn": "厚底马丁靴", "item_en": "Chunky Platform Boots", "price": "$110", "search": "NMIXX Platform Boots", "style_analysis": "Edgy Feminine", "seattle_ready": True, "seattle_score": 90, "best_store": "musinsa", "why_it_works_cn": "西雅图街头的防水时尚", "why_it_works_en": "Waterproof style for Seattle streets"},
+                    {"item_cn": "超大西装外套", "item_en": "Oversized Blazer", "price": "$145", "search": "NMIXX Oversized Blazer", "style_analysis": "Power Dressing", "seattle_ready": True, "seattle_score": 85, "best_store": "wconcept", "why_it_works_cn": "结构化又舒适的叠穿", "why_it_works_en": "Structured yet comfortable layering"},
+                    {"item_cn": "迷你单肩包", "item_en": "Mini Shoulder Bag", "price": "$65", "search": "NMIXX Mini Bag", "style_analysis": "Micro Bag Trend", "seattle_ready": False, "seattle_score": 40, "best_store": "lewkin", "why_it_works_cn": "只装必需品的精致时髦", "why_it_works_en": "Compact chic for essentials only"},
+                    {"item_cn": "渔网袜", "item_en": "Fishnet Tights", "price": "$18", "search": "NMIXX Fishnet", "style_analysis": "Alt Fashion", "seattle_ready": False, "seattle_score": 50, "best_store": "lewkin", "why_it_works_cn": "增添质感而不显臃肿", "why_it_works_en": "Adds texture without bulk"},
+                    {"item_cn": "皮夹克", "item_en": "Leather Jacket", "price": "$195", "search": "NMIXX Leather Jacket", "style_analysis": "Biker Chic", "seattle_ready": True, "seattle_score": 80, "best_store": "musinsa", "why_it_works_cn": "防风又有态度", "why_it_works_en": "Wind-resistant with attitude"},
+                    {"item_cn": "高腰短裤", "item_en": "High-Waist Shorts", "price": "$48", "search": "NMIXX High Waist Shorts", "style_analysis": "Sporty Glam", "seattle_ready": False, "seattle_score": 30, "best_store": "wconcept", "why_it_works_cn": "利落线条拉长腿部", "why_it_works_en": "Elongates legs with clean lines"},
+                    {"item_cn": "粗款戒指套装", "item_en": "Chunky Rings Set", "price": "$28", "search": "NMIXX Rings", "style_analysis": "Maximalist Jewelry", "seattle_ready": False, "seattle_score": 25, "best_store": "lewkin", "why_it_works_cn": "为极简造型瞬间增添锋芒", "why_it_works_en": "Instant edge to minimal outfits"},
+                    {"item_cn": "格纹迷你裙", "item_en": "Plaid Mini Skirt", "price": "$52", "search": "NMIXX Plaid Skirt", "style_analysis": "School Girl Chic", "seattle_ready": False, "seattle_score": 35, "best_store": "wconcept", "why_it_works_cn": "怀旧又现代的美学", "why_it_works_en": "Nostalgic yet modern aesthetic"}
                 ]
             elif name == "BLACKPINK":
                 closet = [
-                    {"item": "Luxury Blazer", "price": "$320", "search": "BLACKPINK Blazer", "style_analysis": "High Fashion", "seattle_ready": True, "best_store": "wconcept", "why_it_works": "Polished power dressing essential"},
-                    {"item": "Mini Tweed Dress", "price": "$185", "search": "BLACKPINK Tweed Dress", "style_analysis": "Chanel Inspired", "seattle_ready": False, "best_store": "wconcept", "why_it_works": "Timeless elegance with modern edge"},
-                    {"item": "Thigh-High Boots", "price": "$245", "search": "BLACKPINK Boots", "style_analysis": "Bold Confidence", "seattle_ready": True, "best_store": "musinsa", "why_it_works": "Statement piece for rainy days"},
-                    {"item": "Statement Sunglasses", "price": "$75", "search": "BLACKPINK Sunglasses", "style_analysis": "Luxury Accessory", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Instant celebrity aura"},
-                    {"item": "Crop Leather Jacket", "price": "$280", "search": "BLACKPINK Leather", "style_analysis": "Rock Glam", "seattle_ready": True, "best_store": "musinsa", "why_it_works": "Edgy sophistication in one piece"},
-                    {"item": "High-Waist Pants", "price": "$95", "search": "BLACKPINK Pants", "style_analysis": "Power Suit", "seattle_ready": False, "best_store": "wconcept", "why_it_works": "Elongates silhouette dramatically"},
-                    {"item": "Chain Belt", "price": "$55", "search": "BLACKPINK Chain Belt", "style_analysis": "Edgy Luxe", "seattle_ready": False, "best_store": "lewkin", "why_it_works": "Cinches waist with metallic shine"},
-                    {"item": "Silk Blouse", "price": "$125", "search": "BLACKPINK Silk Blouse", "style_analysis": "Elegant Feminine", "seattle_ready": False, "best_store": "wconcept", "why_it_works": "Luxe fabric elevates any outfit"},
-                    {"item": "Platform Heels", "price": "$165", "search": "BLACKPINK Heels", "style_analysis": "Stage Ready", "seattle_ready": False, "best_store": "musinsa", "why_it_works": "Adds height without sacrificing comfort"},
-                    {"item": "Oversized Trench", "price": "$295", "search": "BLACKPINK Trench", "style_analysis": "Parisian Chic", "seattle_ready": True, "best_store": "wconcept", "why_it_works": "Architectural draping for Seattle rain"}
+                    {"item_cn": "奢华西装外套", "item_en": "Luxury Blazer", "price": "$320", "search": "BLACKPINK Blazer", "style_analysis": "High Fashion", "seattle_ready": True, "seattle_score": 80, "best_store": "wconcept", "why_it_works_cn": "精致权力着装的必备单品", "why_it_works_en": "Polished power dressing essential"},
+                    {"item_cn": "迷你粗花呢连衣裙", "item_en": "Mini Tweed Dress", "price": "$185", "search": "BLACKPINK Tweed Dress", "style_analysis": "Chanel Inspired", "seattle_ready": False, "seattle_score": 40, "best_store": "wconcept", "why_it_works_cn": "永恒优雅搭配现代锋芒", "why_it_works_en": "Timeless elegance with modern edge"},
+                    {"item_cn": "过膝长靴", "item_en": "Thigh-High Boots", "price": "$245", "search": "BLACKPINK Boots", "style_analysis": "Bold Confidence", "seattle_ready": True, "seattle_score": 85, "best_store": "musinsa", "why_it_works_cn": "雨天的吸睛单品", "why_it_works_en": "Statement piece for rainy days"},
+                    {"item_cn": "夸张墨镜", "item_en": "Statement Sunglasses", "price": "$75", "search": "BLACKPINK Sunglasses", "style_analysis": "Luxury Accessory", "seattle_ready": False, "seattle_score": 20, "best_store": "lewkin", "why_it_works_cn": "瞬间营造明星气场", "why_it_works_en": "Instant celebrity aura"},
+                    {"item_cn": "短款皮夹克", "item_en": "Crop Leather Jacket", "price": "$280", "search": "BLACKPINK Leather", "style_analysis": "Rock Glam", "seattle_ready": True, "seattle_score": 75, "best_store": "musinsa", "why_it_works_cn": "一件单品融合叛逆与精致", "why_it_works_en": "Edgy sophistication in one piece"},
+                    {"item_cn": "高腰西裤", "item_en": "High-Waist Pants", "price": "$95", "search": "BLACKPINK Pants", "style_analysis": "Power Suit", "seattle_ready": False, "seattle_score": 60, "best_store": "wconcept", "why_it_works_cn": "显著拉长身材比例", "why_it_works_en": "Elongates silhouette dramatically"},
+                    {"item_cn": "链条腰带", "item_en": "Chain Belt", "price": "$55", "search": "BLACKPINK Chain Belt", "style_analysis": "Edgy Luxe", "seattle_ready": False, "seattle_score": 30, "best_store": "lewkin", "why_it_works_cn": "金属光泽收腰利器", "why_it_works_en": "Cinches waist with metallic shine"},
+                    {"item_cn": "丝绸衬衫", "item_en": "Silk Blouse", "price": "$125", "search": "BLACKPINK Silk Blouse", "style_analysis": "Elegant Feminine", "seattle_ready": False, "seattle_score": 25, "best_store": "wconcept", "why_it_works_cn": "奢华面料提升任何造型", "why_it_works_en": "Luxe fabric elevates any outfit"},
+                    {"item_cn": "厚底高跟鞋", "item_en": "Platform Heels", "price": "$165", "search": "BLACKPINK Heels", "style_analysis": "Stage Ready", "seattle_ready": False, "seattle_score": 35, "best_store": "musinsa", "why_it_works_cn": "增高又不牺牲舒适度", "why_it_works_en": "Adds height without sacrificing comfort"},
+                    {"item_cn": "超大风衣", "item_en": "Oversized Trench", "price": "$295", "search": "BLACKPINK Trench", "style_analysis": "Parisian Chic", "seattle_ready": True, "seattle_score": 95, "best_store": "wconcept", "why_it_works_cn": "西雅图雨季的建筑感垂坠", "why_it_works_en": "Architectural draping for Seattle rain"}
                 ]
             else:
                 closet = [
@@ -530,8 +530,9 @@ class KpopIntelligenceBot:
             
             # Enrich with Images & Smart Shopping Links
             for c in closet:
-                # Premium placeholder images
-                c["img"] = f"https://api.dicebear.com/7.x/shapes/svg?seed={requests.utils.quote(c['item']) + name}&backgroundColor=FFD1DC"
+                # Premium placeholder images - use item_en or fallback to item
+                item_name = c.get('item_en') or c.get('item', 'fashion')
+                c["img"] = f"https://api.dicebear.com/7.x/shapes/svg?seed={requests.utils.quote(item_name) + name}&backgroundColor=FFD1DC"
                 # Deep-search URLs with artist + style
                 search_term = f"{name} {c['search']}"
                 c["wconcept"] = f"https://us.wconcept.com/catalogsearch/result/?q={requests.utils.quote(search_term)}"
@@ -546,6 +547,7 @@ class KpopIntelligenceBot:
             fashion_analysis = {}
             if name == "BTS":
                 fashion_analysis = {
+                    "profile_image": "https://api.dicebear.com/7.x/avataaars/svg?seed=BTS",
                     "style_score": "9.5/10",
                     "style_index": "Streetwear / 街头风",
                     "analysis_cn": "BTS最新回归的美学风格巧妙地融合了复古美式与当代街头风，打造出既怀旧又前卫的轻松廓形。从破洞牛仔到oversized卫衣，每一件单品的选择都展现了对层次感和比例的精妙把握，绝非简单装饰。这是Corecore美学的极致体现：真实、自然、毫不费力的酷感。\n\nBTS的独特之处在于他们善于通过意想不到的细节提升基础单品：舞台灯光下闪耀的项链、让飘逸造型落地的厚底球鞋，或是讲述故事的复古T恤。这种美学既平易近人又精准如高级时装。这是有灵魂的街头风，因其真实而引起共鸣。",
@@ -555,6 +557,7 @@ class KpopIntelligenceBot:
                 }
             elif name == "NMIXX":
                 fashion_analysis = {
+                    "profile_image": "https://api.dicebear.com/7.x/avataaars/svg?seed=NMIXX",
                     "style_score": "9.7/10",
                     "style_index": "Avant-Garde / 前卫风格",
                     "analysis_cn": "NMIXX最新的舞台呈现堪称'可控混乱'的大师课——Y2K办公室魅惑风与赛博朋克颓废风的刻意碰撞，看似矛盾却创造出魔力。百褶裙和oversized西装的利落剪裁与厚底靴、渔网袜的粗犷边缘形成绝妙对比，打造出既强势又俏皮的廓形。这是作为表演艺术的时尚，每件单品都为女性叛逆的宏大叙事添砖加瓦。\n\n天才之处在于平衡：每一件结构化西装都有crop tee来打破正式感；每一个精致配饰都有厚重靴子来稳住造型。NMIXX深谙现代女性气质不是在柔与刚之间二选一，而是同时拥抱两者。结果是一个拒绝被定义、因此而赋权的衣橱。",
@@ -564,6 +567,7 @@ class KpopIntelligenceBot:
                 }
             elif name == "BLACKPINK":
                 fashion_analysis = {
+                    "profile_image": "https://api.dicebear.com/7.x/avataaars/svg?seed=BLACKPINK",
                     "style_score": "10/10",
                     "style_index": "Luxury / 奢华风",
                     "analysis_cn": "BLACKPINK的美学是为Instagram时代重新定义的奢华——巴黎高级定制与首尔街头风格的无缝融合，既令人向往又触手可及。组合近期的造型选择展现了对投资型着装的完美理解：从香奈儿风格的粗花呢裙到建筑感风衣，每件单品的选择不仅考虑即时冲击力，更着眼于持久性。这是作为盔甲的时尚，自信才是终极配饰。\n\nBLACKPINK的风格超越简单追随潮流，在于她们对廓形的执着。高腰裤拉长比例，短款夹克勾勒线条，过膝长靴吸引目光——每个选择都经过深思熟虑，每个比例都精心计算。吸睛配饰（链条腰带、超大墨镜）增添个性却不压倒简洁线条。这是以极简主义精准度执行的极繁主义，绝对大师级。",
@@ -573,6 +577,7 @@ class KpopIntelligenceBot:
                 }
             else:
                 fashion_analysis = {
+                    "profile_image": f"https://api.dicebear.com/7.x/avataaars/svg?seed={name}",
                     "style_score": "8.5/10",
                     "style_index": "K-Style / 韩流风",
                     "analysis_cn": "这位艺人的K-pop美学完美融合了街头风格与舞台魅力，打造出从排练到演出无缝衔接的造型。穿搭选择既紧跟潮流又保持个性，注重舒适与时尚并重，让动作表达更加自如。\n\n衣橱展现了通过精心细节提升的聪明基础款——无论是bomber夹克的剪裁还是牛仔的水洗效果。这是最易接近的K-fashion：关注潮流但不依赖潮流，始终将实穿性与视觉冲击力并重。",
@@ -1373,19 +1378,26 @@ class KpopIntelligenceBot:
             if(tab === 'closet') {
                  if(!data.closet || data.closet.length === 0) return '<div class="fallback-box">No fashion data available yet.</div>';
                  
-                 // Editor's Note Section - Bilingual
+                 // Editor's Note Section - Bilingual with Profile Image
                  const fashionAnalysis = data.fashion_analysis || {};
                  const editorNote = `
                      <div style="background:rgba(255,255,255,0.4); backdrop-filter:blur(20px); border-radius:24px; padding:32px; margin-bottom:32px; border:1px solid rgba(137,207,240,0.3);">
-                         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
-                             <div>
-                                 <div style="font-size:1.5rem; font-weight:800; color:#1a0a1e;">编者按 | Editor's Note</div>
-                                 <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:600;">
-                                     ${fashionAnalysis.style_index || 'K-Style / 韩流风'}
+                         <div style="display:flex; align-items:flex-start; gap:20px; margin-bottom:24px;">
+                             <!-- Profile Image -->
+                             <img src="${fashionAnalysis.profile_image || ''}" style="width:80px; height:80px; border-radius:50%; border:3px solid rgba(137,207,240,0.5); flex-shrink:0;" alt="Profile">
+                             
+                             <div style="flex:1;">
+                                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                                     <div>
+                                         <div style="font-size:1.5rem; font-weight:800; color:#1a0a1e;">编者按 | Editor's Note</div>
+                                         <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:600;">
+                                             ${fashionAnalysis.style_index || 'K-Style / 韩流风'}
+                                         </div>
+                                     </div>
+                                     <div style="background:linear-gradient(135deg, #89CFF0, #FFB6C1); color:#fff; padding:8px 20px; border-radius:30px; font-weight:800; font-size:1.1rem;">
+                                         ${fashionAnalysis.style_score || '8.5/10'}
+                                     </div>
                                  </div>
-                             </div>
-                             <div style="background:linear-gradient(135deg, #89CFF0, #FFB6C1); color:#fff; padding:8px 20px; border-radius:30px; font-weight:800; font-size:1.1rem;">
-                                 ${fashionAnalysis.style_score || '8.5/10'}
                              </div>
                          </div>
                          
@@ -1439,12 +1451,21 @@ class KpopIntelligenceBot:
                                  ${item.style_analysis}
                              </div>
                              ${item.seattle_ready ? '<div style="position:absolute; top:12px; right:12px; background:rgba(137,207,240,0.9); color:#1a0a1e; padding:6px 10px; border-radius:20px; font-size:0.65rem; font-weight:700;">☔ Seattle Ready</div>' : ''}
+                             ${item.seattle_score ? `<div style="position:absolute; bottom:12px; right:12px; background:rgba(137,207,240,0.95); color:#1a0a1e; padding:6px 12px; border-radius:20px; font-size:0.7rem; font-weight:700;">☔ ${item.seattle_score}%</div>` : ''}
                          </div>
                          <div style="padding:16px; display:flex; flex-direction:column; gap:8px; flex:1;">
-                             <div style="font-weight:700; font-size:1.05rem; color:#1a0a1e;">${item.item}</div>
+                             <!-- Bilingual Item Name -->
+                             <div style="font-weight:700; font-size:1.05rem; color:#1a0a1e;">
+                                 ${item.item_cn || item.item} | ${item.item_en || item.item}
+                             </div>
                              <div style="color:var(--emerald); font-weight:800; font-size:0.95rem;">${item.price}</div>
-                             <div style="font-size:0.8rem; color:#4a3a4e; font-style:italic; margin:4px 0; line-height:1.4;">
-                                 "${item.why_it_works || 'A versatile essential'}"
+                             
+                             <!-- Bilingual Why It Works -->
+                             <div style="font-size:0.8rem; color:#1a0a1e; margin:4px 0; line-height:1.4;">
+                                 ${item.why_it_works_cn || item.why_it_works || ''}
+                             </div>
+                             <div style="font-size:0.75rem; color:#4a3a4e; font-style:italic; line-height:1.3; opacity:0.9;">
+                                 ${item.why_it_works_en || item.why_it_works || ''}
                              </div>
                              
                              <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
