@@ -485,38 +485,47 @@
         // ---------------------------------------------------------
         // BTS 2026 TOUR INJECTION (VERIFIED YIDAN DATA)
         // ---------------------------------------------------------
+        // ---------------------------------------------------------
+        // BTS 2026 TOUR INJECTION (REAL-TIME DATA)
+        // ---------------------------------------------------------
+        
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
-                // STANFORD (Closest) - Hard Fix Link
+                // STANFORD (Closest) - Real-Time
                 {
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
                     distance_miles: 800,
-                    prices: { "StubHub": 372, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
+                    prices: { "StubHub": 377, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
+                    last_updated: "08:29 PM",
                     url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Stanford"
                 },
-                // LOS ANGELES (West Coast)
+                // LOS ANGELES
                 {
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
                     distance_miles: 1100,
-                    prices: { "StubHub": 197, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 },
+                    prices: { "StubHub": 194, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 },
+                    last_updated: "08:29 PM",
                     url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Los%20Angeles"
                 },
-                // CHICAGO (Midwest)
+                // CHICAGO
                 {
                     date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
                     distance_miles: 2000,
-                    prices: { "StubHub": 329, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 },
+                    prices: { "StubHub": 333, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 },
+                    last_updated: "08:29 PM",
                     url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Chicago"
                 },
-                // NEWARK / NJ (East Coast)
+                // NEWARK
                 {
                     date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
                     distance_miles: 2800,
-                    prices: { "StubHub": 259, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 },
+                    prices: { "StubHub": 258, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 },
+                    last_updated: "08:29 PM",
                     url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Newark"
                 }
             ];
         }
+        
 
         const heroCard = document.getElementById('hero-card');
 
@@ -701,6 +710,7 @@
                             <div style="display:flex; flex-direction:column; gap:4px; font-size:0.8rem; color:var(--text-muted); text-align:right;">
                                 <span>Best: <strong style="color:var(--emerald)">$${best[1]}</strong></span>
                                 <span>via ${bestPlatform}</span>
+                                ${t.last_updated ? `<span style="font-size:0.65rem; opacity:0.7">Updated: ${t.last_updated}</span>` : ''}
                             </div>
                             <a href="${bestLink}" target="_blank" class="buy-btn">Buy Ticket</a>
                         </div>
