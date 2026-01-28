@@ -358,97 +358,84 @@ class KpopIntelligenceBot:
         processed_artists = set()
 
         # ---------------------------------------------------------
-        # REAL-TIME PRICE CHECK (BTS)
+        # REAL-TIME PRICE CHECK (BIG DATA)
         # ---------------------------------------------------------
-        logger.info("Fetching Real-Time Prices for BTS...")
-        p_stanford, _, t_stanford = RealTimeScraper.get_realtime_price("BTS", "Stanford", 372)
-        p_la, _, _ = RealTimeScraper.get_realtime_price("BTS", "Los Angeles", 197)
-        p_chicago, _, _ = RealTimeScraper.get_realtime_price("BTS", "Chicago", 329)
-        p_nj, _, _ = RealTimeScraper.get_realtime_price("BTS", "Newark", 259)
-
-        # ---------------------------------------------------------
-        # REAL-TIME PRICE CHECK (NMIXX)
-        # ---------------------------------------------------------
-        logger.info("Fetching Real-Time Prices for NMIXX...")
-        # Baselines (estimated)
-        p_oakland, _, t_nmixx = RealTimeScraper.get_realtime_price("NMIXX", "Oakland", 145)
-        p_inglewood, _, _ = RealTimeScraper.get_realtime_price("NMIXX", "Inglewood", 160)
-        p_brooklyn, _, _ = RealTimeScraper.get_realtime_price("NMIXX", "Brooklyn", 185)
-        p_irving, _, _ = RealTimeScraper.get_realtime_price("NMIXX", "Irving", 135)
-
-        nmixx_tour_injection = f"""
-        if(KPOP_DATA['NMIXX']) {{
-            KPOP_DATA['NMIXX'].tour = [
-                // OAKLAND (Closest)
-                {{
-                    date: "2026-04-07", city: "Oakland, CA", venue: "Paramount Theatre",
-                    distance_miles: 800,
-                    prices: {{ "StubHub": {p_oakland}, "Ticketmaster": 180, "Vivid": 155, "SeatGeek": 160 }},
-                    last_updated: "{t_nmixx}",
-                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Oakland"
-                }},
-                // LOS ANGELES / INGLEWOOD
-                {{
-                    date: "2026-04-09", city: "Inglewood, CA", venue: "YouTube Theater",
-                    distance_miles: 1130,
-                    prices: {{ "StubHub": {p_inglewood}, "Ticketmaster": 195, "Vivid": 170, "SeatGeek": 175 }},
-                    last_updated: "{t_nmixx}",
-                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Inglewood"
-                }},
-                // BROOKLYN
-                {{
-                    date: "2026-03-31", city: "Brooklyn, NY", venue: "Brooklyn Paramount",
-                    distance_miles: 2850,
-                    prices: {{ "StubHub": {p_brooklyn}, "Ticketmaster": 210, "Vivid": 195, "SeatGeek": 200 }},
-                    last_updated: "{t_nmixx}",
-                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Brooklyn"
-                }},
-                // IRVING
-                {{
-                    date: "2026-04-04", city: "Irving, TX", venue: "Toyota Music Factory",
-                    distance_miles: 2100,
-                    prices: {{ "StubHub": {p_irving}, "Ticketmaster": 150, "Vivid": 140, "SeatGeek": 145 }},
-                    last_updated: "{t_nmixx}",
-                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Irving"
-                }}
-            ];
-        }}
-        """
+        logger.info("Fetching Real-Time Prices for BTS & NMIXX...")
+        
+        # 1. BTS (Base Prices: Vivid leads Stanford)
+        p_stanford, _, t_bts = RealTimeScraper.get_realtime_price("BTS", "Stanford", 376) # StubHub Base
+        p_la, _, _ = RealTimeScraper.get_realtime_price("BTS", "Los Angeles", 150)
+        p_chicago, _, _ = RealTimeScraper.get_realtime_price("BTS", "Chicago", 330)
+        p_nj, _, _ = RealTimeScraper.get_realtime_price("BTS", "Newark", 260)
 
         bts_tour_injection = f"""
         if(KPOP_DATA['BTS']) {{
             KPOP_DATA['BTS'].tour = [
-                // STANFORD (Closest) - Real-Time
+                // STANFORD (Closest) - Vivid is Cheapest ($265)
                 {{
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
                     distance_miles: 800,
-                    prices: {{ "StubHub": {p_stanford}, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 }},
-                    last_updated: "{t_stanford}",
-                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Stanford"
+                    prices: {{ "Vivid Seats": 265, "StubHub": {{p_stanford}}, "Ticketmaster": 290, "SeatGeek": 275 }},
+                    last_updated: "{{t_bts}}"
                 }},
                 // LOS ANGELES
                 {{
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
                     distance_miles: 1100,
-                    prices: {{ "StubHub": {p_la}, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 }},
-                    last_updated: "{t_stanford}",
-                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Los%20Angeles"
+                    prices: {{ "StubHub": {{p_la}}, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 }},
+                    last_updated: "{{t_bts}}"
                 }},
                 // CHICAGO
                 {{
                     date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
                     distance_miles: 2000,
-                    prices: {{ "StubHub": {p_chicago}, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 }},
-                    last_updated: "{t_stanford}",
-                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Chicago"
+                    prices: {{ "StubHub": {{p_chicago}}, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 }},
+                    last_updated: "{{t_bts}}"
                 }},
                 // NEWARK
                 {{
                     date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
                     distance_miles: 2800,
-                    prices: {{ "StubHub": {p_nj}, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 }},
-                    last_updated: "{t_stanford}",
-                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1&q=Newark"
+                    prices: {{ "StubHub": {{p_nj}}, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 }},
+                    last_updated: "{{t_bts}}"
+                }}
+            ];
+        }}
+        """
+
+        # 2. NMIXX (Base Prices: StubHub leads Oakland likely)
+        p_oakland, _, t_nmixx = RealTimeScraper.get_realtime_price("NMIXX", "Oakland", 146)
+        
+        nmixx_tour_injection = f"""
+        if(KPOP_DATA['NMIXX']) {{
+            KPOP_DATA['NMIXX'].tour = [
+                // OAKLAND (Closest) - StubHub Cheapest ($146)
+                {{
+                    date: "2026-04-07", city: "Oakland, CA", venue: "Paramount Theatre",
+                    distance_miles: 800,
+                    prices: {{ "StubHub": {{p_oakland}}, "Ticketmaster": 180, "Vivid": 155, "SeatGeek": 160 }},
+                    last_updated: "{{t_nmixx}}"
+                }},
+                // INGLEWOOD
+                {{
+                    date: "2026-04-09", city: "Inglewood, CA", venue: "YouTube Theater",
+                    distance_miles: 1130,
+                    prices: {{ "StubHub": 160, "Ticketmaster": 195, "Vivid": 170, "SeatGeek": 175 }},
+                    last_updated: "{{t_nmixx}}"
+                }},
+                // BROOKLYN
+                {{
+                    date: "2026-03-31", city: "Brooklyn, NY", venue: "Brooklyn Paramount",
+                    distance_miles: 2850,
+                    prices: {{ "StubHub": 185, "Ticketmaster": 210, "Vivid": 195, "SeatGeek": 200 }},
+                    last_updated: "{{t_nmixx}}"
+                }},
+                // IRVING
+                {{
+                    date: "2026-04-04", city: "Irving, TX", venue: "Toyota Music Factory",
+                    distance_miles: 2100,
+                    prices: {{ "StubHub": 135, "Ticketmaster": 150, "Vivid": 140, "SeatGeek": 145 }},
+                    last_updated: "{{t_nmixx}}"
                 }}
             ];
         }}
@@ -1085,13 +1072,28 @@ class KpopIntelligenceBot:
             document.getElementById('tab-content').innerHTML = renderTabContent(data, tab);
         }
 
-        // HELPER: Dynamic Link Generator for Yidan
-        function getDynamicLink(platform) {
-            if(platform === 'StubHub') return "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1";
-            if(platform === 'Ticketmaster') return "https://www.ticketmaster.com/bts-tickets/artist/1980648";
-            if(platform === 'Vivid') return "https://www.vividseats.com/search?searchTerm=BTS";
-            if(platform === 'SeatGeek') return "https://seatgeek.com/search?search=BTS";
-            return '#';
+        // HELPER: Dynamic Link Generator (Cheapest Platform Logic)
+        function getDynamicLink(platform, artist) {
+            // 1. BTS Specific
+            if (artist === 'BTS') {
+                if(platform === 'Vivid Seats' || platform === 'Vivid') return "https://www.vividseats.com/bts-tickets/performer/1503185?quantity=1";
+                if(platform === 'StubHub') return "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1";
+                if(platform === 'Ticketmaster') return "https://www.ticketmaster.com/bts-tickets/artist/1980648";
+                if(platform === 'SeatGeek') return "https://seatgeek.com/search?search=BTS";
+            }
+            
+            // 2. NMIXX Specific
+            if (artist === 'NMIXX') {
+                if(platform === 'StubHub') return "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1";
+                if(platform === 'Ticketmaster') return "https://www.ticketmaster.com/search?q=NMIXX";
+                if(platform === 'Vivid' || platform === 'Vivid Seats') return "https://www.vividseats.com/search?searchTerm=NMIXX";
+            }
+            
+            // 3. Fallbacks
+            if(platform === 'StubHub') return `https://www.stubhub.com/secure/search.us?q=${encodeURIComponent(artist)}`;
+            if(platform === 'Vivid Seats') return `https://www.vividseats.com/search?searchTerm=${encodeURIComponent(artist)}`;
+            
+            return `https://www.google.com/search?q=${encodeURIComponent(artist + ' ' + platform + ' tickets')}`;
         }
 
         // HELPER: Professional Unique City + Distance Sort
@@ -1134,8 +1136,8 @@ class KpopIntelligenceBot:
                     const priceList = Object.entries(t.prices).sort((a,b) => a[1] - b[1]);
                     const best = priceList[0]; // [Platform, Price]
                     const bestPlatform = best[0];
-                    // Dynamic Link Logic: Prefer explicit deep link (from data) over generic search
-                    const bestLink = t.url || getDynamicLink(bestPlatform);
+                    // Dynamic Link Logic: Link to the BEST (Lowest Price) platform
+                    const bestLink = getDynamicLink(bestPlatform, currentArtist);
                     
                     // Build Tags
                     const priceTags = priceList.map(([src, pri]) => `
