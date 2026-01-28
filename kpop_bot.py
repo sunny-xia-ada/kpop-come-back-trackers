@@ -838,66 +838,58 @@ class KpopIntelligenceBot:
         const SORTED_ARTISTS = {artists_json};
         
         // ---------------------------------------------------------
-        // BTS 2026 TOUR INJECTION (DATA PATCH with DISTANCE)
+        // BTS 2026 TOUR INJECTION (DATA PATCH)
         // ---------------------------------------------------------
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
+                // LOS ANGELES (West Coast)
                 {
-                    date: "2026-08-22", city: "Toronto, ON", venue: "Rogers Stadium",
-                    distance_miles: 2070,
-                    prices: { "StubHub": 310, "Ticketmaster": 340, "Vivid": 295, "SeatGeek": 320 },
-                    url: "https://www.ticketmaster.ca"
-                },
-                {
-                    date: "2026-08-23", city: "Toronto, ON", venue: "Rogers Stadium",
-                    distance_miles: 2070,
-                    prices: { "StubHub": 290, "Ticketmaster": 325, "Vivid": 280, "SeatGeek": 310 },
-                    url: "https://www.ticketmaster.ca"
-                },
-                {
-                    date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
-                    distance_miles: 2060,
-                    prices: { "StubHub": 558, "Ticketmaster": 610, "Vivid": 545, "SeatGeek": 570 },
-                    url: "https://www.ticketmaster.com"
-                },
-                {
-                    date: "2026-08-28", city: "Chicago, IL", venue: "Soldier Field",
-                    distance_miles: 2060,
-                    prices: { "StubHub": 520, "Ticketmaster": 590, "Vivid": 510, "SeatGeek": 535 },
-                    url: "https://www.ticketmaster.com"
+                    date: "2026-09-02", city: "Los Angeles, CA", venue: "SoFi Stadium",
+                    distance_miles: 1135,
+                    prices: { "StubHub": 70, "Ticketmaster": 180, "Vivid": 95, "SeatGeek": 105 }
                 },
                 {
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
                     distance_miles: 1135,
-                    prices: { "StubHub": 85, "Ticketmaster": 450, "Vivid": 120, "SeatGeek": 110 },
-                    url: "https://www.ticketmaster.com"
+                    prices: { "StubHub": 85, "Ticketmaster": 450, "Vivid": 120, "SeatGeek": 110 }
+                },
+                
+                // CHICAGO (Midwest)
+                {
+                    date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
+                    distance_miles: 2060,
+                    prices: { "StubHub": 558, "Ticketmaster": 610, "Vivid": 545, "SeatGeek": 570 }
                 },
                 {
-                    date: "2026-09-02", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    distance_miles: 1135,
-                    prices: { "StubHub": 70, "Ticketmaster": 180, "Vivid": 95, "SeatGeek": 105 },
-                    url: "https://www.ticketmaster.com"
+                    date: "2026-08-28", city: "Chicago, IL", venue: "Soldier Field",
+                    distance_miles: 2060,
+                    prices: { "StubHub": 520, "Ticketmaster": 590, "Vivid": 510, "SeatGeek": 535 }
                 },
+
+                // TAMPA (South)
                 {
-                    date: "2026-09-05", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    distance_miles: 1135,
-                    prices: { "StubHub": 350, "Ticketmaster": 380, "Vivid": 340, "SeatGeek": 360 },
-                    url: "https://www.ticketmaster.com"
+                    date: "2026-04-25", city: "Tampa, FL", venue: "Raymond James Stadium",
+                    distance_miles: 3100,
+                    prices: { "StubHub": 215, "Ticketmaster": 289, "Vivid": 195, "SeatGeek": 210 }
                 },
+
+                // NEWARK (East Coast)
                 {
-                    date: "2026-09-06", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    distance_miles: 1135,
-                    prices: { "StubHub": 380, "Ticketmaster": 410, "Vivid": 370, "SeatGeek": 395 },
-                    url: "https://www.ticketmaster.com"
+                    date: "2026-10-10", city: "Newark, NJ", venue: "Prudential Center",
+                    distance_miles: 2850,
+                    prices: { "StubHub": 380, "Ticketmaster": 425, "Vivid": 365, "SeatGeek": 390 }
                 }
             ];
         }
 
         const heroCard = document.getElementById('hero-card');
+
+        // STATE
         let currentTab = 'tour';
         let currentArtist = '';
 
         function init() {
+            // Populate Dropdowns
             const girlSelect = document.getElementById('select-girl');
             const boySelect = document.getElementById('select-boy');
             const otherSelect = document.getElementById('select-other');
@@ -922,6 +914,7 @@ class KpopIntelligenceBot:
             boys.forEach(n => addOpt(boySelect, n, n === 'BTS')); // BTS Hot Fire
             others.forEach(n => addOpt(otherSelect, n));
 
+            // Initial Render
             if(boys.includes('BTS')) {
                 boySelect.value = 'BTS';
                 renderArtist('BTS');
@@ -986,19 +979,46 @@ class KpopIntelligenceBot:
             document.getElementById('tab-content').innerHTML = renderTabContent(data, tab);
         }
 
-        // HELPER: Sort by Distance then Price
-        function getSmartSort(items) {
-            return items.sort((a, b) => {
-                // Primary: Distance (Ascending)
-                if (a.distance_miles !== undefined && b.distance_miles !== undefined) {
-                    if (a.distance_miles !== b.distance_miles) {
-                        return a.distance_miles - b.distance_miles;
+        // HELPER: Dynamic Link Generator
+        function getTicketLink(platform, artist) {
+            const encoded = encodeURIComponent(artist);
+            if(platform === 'Ticketmaster') return `https://www.ticketmaster.com/search?q=${encoded}`;
+            if(platform === 'StubHub') return `https://www.stubhub.com/search?q=${encoded}`;
+            if(platform === 'Vivid') return `https://www.vividseats.com/search?searchTerm=${encoded}`;
+            if(platform === 'SeatGeek') return `https://seatgeek.com/search?search=${encoded}`;
+            return '#';
+        }
+
+        // HELPER: Unique City + Sorting Logic
+        function getSmartRecommendations(items) {
+            // 1. Group by City and find the Cheapest Date for each city
+            const cityMap = new Map();
+            
+            items.forEach(item => {
+                const lowPrice = Math.min(...Object.values(item.prices));
+                if(!cityMap.has(item.city)) {
+                    cityMap.set(item.city, { ...item, bestPrice: lowPrice });
+                } else {
+                    // Update if this date is cheaper
+                    if(lowPrice < cityMap.get(item.city).bestPrice) {
+                        cityMap.set(item.city, { ...item, bestPrice: lowPrice });
                     }
                 }
-                // Secondary: Lowest Price (Ascending)
-                const getLow = (p) => p ? Math.min(...Object.values(p)) : 9999;
-                return getLow(a.prices) - getLow(b.prices);
             });
+            
+            // 2. Convert to Array
+            let uniqueCities = Array.from(cityMap.values());
+            
+            // 3. Sort by Distance (Primary), then Price (Secondary)
+            uniqueCities.sort((a, b) => {
+                if (a.distance_miles !== b.distance_miles) {
+                    return a.distance_miles - b.distance_miles;
+                }
+                return a.bestPrice - b.bestPrice;
+            });
+            
+            // 4. Return Top 4
+            return uniqueCities.slice(0, 4);
         }
 
         function renderTabContent(data, tab) {
@@ -1006,27 +1026,28 @@ class KpopIntelligenceBot:
 
             // 1. TOUR INTELLIGENCE
             if(tab === 'tour' && data.tour && data.tour[0]?.prices) {
-                // Smart Sort & Top 4
-                let sortedTour = getSmartSort([...data.tour]).slice(0, 4);
+                const recs = getSmartRecommendations(data.tour);
                 
-                const rows = sortedTour.map((t, index) => {
+                const rows = recs.map((t, index) => {
                     const dateObj = new Date(t.date + 'T00:00:00');
                     const month = dateObj.toLocaleString('en-US', {month:'short'});
                     const day = dateObj.getDate();
                     
-                    // Sort prices
+                    // Sort prices to find best deal
                     const priceList = Object.entries(t.prices).sort((a,b) => a[1] - b[1]);
-                    const best = priceList[0];
+                    const best = priceList[0]; // [Platform, Price]
+                    const bestPlatform = best[0];
+                    const bestLink = getTicketLink(bestPlatform, currentArtist);
                     
                     // Build Tags
                     const priceTags = priceList.map(([src, pri]) => `
-                        <div class="price-tag ${src === best[0] ? 'best-deal' : ''}">
+                        <div class="price-tag ${src === bestPlatform ? 'best-deal' : ''}">
                             <span>${src}</span>
                             <span>$${pri}</span>
                         </div>
                     `).join('');
 
-                    // Badges
+                    // Top Pick Badge (Only #1)
                     const isTopPick = index === 0;
                     const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ ONE-DAN'S TOP PICK</div>` : '';
                     const rowClass = isTopPick ? 'ticket-row gold-tier' : 'ticket-row';
@@ -1051,16 +1072,16 @@ class KpopIntelligenceBot:
                             </div>
                             <div style="display:flex; flex-direction:column; gap:4px; font-size:0.8rem; color:var(--text-muted); text-align:right;">
                                 <span>Best: <strong style="color:var(--emerald)">$${best[1]}</strong></span>
-                                <span>via ${best[0]}</span>
+                                <span>via ${bestPlatform}</span>
                             </div>
-                            <a href="${t.url}" target="_blank" class="buy-btn">Buy Now</a>
+                            <a href="${bestLink}" target="_blank" class="buy-btn">Buy @ ${bestPlatform}</a>
                         </div>
                     `;
                 }).join('');
                 
                 return `
                     <div class="price-tracker">
-                        <div class="section-title">One-Dan's Top 4 Recommended Concerts (Distance + Price)</div>
+                        <div class="section-title">One-Dan's Top 4 Recommended Cities (Unique Locations)</div>
                         <div class="ticket-grid">${rows}</div>
                     </div>
                 `;
