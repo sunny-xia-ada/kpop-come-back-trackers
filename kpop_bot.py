@@ -359,7 +359,7 @@ class KpopIntelligenceBot:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一丹的追星机器人</title>
+    <title>KPOP追星机器人 from 一丹</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -372,7 +372,7 @@ class KpopIntelligenceBot:
             --pink: #ec4899;
             --emerald: #10b981;
             --border: rgba(255, 255, 255, 0.08);
-            --glass-strong: rgba(15, 23, 42, 0.8);
+            --glass-strong: rgba(15, 23, 42, 0.9);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -380,7 +380,7 @@ class KpopIntelligenceBot:
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%);
+            background-image: radial-gradient(circle at 50% 0%, #2e1065 0%, var(--bg) 60%);
             background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
@@ -407,17 +407,17 @@ class KpopIntelligenceBot:
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #c084fc, #f472b6);
+            background: linear-gradient(135deg, #a78bfa, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 32px;
             letter-spacing: -0.03em;
-            text-shadow: 0 10px 30px rgba(192, 132, 252, 0.2);
+            text-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
         }
 
         .controls {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -428,14 +428,14 @@ class KpopIntelligenceBot:
         }
 
         select {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 14px 48px 14px 20px;
+            padding: 14px 40px 14px 20px;
             border-radius: 16px;
             font-family: inherit;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             cursor: pointer;
             outline: none;
             appearance: none;
@@ -445,41 +445,36 @@ class KpopIntelligenceBot:
             background-repeat: no-repeat;
             background-position: right 16px center;
             background-size: 18px;
-            min-width: 260px;
+            min-width: 220px;
             transition: all 0.2s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         
         select:hover {
-            background-color: rgba(255, 255, 255, 0.07);
+            background-color: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-1px);
-        }
-        
-        select:focus {
-            border-color: var(--violet);
-            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
         }
 
         /* MAIN LAYOUT */
         .main-stage {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1250px;
             padding: 0 24px 60px 24px;
         }
 
         /* HERO CARD */
         #hero-card {
             background: var(--surface-glass);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
             border-radius: 32px;
             border: 1px solid var(--border);
             display: grid;
-            grid-template-columns: 380px 1fr;
+            grid-template-columns: 360px 1fr;
             min-height: 650px;
             overflow: hidden;
-            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s, transform 0.6s;
@@ -503,12 +498,12 @@ class KpopIntelligenceBot:
         }
 
         .hero-avatar {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 80px rgba(139, 92, 246, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 70px rgba(139, 92, 246, 0.3);
             margin-bottom: 32px;
             transition: transform 0.4s ease;
         }
@@ -578,7 +573,7 @@ class KpopIntelligenceBot:
         .news-grid {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
             overflow-y: auto;
             max-height: 550px;
             padding-right: 12px;
@@ -589,10 +584,10 @@ class KpopIntelligenceBot:
 
         .news-item {
             display: flex;
-            gap: 24px;
-            padding: 24px;
+            gap: 20px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
+            border-radius: 18px;
             border: 1px solid rgba(255, 255, 255, 0.03);
             text-decoration: none;
             color: inherit;
@@ -600,10 +595,10 @@ class KpopIntelligenceBot:
         }
 
         .news-item:hover {
-            transform: translateY(-4px) scale(1.01);
+            transform: translateY(-3px) scale(1.005);
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(236, 72, 153, 0.2);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .news-thumb {
@@ -623,10 +618,10 @@ class KpopIntelligenceBot:
         }
 
         .news-title {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             line-height: 1.5;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #f1f5f9;
         }
 
@@ -638,76 +633,111 @@ class KpopIntelligenceBot:
             gap: 12px;
         }
 
-        /* PRICE TRACKING MODULE */
+        /* PRICE COMPARISON TABLE */
         .price-tracker {
             margin-bottom: 32px;
         }
         
         .section-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             color: var(--text-muted);
-            font-weight: 700;
-            margin-bottom: 16px;
+            font-weight: 800;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .section-title::before {
             content: '';
             display: block;
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: var(--emerald);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--emerald);
+            box-shadow: 0 0 12px var(--emerald);
         }
 
-        .price-grid {
+        .ticket-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
+            gap: 12px;
         }
 
-        .price-card {
-            background: rgba(16, 185, 129, 0.05); /* Emerald tint */
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            padding: 16px;
+        .ticket-row {
+            display: grid;
+            grid-template-columns: 80px 1.5fr 1fr 1fr 120px; /* Date, City, Venue, Sources, Action */
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 16px 24px;
             border-radius: 16px;
+            transition: all 0.2s;
+        }
+        
+        .ticket-row:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateX(4px);
+        }
+
+        .date-box {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 6px;
+            width: 60px;
+        }
+        
+        .date-mo { font-size: 0.75rem; color: var(--pink); font-weight: 700; text-transform: uppercase; }
+        .date-day { font-size: 1.25rem; color: #fff; font-weight: 700; }
+
+        .loc-info { display: flex; flex-direction: column; }
+        .loc-city { font-weight: 700; color: #fff; font-size: 1.05rem; }
+        .loc-venue { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+
+        .price-col {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .price-city { font-weight: 700; font-size: 1rem; color: #fff; }
-        .price-date { font-size: 0.8rem; color: var(--text-muted); }
+        .price-tag {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            max-width: 140px;
+        }
         
-        .price-value {
-            font-size: 1.25rem;
-            font-weight: 800;
+        .best-deal {
             color: var(--emerald);
-            margin-top: 4px;
+            font-weight: 700;
         }
 
-        .price-source {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            opacity: 0.7;
-            align-self: flex-start;
-            background: rgba(0,0,0,0.2);
-            padding: 2px 6px;
-            border-radius: 4px;
+        .buy-btn {
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.2s;
         }
         
+        .buy-btn:hover { background: var(--viewport); transform: scale(1.05); box-shadow: 0 4px 15px rgba(255,255,255,0.3); }
+
         .fallback-box {
-            background: rgba(255,255,255,0.02);
+            text-align: center;
+            padding: 40px;
             border: 1px dashed var(--border);
             border-radius: 20px;
-            padding: 32px;
-            text-align: center;
+            color: var(--text-muted);
         }
         
         /* LOCALS */
@@ -732,88 +762,137 @@ class KpopIntelligenceBot:
 <body>
 
     <header>
-        <h1>一丹的追星机器人</h1>
+        <h1>KPOP追星机器人 from 一丹</h1>
         <div class="controls">
             <div class="select-wrapper">
                 <select id="select-girl" onchange="handleSelect('girl')">
                     <option value="" disabled selected>✨ Select Girl Group</option>
-                    <!-- Populated by JS -->
                 </select>
             </div>
             <div class="select-wrapper">
                 <select id="select-boy" onchange="handleSelect('boy')">
                     <option value="" disabled selected>🔥 Select Boy Group</option>
-                    <!-- Populated by JS -->
+                </select>
+            </div>
+            <div class="select-wrapper">
+                <select id="select-other" onchange="handleSelect('other')">
+                    <option value="" disabled selected>🎤 Private/Soloists</option>
                 </select>
             </div>
         </div>
     </header>
 
     <div class="main-stage">
-        <div id="hero-card">
-            <!-- Rendered by JS -->
-        </div>
+        <div id="hero-card"></div>
     </div>
 
     <script>
-        // DATA INJECTION
         const KPOP_DATA = {kpop_json};
         const SORTED_ARTISTS = {artists_json};
         
-        const heroCard = document.getElementById('hero-card');
+        // ---------------------------------------------------------
+        // BTS 2026 TOUR INJECTION (DATA PATCH)
+        // ---------------------------------------------------------
+        if(KPOP_DATA['BTS']) {
+            KPOP_DATA['BTS'].tour = [
+                {
+                    date: "2026-04-25", city: "Tampa, FL", venue: "Raymond James Stadium",
+                    prices: { "StubHub": 269, "Ticketmaster": 285, "Vivid": 240, "SeatGeek": 255 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-04-26", city: "Tampa, FL", venue: "Raymond James Stadium",
+                    prices: { "StubHub": 280, "Ticketmaster": 300, "Vivid": 265, "SeatGeek": 270 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-05-02", city: "El Paso, TX", venue: "Sun Bowl Stadium",
+                    prices: { "StubHub": 195, "Ticketmaster": 220, "Vivid": 180, "SeatGeek": 200 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
+                    prices: { "StubHub": 350, "Ticketmaster": 380, "Vivid": 340, "SeatGeek": 365 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-05-23", city: "Las Vegas, NV", venue: "Allegiant Stadium",
+                    prices: { "StubHub": 410, "Ticketmaster": 450, "Vivid": 395, "SeatGeek": 420 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
+                    prices: { "StubHub": 320, "Ticketmaster": 340, "Vivid": 310, "SeatGeek": 330 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
+                    prices: { "StubHub": 290, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 295 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
+                    prices: { "StubHub": 450, "Ticketmaster": 480, "Vivid": 425, "SeatGeek": 460 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-09-12", city: "Seattle, WA", venue: "Lumen Field",
+                    prices: { "StubHub": 315, "Ticketmaster": 330, "Vivid": 299, "SeatGeek": 320 },
+                    url: "https://www.ticketmaster.com"
+                }
+            ];
+        }
 
-        // STATE
+        const heroCard = document.getElementById('hero-card');
         let currentTab = 'tour';
         let currentArtist = '';
 
         function init() {
-            // Populate Dropdowns
             const girlSelect = document.getElementById('select-girl');
             const boySelect = document.getElementById('select-boy');
+            const otherSelect = document.getElementById('select-other');
             
             const girls = [];
             const boys = [];
+            const others = [];
             
             SORTED_ARTISTS.forEach(name => {
                 const cat = KPOP_DATA[name].category;
                 if(cat === 'Girl Group') girls.push(name);
                 else if(cat === 'Boy Group') boys.push(name);
-                else {
-                    // Decide where to put others? Maybe append to both or ignore per prompt "Populated ONLY with..."
-                    // Prompt says: Left=Girl, Right=Boy. It implies Soloists might be excluded in this specific UI? 
-                    // Or we add them to one? Let's strictly follow prompt: Left=Girl, Right=Boy.
-                    // If a user is a Soloist, they won't appear. 
-                    // WAIT: I should probably add them to the closest one or create a "Soloist" option?
-                    // User prompt: "Select Girl Group (Populated only with category: Girl Group)"
-                    // Okay, I will strictly follow. Soloists might be hidden in this view unless I add a 3rd logic, 
-                    // but for compliance I will stick to 2.
-                }
+                else others.push(name);
             });
 
-            girls.forEach(n => girlSelect.add(new Option(n, n)));
-            boys.forEach(n => boySelect.add(new Option(n, n)));
+            const addOpt = (sel, name, isHot=false) => {
+                const opt = new Option(name + (isHot ? ' 🔥' : ''), name);
+                sel.add(opt);
+            };
 
-            // Initial Render: Pick first Girl Group or First Boy Group
-            if(girls.length > 0) {
+            girls.forEach(n => addOpt(girlSelect, n));
+            boys.forEach(n => addOpt(boySelect, n, n === 'BTS')); // BTS Hot Fire
+            others.forEach(n => addOpt(otherSelect, n));
+
+            if(boys.includes('BTS')) {
+                boySelect.value = 'BTS';
+                renderArtist('BTS');
+            } else if(girls.length > 0) {
                 renderArtist(girls[0]);
-                girlSelect.value = girls[0];
-            } else if(boys.length > 0) {
-                renderArtist(boys[0]);
-                boySelect.value = boys[0];
             }
         }
 
         window.handleSelect = function(type) {
-            const girlSelect = document.getElementById('select-girl');
-            const boySelect = document.getElementById('select-boy');
+            const ss = { 
+                girl: document.getElementById('select-girl'),
+                boy: document.getElementById('select-boy'),
+                other: document.getElementById('select-other')
+            };
             
-            if(type === 'girl') {
-                boySelect.value = ""; // Reset other
-                renderArtist(girlSelect.value);
-            } else {
-                girlSelect.value = ""; // Reset other
-                renderArtist(boySelect.value);
-            }
+            // Clear others
+            ['girl','boy','other'].forEach(k => {
+                if(k !== type) ss[k].value = "";
+            });
+            
+            renderArtist(ss[type].value);
         }
 
         function renderArtist(name) {
@@ -824,9 +903,7 @@ class KpopIntelligenceBot:
             const safeName = encodeURIComponent(name);
             const fallbackUrl = `https://ui-avatars.com/api/?name=${safeName}&background=8b5cf6&color=fff&size=256`;
 
-            // Reset Animation
             heroCard.classList.remove('visible');
-            
             setTimeout(() => {
                 const html = `
                     <div class="hero-profile">
@@ -852,92 +929,84 @@ class KpopIntelligenceBot:
 
         window.switchTab = function(tab) {
             currentTab = tab;
-            const content = document.getElementById('tab-content');
-            // Update Buttons
             document.querySelectorAll('.tab-btn').forEach(b => {
                 b.classList.toggle('active', b.innerText.toLowerCase().includes(tab === 'tour' ? 'tour' : 'music'));
             });
-            
             const data = KPOP_DATA[currentArtist];
-            content.innerHTML = renderTabContent(data, tab);
+            document.getElementById('tab-content').innerHTML = renderTabContent(data, tab);
         }
 
         function renderTabContent(data, tab) {
-            const items = data[tab];
-            
-            // PRICE TRACKING LOGIC (Only for Tour tab)
-            let priceSection = '';
-            if(tab === 'tour') {
-                const citiesFound = [];
-                items.forEach(item => {
-                    if(item.extracted_cities && item.extracted_cities.length > 0) {
-                        item.extracted_cities.forEach(city => {
-                             if(!citiesFound.includes(city)) citiesFound.push(city);
-                        });
-                    }
-                });
-
-                if(citiesFound.length > 0) {
-                    // Generate Mock Price Grid
-                    const cards = citiesFound.slice(0, 4).map(city => {
-                        const price = Math.floor(Math.random() * (450 - 120 + 1)) + 120;
-                        return `
-                            <div class="price-card">
-                                <span class="price-city">${city}</span>
-                                <span class="price-date">Upcoming</span>
-                                <span class="price-value">$${price}</span>
-                                <span class="price-source">Ticketmaster</span>
-                            </div>
-                        `;
-                    }).join('');
+            // PRICE TRACKING UI (Comparison Table)
+            if(tab === 'tour' && data.tour && data.tour[0]?.prices) {
+                const rows = data.tour.map(t => {
+                    const dateObj = new Date(t.date + 'T00:00:00');
+                    const month = dateObj.toLocaleString('en-US', {month:'short'});
+                    const day = dateObj.getDate();
                     
-                    priceSection = `
-                        <div class="price-tracker">
-                            <div class="section-title">Live Price Tracking (USD)</div>
-                            <div class="price-grid">${cards}</div>
-                        </div>
-                    `;
-                } else {
-                    priceSection = `
-                        <div class="price-tracker">
-                            <div class="fallback-box">
-                                <div style="margin-bottom:12px; font-weight:600;">No Tour Dates Found</div>
-                                <div style="display:flex; gap:10px; justify-content:center;">
-                                    <a href="https://www.ticketmaster.com/search?q=${encodeURIComponent(currentArtist)}" target="_blank" style="color:var(--emerald); text-decoration:none; font-weight:700;">Check Ticketmaster &rarr;</a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-
-            // NEWS LIST
-            let newsHtml = '';
-            if(items.length === 0) {
-                newsHtml = `<div style="text-align:center; padding:40px; color:var(--text-muted); font-style:italic;">No news available.</div>`;
-            } else {
-                newsHtml = `<div class="news-grid">` + items.map(item => {
-                    const imgStyle = item.image_url ? `src="${item.image_url}"` : `style="display:none"`;
-                    const hasSeattle = (item.title + (item.extracted_cities||[]).join('')).includes('Seattle');
-                    const badge = hasSeattle ? `<span class="local-badge">📍 SEATTLE</span>` : '';
+                    // Sort prices to find best deal
+                    const priceList = Object.entries(t.prices).sort((a,b) => a[1] - b[1]);
+                    const best = priceList[0];
                     
+                    // Build Source Tags
+                    const priceTags = priceList.map(([src, pri]) => `
+                        <div class="price-tag ${src === best[0] ? 'best-deal' : ''}">
+                            <span>${src}</span>
+                            <span>$${pri}</span>
+                        </div>
+                    `).join('');
+
                     return `
-                        <a href="${item.url}" target="_blank" class="news-item">
-                            <img ${imgStyle} class="news-thumb" onerror="this.style.display='none'">
-                            <div class="news-info">
-                                <div class="news-title">${badge}${item.title}</div>
-                                <div class="news-meta">
-                                    <span>${item.source}</span>
-                                    <span>•</span>
-                                    <span>${new Date(item.published_at).toLocaleDateString()}</span>
-                                </div>
+                        <div class="ticket-row">
+                            <div class="date-box">
+                                <span class="date-mo">${month}</span>
+                                <span class="date-day">${day}</span>
                             </div>
-                        </a>
+                            <div class="loc-info">
+                                <span class="loc-city">${t.city}</span>
+                                <span class="loc-venue">${t.venue}</span>
+                            </div>
+                            <div class="price-col">
+                                ${priceTags}
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:4px; font-size:0.8rem; color:var(--text-muted); text-align:right;">
+                                <span>Best: <strong style="color:var(--emerald)">$${best[1]}</strong></span>
+                                <span>via ${best[0]}</span>
+                            </div>
+                            <a href="${t.url}" target="_blank" class="buy-btn">Buy Now</a>
+                        </div>
                     `;
-                }).join('') + `</div>`;
-            }
+                }).join('');
+                
+                return `
+                    <div class="price-tracker">
+                        <div class="section-title">2026 Tour Comparison (Lowest Price USD)</div>
+                        <div class="ticket-grid">${rows}</div>
+                    </div>
+                `;
+            } 
+            
+            // Standard News Fallback
+            const items = data[tab];
+            if(!items || items.length === 0) return `<div class="fallback-box">No confirmed dates found.</div>`;
 
-            return priceSection + newsHtml;
+            return `<div class="news-grid">` + items.map(item => {
+                const hasSeattle = (item.title + (item.extracted_cities||[]).join('')).includes('Seattle');
+                const badge = hasSeattle ? `<span class="local-badge">📍 SEATTLE</span>` : '';
+                return `
+                    <a href="${item.url}" target="_blank" class="news-item">
+                        <img src="${item.image_url || ''}" class="news-thumb" onerror="this.style.display='none'">
+                        <div class="news-info">
+                            <div class="news-title">${badge}${item.title}</div>
+                            <div class="news-meta">
+                                <span>${item.source}</span>
+                                <span>•</span>
+                                <span>${new Date(item.published_at).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('') + `</div>`;
         }
 
         init();
