@@ -842,29 +842,33 @@ class KpopIntelligenceBot:
         // ---------------------------------------------------------
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
-                // STANFORD (Closest)
+                // STANFORD (Closest) - Specific Event Link
                 {
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
                     distance_miles: 800,
-                    prices: { "StubHub": 257, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 }
+                    prices: { "StubHub": 257, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
+                    url: "https://www.stubhub.com/bts-stanford-tickets-5-16-2026/event/153185321/?quantity=1"
                 },
                 // LOS ANGELES (West Coast)
                 {
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
                     distance_miles: 1100,
-                    prices: { "StubHub": 197, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 }
+                    prices: { "StubHub": 197, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 },
+                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1"
                 },
                 // CHICAGO (Midwest)
                 {
                     date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
                     distance_miles: 2000,
-                    prices: { "StubHub": 329, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 }
+                    prices: { "StubHub": 329, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 },
+                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1"
                 },
                 // EAST RUTHERFORD (East Coast)
                 {
                     date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
                     distance_miles: 2800,
-                    prices: { "StubHub": 259, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 }
+                    prices: { "StubHub": 259, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 },
+                    url: "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1"
                 }
             ];
         }
@@ -1015,8 +1019,8 @@ class KpopIntelligenceBot:
                     const priceList = Object.entries(t.prices).sort((a,b) => a[1] - b[1]);
                     const best = priceList[0]; // [Platform, Price]
                     const bestPlatform = best[0];
-                    // Dynamic Link Logic: ALWAYS link to the platform with the BEST price
-                    const bestLink = getDynamicLink(bestPlatform);
+                    // Dynamic Link Logic: Prefer explicit deep link (from data) over generic search
+                    const bestLink = t.url || getDynamicLink(bestPlatform);
                     
                     // Build Tags
                     const priceTags = priceList.map(([src, pri]) => `
