@@ -348,6 +348,7 @@ class KpopIntelligenceBot:
             "KISS OF LIFE": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kiss_of_Life_Logo.svg/1200px-Kiss_of_Life_Logo.svg.png",
             "BIBI": "https://i.scdn.co/image/ab6761610000e5eb989ed05e1f059c60d5b6de3d",
             "XG": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/XG_Logo.svg/1200px-XG_Logo.svg.png",
+            "NMIXX": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Nmixx_Logo.svg/1200px-Nmixx_Logo.svg.png",
             "Cortis": "",
             "All Day Project": ""
         }
@@ -1198,6 +1199,7 @@ if __name__ == "__main__":
         "BLACKPINK": "Girl Group", "ITZY": "Girl Group", "NewJeans": "Girl Group",
         "aespa": "Girl Group", "KISS OF LIFE": "Girl Group", "XG": "Girl Group",
         "TWICE": "Girl Group", "LE SSERAFIM": "Girl Group", "SAY MY NAME": "Girl Group",
+        "NMIXX": "Girl Group",
         "izna": "Girl Group", "MEOVV": "Girl Group", "IVE": "Girl Group",
         "BABYMONSTER": "Girl Group",
         
