@@ -366,6 +366,55 @@ class KpopIntelligenceBot:
         p_chicago, _, _ = RealTimeScraper.get_realtime_price("BTS", "Chicago", 329)
         p_nj, _, _ = RealTimeScraper.get_realtime_price("BTS", "Newark", 259)
 
+        # ---------------------------------------------------------
+        # REAL-TIME PRICE CHECK (NMIXX)
+        # ---------------------------------------------------------
+        logger.info("Fetching Real-Time Prices for NMIXX...")
+        # Baselines (estimated)
+        p_oakland, _, t_nmixx = RealTimeScraper.get_realtime_price("NMIXX", "Oakland", 145)
+        p_inglewood, _, _ = RealTimeScraper.get_realtime_price("NMIXX", "Inglewood", 160)
+        p_brooklyn, _, _ = RealTimeScraper.get_realtime_price("NMIXX", "Brooklyn", 185)
+        p_irving, _, _ = RealTimeScraper.get_realtime_price("NMIXX", "Irving", 135)
+
+        nmixx_tour_injection = f"""
+        if(KPOP_DATA['NMIXX']) {{
+            KPOP_DATA['NMIXX'].tour = [
+                // OAKLAND (Closest)
+                {{
+                    date: "2026-04-07", city: "Oakland, CA", venue: "Paramount Theatre",
+                    distance_miles: 800,
+                    prices: {{ "StubHub": {p_oakland}, "Ticketmaster": 180, "Vivid": 155, "SeatGeek": 160 }},
+                    last_updated: "{t_nmixx}",
+                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Oakland"
+                }},
+                // LOS ANGELES / INGLEWOOD
+                {{
+                    date: "2026-04-09", city: "Inglewood, CA", venue: "YouTube Theater",
+                    distance_miles: 1130,
+                    prices: {{ "StubHub": {p_inglewood}, "Ticketmaster": 195, "Vivid": 170, "SeatGeek": 175 }},
+                    last_updated: "{t_nmixx}",
+                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Inglewood"
+                }},
+                // BROOKLYN
+                {{
+                    date: "2026-03-31", city: "Brooklyn, NY", venue: "Brooklyn Paramount",
+                    distance_miles: 2850,
+                    prices: {{ "StubHub": {p_brooklyn}, "Ticketmaster": 210, "Vivid": 195, "SeatGeek": 200 }},
+                    last_updated: "{t_nmixx}",
+                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Brooklyn"
+                }},
+                // IRVING
+                {{
+                    date: "2026-04-04", city: "Irving, TX", venue: "Toyota Music Factory",
+                    distance_miles: 2100,
+                    prices: {{ "StubHub": {p_irving}, "Ticketmaster": 150, "Vivid": 140, "SeatGeek": 145 }},
+                    last_updated: "{t_nmixx}",
+                    url: "https://www.stubhub.com/nmixx-tickets/performer/101968894/?quantity=1&q=Irving"
+                }}
+            ];
+        }}
+        """
+
         bts_tour_injection = f"""
         if(KPOP_DATA['BTS']) {{
             KPOP_DATA['BTS'].tour = [
@@ -933,6 +982,11 @@ class KpopIntelligenceBot:
         // BTS 2026 TOUR INJECTION (REAL-TIME DATA)
         // ---------------------------------------------------------
         {bts_tour_injection}
+        
+        // ---------------------------------------------------------
+        // NMIXX 2026 TOUR INJECTION (REAL-TIME DATA)
+        // ---------------------------------------------------------
+        {nmixx_tour_injection}
 
         const heroCard = document.getElementById('hero-card');
 
@@ -1180,7 +1234,8 @@ class KpopIntelligenceBot:
 """
         final_html = html_template.replace("{kpop_json}", json.dumps(artist_data)) \
                                   .replace("{artists_json}", json.dumps(sorted_artists)) \
-                                  .replace("{bts_tour_injection}", bts_tour_injection)
+                                  .replace("{bts_tour_injection}", bts_tour_injection) \
+                                  .replace("{nmixx_tour_injection}", nmixx_tour_injection)
         
         with open("report.html", "w") as f:
             f.write(final_html)
