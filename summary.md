@@ -1,5 +1,5 @@
 # K-pop Intelligence Report
-Generated: 2026-01-27 19:02
+Generated: 2026-01-27 19:07
 
 | Artist | Topic | Source | Title | Cities/Dates |
 |---|---|---|---|---|
@@ -124,6 +124,7 @@ Generated: 2026-01-27 19:02
 | **aespa** | Comeback | *NME* | [Upcoming K-pop releases and comebacks: aespa, TWICE’s Jihyo and more - NME](https://news.google.com/rss/articles/CBMimwFBVV95cUxQU1FJMzlpVzZyRlpocXEwQXJBaU9kOE5ucTFRS2V0OGRCRE56a2ZURV9zVFh1elpqa3dxeXJ0NEF2eUs2cW9aWHJCMmpiZElBdHN0NUNfOGpLcHB5cVJOeHlRd1ByYWFRMHVGb1Z2azdpRTVvajNHbGlHN0MtTHVDQ0tGbFlYYUtENm1iX096dTlpb3dmcHFTNWgxTQ?oc=5) | - |
 | **KISS OF LIFE** | US Tour | *NME* | [KISS OF LIFE announce cities for Asia leg of 2024 to 2025 ‘Kiss Road’ world tour - NME](https://news.google.com/rss/articles/CBMipAFBVV95cUxPcjJOSnBfRzQ3Q3FoaS1IWE44ZjFnZW02amgtN1NCTG4xY3hqRWR1MTRyLUNBeE1GaXczNUJLY2RQVkloUVJiQlI4YkZGNXhVTkNPVmZrVHREZ0ZsQll5TGNzdmpON2JDYktwWFQ5ZzdXUlZyc05VY0tpcldoLXMtdVFiQU9nZDIzSlNYT3I0OXFDaG5HS3YtOE50RHMySHJKa3lONg?oc=5) | - |
 | **KISS OF LIFE** | US Tour | *Soompi* | [Update: KISS OF LIFE Announces Dates And Venues For European Leg Of First-Ever World Tour "KISS ROAD" - Soompi](https://news.google.com/rss/articles/CBMinAFBVV95cUxOc1FGemd2emctSVFPQlJJZ1N6akZPd2g5NGhYTFBfeGJzNTdRQXZXb05WYk5semY1ekNGZmxHYUc1YTl5eWhTdUt3NlJLY1MxcHlsMTl6S1ExMFU4bnB6OE9DclcxS0g5S0J5aDVSbG9YSHFjektFVlQtV1FtODV2V3VDTzdlaEVoLTRNV1kzX0hyNUNGSU1sZllZMTY?oc=5) | - |
+| **KISS OF LIFE** | US Tour | *Koreaboo* | [Rising Girl Group Gets Harsh "Reality Check" After Shockingly Low Concert Ticket Sales - Koreaboo](https://news.google.com/rss/articles/CBMidEFVX3lxTFAtSnUzeGt2a0JlRWVIck9nQ01wVGZad1htRUhPSFpQR2NuczEyNklKcVFGZWttQ3ZDZUluRkxSZGxXd2NiWWZ2dWZFcG1PWDR6YkIyLTBzZjdtYzJMRjMtRTdZamlCMXdBSVdURENVeHdyejli?oc=5) | - |
 | **KISS OF LIFE** | Comeback | *Billboard* | [Kylie Minogue’s Comeback ‘Kiss’: Pop Star Finds New Life with Sia, Pharrell & Roc Nation - Billboard](https://news.google.com/rss/articles/CBMiswFBVV95cUxObkdtSFN3SW9GdmljMFNYMWloekVDcTBjMndrNVFFSjZUMFk1RTJHWUdnbVU1UGhhVVgyZk9FLXdvS0t6M2s0SF9waXQzYkVVTnlxSW5MaGVRQTlzVTNlczYwU0h6UDBPdHd4MmluakNOeERBTl9DcGVwRkdpUGkxNTlIOU5nTWYwZzVMYTJKc3loTldtRFJOdU1QUWNBb1c0YWREREphenJBYk1mdk43dUpGRQ?oc=5) | - |
 | **KISS OF LIFE** | Comeback | *Soompi* | [Watch: KISS OF LIFE Announces April Comeback With First Teaser - Soompi](https://news.google.com/rss/articles/CBMipgFBVV95cUxNTGN6YjZlOGUxR1Y3MnJxYVhnVWJTMVloSG1EeXdKOVU5dTdIT2ozNDdPWkU3VW1JRm5ZeHRoZE1kbTZsVmpnT1BGVnIzZjVtYzlHclBzS0NqcExVaEZHdkQxdVlrQUc3bXZnMDJISUtyV2lCSXNTWS0yZU50ZTFSUU9hZkp1bnFpak1aeVhOd1VvMWQ3a2pFU2FiVmpTVU5TZXI2bVl3?oc=5) | - |
 | **KISS OF LIFE** | Comeback | *Koreaboo* | [KISS OF LIFE Confirms April Comeback - Koreaboo](https://news.google.com/rss/articles/CBMickFVX3lxTE1MTERWU0pybUx4cW42XzZfZXE3dlM3NERraXE4N05ER01GUDVqeWttSzNxSkViLWdPRzhpYzhPVkdRM09tV0pINnRsS0lmako1VEVYeE9HNnhEXzd2SzhQNzctM3ctcGRlTXVXNU5TbXl6QQ?oc=5) | - |

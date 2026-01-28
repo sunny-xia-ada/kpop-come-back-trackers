@@ -46,6 +46,23 @@ class KpopIntelligenceBot:
             re.IGNORECASE
         )
 
+        # Bad Image Patterns (Google News Logos, tracking pixels, etc.)
+        self.BAD_IMAGE_PATTERNS = [
+            "lh3.googleusercontent.com",
+            "google.com/logos",
+            "gstatic.com",
+            "gnews-logo"
+        ]
+
+    def is_valid_image(self, url: str) -> bool:
+        """Check if image URL is valid and not a known placeholder."""
+        if not url:
+            return False
+        for pattern in self.BAD_IMAGE_PATTERNS:
+            if pattern in url:
+                return False
+        return True
+
     def is_whitelisted(self, url: str) -> bool:
         """Check if the source domain is in the whitelist."""
         try:
@@ -112,18 +129,15 @@ class KpopIntelligenceBot:
                 desc_soup = BeautifulSoup(description, "html.parser")
                 img_tag = desc_soup.find("img")
                 if img_tag and img_tag.get("src"):
-                    image_url = img_tag["src"]
+                    candidate_url = img_tag["src"]
+                    if self.is_valid_image(candidate_url):
+                        image_url = candidate_url
 
             # Combined text for analysis
             full_text = f"{title} {description}"
 
             # 1. Source Whitelisting (Strict Mode: Skip if not authoritative)
-            # Note: Google News RSS links are redirected. We check the source name if available or try to resolve.
-            # Ideally we check the source name provided by RSS first to save time.
-            # Using simple source name check for efficiency in this demo.
-            # In a real expanded bot, we might HEAD request the link to check final domain.
             if not self.is_whitelisted_source_name(source_name) and not self.is_whitelisted(link):
-                 # Fallback: Many RSS links are news.google.com, so we trust Source Name primarily
                  if not self.is_whitelisted_source_name(source_name):
                      continue
 
@@ -134,6 +148,10 @@ class KpopIntelligenceBot:
             # 3. Extraction
             metadata = self.extract_metadata(full_text)
             
+            # Final image check before adding
+            if image_url and not self.is_valid_image(image_url):
+                 image_url = ""
+
             extracted_data.append({
                 "artist": artist,
                 "topic": query_type,
@@ -167,7 +185,9 @@ class KpopIntelligenceBot:
                 soup = BeautifulSoup(resp.content, "html.parser")
                 og_image = soup.find("meta", property="og:image")
                 if og_image and og_image.get("content"):
-                    return og_image["content"]
+                    img_src = og_image["content"]
+                    if self.is_valid_image(img_src):
+                        return img_src
         except Exception as e:
             logger.debug(f"Failed to fetch OG image for {url}: {e}")
         return ""
