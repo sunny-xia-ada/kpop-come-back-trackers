@@ -779,7 +779,7 @@ class KpopIntelligenceBot:
             font-weight: 600;
             line-height: 1.5;
             margin-bottom: 8px;
-            color: #f1f5f9;
+            color: var(--text);
         }
 
         .news-meta {
