@@ -519,17 +519,17 @@ class KpopIntelligenceBot:
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f172a; /* Midnight Navy */
-            --surface: #1e293b;
-            --surface-glass: rgba(30, 41, 59, 0.4);
+            --bg: #0a1628; /* Deep navy blue */
+            --surface: #1a2332;
+            --surface-glass: rgba(26, 35, 50, 0.4);
             --text: #f8fafc;
             --text-muted: #94a3b8;
-            --violet: #8b5cf6;
-            --pink: #ec4899;
+            --baby-blue: #89CFF0;
+            --pink: #FFB6C1;
             --emerald: #10b981;
             --gold: #f59e0b;
-            --border: rgba(255, 255, 255, 0.08);
-            --glass-strong: rgba(15, 23, 42, 0.9);
+            --border: rgba(137, 207, 240, 0.15);
+            --glass-strong: rgba(10, 22, 40, 0.9);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -537,7 +537,7 @@ class KpopIntelligenceBot:
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            background-image: radial-gradient(circle at 50% 0%, #2e1065 0%, var(--bg) 60%);
+            background-image: radial-gradient(circle at 50% 0%, rgba(137, 207, 240, 0.15) 0%, var(--bg) 60%);
             background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
@@ -564,12 +564,12 @@ class KpopIntelligenceBot:
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #a78bfa, #f472b6);
+            background: linear-gradient(135deg, #89CFF0, #FFB6C1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 32px;
             letter-spacing: -0.03em;
-            text-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+            text-shadow: 0 10px 40px rgba(137, 207, 240, 0.3);
         }
 
         .controls {
@@ -1068,7 +1068,7 @@ class KpopIntelligenceBot:
             if(!data) return;
 
             const safeName = encodeURIComponent(name);
-            const fallbackUrl = `https://ui-avatars.com/api/?name=${safeName}&background=8b5cf6&color=fff&size=256`;
+            const fallbackUrl = `https://ui-avatars.com/api/?name=${safeName}&background=89CFF0&color=fff&size=256`;
 
             heroCard.classList.remove('visible');
             setTimeout(() => {
