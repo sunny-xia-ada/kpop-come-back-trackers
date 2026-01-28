@@ -797,47 +797,52 @@ class KpopIntelligenceBot:
             KPOP_DATA['BTS'].tour = [
                 {
                     date: "2026-04-25", city: "Tampa, FL", venue: "Raymond James Stadium",
-                    prices: { "StubHub": 269, "Ticketmaster": 285, "Vivid": 240, "SeatGeek": 255 },
+                    prices: { "StubHub": 215, "Ticketmaster": 289, "Vivid": 195, "SeatGeek": 210 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-04-26", city: "Tampa, FL", venue: "Raymond James Stadium",
-                    prices: { "StubHub": 280, "Ticketmaster": 300, "Vivid": 265, "SeatGeek": 270 },
+                    prices: { "StubHub": 198, "Ticketmaster": 250, "Vivid": 185, "SeatGeek": 200 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-05-02", city: "El Paso, TX", venue: "Sun Bowl Stadium",
-                    prices: { "StubHub": 195, "Ticketmaster": 220, "Vivid": 180, "SeatGeek": 200 },
+                    prices: { "StubHub": 180, "Ticketmaster": 220, "Vivid": 175, "SeatGeek": 190 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
-                    prices: { "StubHub": 350, "Ticketmaster": 380, "Vivid": 340, "SeatGeek": 365 },
+                    prices: { "StubHub": 350, "Ticketmaster": 410, "Vivid": 335, "SeatGeek": 360 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-05-23", city: "Las Vegas, NV", venue: "Allegiant Stadium",
-                    prices: { "StubHub": 410, "Ticketmaster": 450, "Vivid": 395, "SeatGeek": 420 },
+                    prices: { "StubHub": 495, "Ticketmaster": 550, "Vivid": 480, "SeatGeek": 510 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
-                    prices: { "StubHub": 320, "Ticketmaster": 340, "Vivid": 310, "SeatGeek": 330 },
+                    prices: { "StubHub": 380, "Ticketmaster": 425, "Vivid": 365, "SeatGeek": 390 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
-                    prices: { "StubHub": 290, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 295 },
+                    prices: { "StubHub": 558, "Ticketmaster": 610, "Vivid": 545, "SeatGeek": 570 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    prices: { "StubHub": 450, "Ticketmaster": 480, "Vivid": 425, "SeatGeek": 460 },
+                    prices: { "StubHub": 85, "Ticketmaster": 450, "Vivid": 120, "SeatGeek": 110 },
+                    url: "https://www.ticketmaster.com"
+                },
+                {
+                    date: "2026-09-02", city: "Los Angeles, CA", venue: "SoFi Stadium",
+                    prices: { "StubHub": 70, "Ticketmaster": 180, "Vivid": 95, "SeatGeek": 105 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
                     date: "2026-09-12", city: "Seattle, WA", venue: "Lumen Field",
-                    prices: { "StubHub": 315, "Ticketmaster": 330, "Vivid": 299, "SeatGeek": 320 },
+                    prices: { "StubHub": 315, "Ticketmaster": 350, "Vivid": 299, "SeatGeek": 325 },
                     url: "https://www.ticketmaster.com"
                 }
             ];
