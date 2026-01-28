@@ -213,13 +213,13 @@ class KpopIntelligenceBot:
     <title>K-pop Intelligence Report</title>
     <style>
         :root {
-            --bg-color: #0f0f13;
-            --card-bg: #1a1a23;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
             --accent: #d946ef; /* Pink/Purple */
             --accent-glow: rgba(217, 70, 239, 0.3);
-            --border: #2e2e3a;
+            --border: #e5e7eb;
         }
 
         body {
