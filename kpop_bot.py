@@ -476,33 +476,67 @@ class KpopIntelligenceBot:
             artist_data[name]["avatar"] = avatar
             
             # ---------------------------------------------------------
-            # IDOL CLOSET (Final Polish)
+            # 一丹的时尚雷达 (YIDAN'S FASHION RADAR)
             # ---------------------------------------------------------
             closet = []
             if name == "BTS":
                 closet = [
-                    {"item": "Vintage Denim Jacket", "price": "$120", "search": "Vintage Denim Jacket"},
-                    {"item": "Oversized Logo Hoodie", "price": "$85", "search": "Oversized Hoodie"},
-                    {"item": "Bucket Hat", "price": "$45", "search": "Bucket Hat"}
+                    {"item": "Vintage Denim Jacket", "price": "$120", "search": "BTS Style Vintage Denim", "style_analysis": "Corecore Aesthetic", "seattle_ready": True, "best_store": "musinsa"},
+                    {"item": "Oversized Logo Hoodie", "price": "$85", "search": "BTS Oversized Hoodie", "style_analysis": "Streetwear Casual", "seattle_ready": True, "best_store": "wconcept"},
+                    {"item": "Bucket Hat", "price": "$45", "search": "BTS Bucket Hat", "style_analysis": "Y2K Revival", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Cargo Pants", "price": "$95", "search": "BTS Cargo Pants", "style_analysis": "Urban Utility", "seattle_ready": False, "best_store": "musinsa"},
+                    {"item": "Leather Bomber Jacket", "price": "$280", "search": "BTS Leather Jacket", "style_analysis": "Rock Chic", "seattle_ready": True, "best_store": "wconcept"},
+                    {"item": "Chunky Sneakers", "price": "$150", "search": "BTS Chunky Sneakers", "style_analysis": "Dad Shoe Trend", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Graphic Band Tee", "price": "$40", "search": "BTS Graphic Tee", "style_analysis": "Vintage Rock", "seattle_ready": False, "best_store": "musinsa"},
+                    {"item": "Wool Trench Coat", "price": "$220", "search": "BTS Trench Coat", "style_analysis": "Classic Tailored", "seattle_ready": True, "best_store": "wconcept"},
+                    {"item": "Chain Necklace", "price": "$35", "search": "BTS Chain Necklace", "style_analysis": "Hip-Hop Luxe", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Distressed Jeans", "price": "$110", "search": "BTS Distressed Jeans", "style_analysis": "Grunge Revival", "seattle_ready": False, "best_store": "musinsa"}
                 ]
             elif name == "NMIXX":
                 closet = [
-                    {"item": "Y2K Pleated Skirt", "price": "$58", "search": "Pleated Skirt"},
-                    {"item": "Crop Graphic Tee", "price": "$35", "search": "Crop Tee"},
-                    {"item": "Chunky Platform Boots", "price": "$110", "search": "Platform Boots"}
+                    {"item": "Y2K Pleated Skirt", "price": "$58", "search": "NMIXX Pleated Skirt", "style_analysis": "Y2K Office Siren", "seattle_ready": False, "best_store": "wconcept"},
+                    {"item": "Crop Graphic Tee", "price": "$35", "search": "NMIXX Crop Top", "style_analysis": "Cyber-Punk Grunge", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Chunky Platform Boots", "price": "$110", "search": "NMIXX Platform Boots", "style_analysis": "Edgy Feminine", "seattle_ready": True, "best_store": "musinsa"},
+                    {"item": "Oversized Blazer", "price": "$145", "search": "NMIXX Oversized Blazer", "style_analysis": "Power Dressing", "seattle_ready": True, "best_store": "wconcept"},
+                    {"item": "Mini Shoulder Bag", "price": "$65", "search": "NMIXX Mini Bag", "style_analysis": "Micro Bag Trend", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Fishnet Tights", "price": "$18", "search": "NMIXX Fishnet", "style_analysis": "Alt Fashion", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Leather Jacket", "price": "$195", "search": "NMIXX Leather Jacket", "style_analysis": "Biker Chic", "seattle_ready": True, "best_store": "musinsa"},
+                    {"item": "High-Waist Shorts", "price": "$48", "search": "NMIXX High Waist Shorts", "style_analysis": "Sporty Glam", "seattle_ready": False, "best_store": "wconcept"},
+                    {"item": "Chunky Rings Set", "price": "$28", "search": "NMIXX Rings", "style_analysis": "Maximalist Jewelry", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Plaid Mini Skirt", "price": "$52", "search": "NMIXX Plaid Skirt", "style_analysis": "School Girl Chic", "seattle_ready": False, "best_store": "wconcept"}
+                ]
+            elif name == "BLACKPINK":
+                closet = [
+                    {"item": "Luxury Blazer", "price": "$320", "search": "BLACKPINK Blazer", "style_analysis": "High Fashion", "seattle_ready": True, "best_store": "wconcept"},
+                    {"item": "Mini Tweed Dress", "price": "$185", "search": "BLACKPINK Tweed Dress", "style_analysis": "Chanel Inspired", "seattle_ready": False, "best_store": "wconcept"},
+                    {"item": "Thigh-High Boots", "price": "$245", "search": "BLACKPINK Boots", "style_analysis": "Bold Confidence", "seattle_ready": True, "best_store": "musinsa"},
+                    {"item": "Statement Sunglasses", "price": "$75", "search": "BLACKPINK Sunglasses", "style_analysis": "Luxury Accessory", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Crop Leather Jacket", "price": "$280", "search": "BLACKPINK Leather", "style_analysis": "Rock Glam", "seattle_ready": True, "best_store": "musinsa"},
+                    {"item": "High-Waist Pants", "price": "$95", "search": "BLACKPINK Pants", "style_analysis": "Power Suit", "seattle_ready": False, "best_store": "wconcept"},
+                    {"item": "Chain Belt", "price": "$55", "search": "BLACKPINK Chain Belt", "style_analysis": "Edgy Luxe", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Silk Blouse", "price": "$125", "search": "BLACKPINK Silk Blouse", "style_analysis": "Elegant Feminine", "seattle_ready": False, "best_store": "wconcept"},
+                    {"item": "Platform Heels", "price": "$165", "search": "BLACKPINK Heels", "style_analysis": "Stage Ready", "seattle_ready": False, "best_store": "musinsa"},
+                    {"item": "Oversized Trench", "price": "$295", "search": "BLACKPINK Trench", "style_analysis": "Parisian Chic", "seattle_ready": True, "best_store": "wconcept"}
                 ]
             else:
                 closet = [
-                    {"item": "K-Pop Style Tee", "price": "$40", "search": "Kpop Style"},
-                    {"item": "Streetwear Joggers", "price": "$65", "search": "Joggers"}
+                    {"item": "K-Pop Style Tee", "price": "$40", "search": "Kpop Style Tee", "style_analysis": "Casual K-Style", "seattle_ready": False, "best_store": "musinsa"},
+                    {"item": "Streetwear Joggers", "price": "$65", "search": "Kpop Joggers", "style_analysis": "Athleisure", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Bomber Jacket", "price": "$95", "search": "Kpop Bomber", "style_analysis": "Street Fashion", "seattle_ready": True, "best_store": "musinsa"},
+                    {"item": "Baseball Cap", "price": "$30", "search": "Kpop Cap", "style_analysis": "Sporty Casual", "seattle_ready": False, "best_store": "lewkin"},
+                    {"item": "Crossbody Bag", "price": "$55", "search": "Kpop Bag", "style_analysis": "Functional Style", "seattle_ready": False, "best_store": "wconcept"},
+                    {"item": "Hoodie", "price": "$75", "search": "Kpop Hoodie", "style_analysis": "Cozy Streetwear", "seattle_ready": True, "best_store": "musinsa"}
                 ]
             
-            # Enrich with DiceBear & Links
+            # Enrich with Images & Smart Shopping Links
             for c in closet:
-                c["img"] = f"https://api.dicebear.com/7.x/shapes/svg?seed={requests.utils.quote(c['item']) + name}"
-                c["wconcept"] = f"https://us.wconcept.com/catalogsearch/result/?q={requests.utils.quote(c['search'])}"
-                c["musinsa"] = f"https://global.musinsa.com/main/search?q={requests.utils.quote(c['search'])}"
-                c["lewkin"] = f"https://lewkin.com/search?q={requests.utils.quote(c['search'])}"
+                # Premium placeholder images
+                c["img"] = f"https://api.dicebear.com/7.x/shapes/svg?seed={requests.utils.quote(c['item']) + name}&backgroundColor=FFD1DC"
+                # Deep-search URLs with artist + style
+                search_term = f"{name} {c['search']}"
+                c["wconcept"] = f"https://us.wconcept.com/catalogsearch/result/?q={requests.utils.quote(search_term)}"
+                c["musinsa"] = f"https://global.musinsa.com/main/search?q={requests.utils.quote(search_term)}"
+                c["lewkin"] = f"https://lewkin.com/search?q={requests.utils.quote(search_term)}"
             
             artist_data[name]["closet"] = closet
         
@@ -1134,8 +1168,8 @@ class KpopIntelligenceBot:
                                 <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">新歌和舞台</div>
                             </button>
                             <button class="tab-btn ${currentTab === 'closet' ? 'active' : ''}" onclick="switchTab('closet')">
-                                <div>Idol Closet 🛍️</div>
-                                <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">偶像衣橱</div>
+                                <div>一丹的时尚雷达 ✨</div>
+                                <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">Fashion Radar</div>
                             </button>
                         </div>
                         <div id="tab-content">
@@ -1292,27 +1326,52 @@ class KpopIntelligenceBot:
                 items = items.filter(item => new Date(item.published_at) > sixMonthsAgo);
             }
             
-            // 3. IDOL CLOSET LOGIC
+            // 3. 一丹的时尚雷达 (FASHION RADAR LOGIC)
             if(tab === 'closet') {
-                 if(!data.closet || data.closet.length === 0) return '<div class="fallback-box">No outfit data available yet.</div>';
+                 if(!data.closet || data.closet.length === 0) return '<div class="fallback-box">No fashion data available yet.</div>';
                  
-                 return `<div class="news-grid" style="grid-template-columns: repeat(3, 1fr); display:grid; gap:20px;">` + data.closet.map(item => `
-                    <div class="ticket-row" style="display:flex; flex-direction:column; padding:0; height:auto; border:none; background:rgba(255,255,255,0.3); overflow:hidden;">
-                        <div style="height:150px; width:100%; background:#FFD1DC; display:flex; align-items:center; justify-content:center;">
-                            <img src="${item.img}" style="width:80%; height:80%; object-fit:contain;">
-                        </div>
-                        <div style="padding:16px; display:flex; flex-direction:column; gap:8px; flex:1;">
-                            <div style="font-weight:700; font-size:1.1rem; color:#1a0a1e;">${item.item}</div>
-                            <div style="color:var(--emerald); font-weight:800;">Estimated: ${item.price}</div>
-                            
-                            <div style="display:grid; gap:8px; margin-top:auto;">
-                                <a href="${item.wconcept}" target="_blank" class="buy-btn" style="background:#000; color:#fff; font-size:0.8rem;">Shop W Concept</a>
-                                <a href="${item.musinsa}" target="_blank" class="buy-btn" style="background:#fff; color:#000; border:1px solid #ccc; font-size:0.8rem;">Shop Musinsa</a>
-                                <a href="${item.lewkin}" target="_blank" class="buy-btn" style="background:#ff4081; color:#fff; font-size:0.8rem;">Shop Lewkin</a>
-                            </div>
-                        </div>
-                    </div>
-                 `).join('') + `</div>`;
+                 return `
+                     <div style="margin-bottom:20px; text-align:center;">
+                         <div style="font-size:1.3rem; font-weight:700; color:#1a0a1e; margin-bottom:8px;">✨ Curated by 一丹 ✨</div>
+                         <div style="font-size:0.9rem; color:var(--text-muted);">Professional K-Pop Style Consultant</div>
+                     </div>
+                     <div class="news-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); display:grid; gap:20px;">
+                 ` + data.closet.map(item => {
+                     // Determine primary buy button based on best_store
+                     const storeMap = {
+                         'wconcept': {name: 'W Concept', url: item.wconcept, style: 'background:#000; color:#fff;'},
+                         'musinsa': {name: 'Musinsa', url: item.musinsa, style: 'background:#fff; color:#000; border:1px solid #ccc;'},
+                         'lewkin': {name: 'Lewkin', url: item.lewkin, style: 'background:#ff4081; color:#fff;'}
+                     };
+                     const primaryStore = storeMap[item.best_store] || storeMap['musinsa'];
+                     const secondaryStores = Object.keys(storeMap).filter(k => k !== item.best_store).map(k => storeMap[k]);
+                     
+                     return `
+                     <div class="ticket-row" style="display:flex; flex-direction:column; padding:0; height:auto; border:none; background:rgba(255,255,255,0.3); overflow:hidden; border-radius:16px; position:relative;">
+                         <div style="height:180px; width:100%; background:#FFD1DC; display:flex; align-items:center; justify-content:center; position:relative;">
+                             <img src="${item.img}" style="width:80%; height:80%; object-fit:contain;">
+                             <div style="position:absolute; top:12px; left:12px; background:rgba(26,10,30,0.85); color:#fff; padding:6px 12px; border-radius:20px; font-size:0.7rem; font-weight:600; backdrop-filter:blur(8px);">
+                                 ${item.style_analysis}
+                             </div>
+                             ${item.seattle_ready ? '<div style="position:absolute; top:12px; right:12px; background:rgba(137,207,240,0.9); color:#1a0a1e; padding:6px 10px; border-radius:20px; font-size:0.65rem; font-weight:700;">☔ Seattle Ready</div>' : ''}
+                         </div>
+                         <div style="padding:16px; display:flex; flex-direction:column; gap:8px; flex:1;">
+                             <div style="font-weight:700; font-size:1.05rem; color:#1a0a1e;">${item.item}</div>
+                             <div style="color:var(--emerald); font-weight:800; font-size:0.95rem;">${item.price}</div>
+                             
+                             <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
+                                 <a href="${primaryStore.url}" target="_blank" class="buy-btn" style="${primaryStore.style} font-size:0.85rem; font-weight:700; padding:10px;">
+                                     🛍️ Buy at ${primaryStore.name}
+                                 </a>
+                                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                                     ${secondaryStores.map(store => `
+                                         <a href="${store.url}" target="_blank" class="buy-btn" style="${store.style} font-size:0.75rem; padding:6px;">${store.name}</a>
+                                     `).join('')}
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 `}).join('') + `</div>`;
             }
             
             if(items.length === 0) {
