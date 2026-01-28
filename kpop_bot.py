@@ -411,6 +411,9 @@ class KpopIntelligenceBot:
                     date: "2026-04-07", city: "Oakland, CA", venue: "Paramount Theatre",
                     distance_miles: 800,
                     prices: {{ "StubHub": 146, "Ticketmaster": 180, "Vivid": 155 }},
+                    links: {{
+                        "StubHub": "https://www.stubhub.com/nmixx-tickets/performer/1509930/?q=Oakland"
+                    }},
                     last_updated: "Verified"
                 }},
                 // INGLEWOOD
@@ -473,26 +476,34 @@ class KpopIntelligenceBot:
             artist_data[name]["avatar"] = avatar
             
             # ---------------------------------------------------------
-            # IDOL CLOSET (MOCK DATA MVP)
+            # IDOL CLOSET (Final Polish)
             # ---------------------------------------------------------
             closet = []
             if name == "BTS":
                 closet = [
-                    {"item": "Vintage Denim Jacket", "price": "$120", "source": "Musinsa", "url": "https://global.musinsa.com/us/search/goods?keyword=Vintage%20Denim%20Jacket", "img": "https://image.msscdn.net/global/images/goods_img/20211223/2280655/2280655_1_500.jpg"},
-                    {"item": "Oversized Logo Hoodie", "price": "$85", "source": "W Concept", "url": "https://us.wconcept.com/catalogsearch/result/?q=Oversized%20Hoodie", "img": "https://img.ltwebstatic.com/images3_pi/2022/09/26/1664156689add89f9252c8c41460114060851e4313_thumbnail_600x.webp"},
-                    {"item": "Bucket Hat", "price": "$45", "source": "Lewkin", "url": "https://lewkin.com/search?q=Bucket+Hat", "img": "https://m.media-amazon.com/images/I/61N+qX-XynL._AC_UY1000_.jpg"}
+                    {"item": "Vintage Denim Jacket", "price": "$120", "search": "Vintage Denim Jacket"},
+                    {"item": "Oversized Logo Hoodie", "price": "$85", "search": "Oversized Hoodie"},
+                    {"item": "Bucket Hat", "price": "$45", "search": "Bucket Hat"}
                 ]
             elif name == "NMIXX":
                 closet = [
-                    {"item": "Y2K Pleated Skirt", "price": "$58", "source": "W Concept", "url": "https://us.wconcept.com/catalogsearch/result/?q=Pleated%20Skirt", "img": "https://m.media-amazon.com/images/I/61Kq-g+-1GL._AC_UY1000_.jpg"},
-                    {"item": "Crop Graphic Tee", "price": "$35", "source": "Musinsa", "url": "https://global.musinsa.com/us/search/goods?keyword=Crop%20Tee", "img": "https://media.boohoo.com/i/boohoo/fzz03639_black_xl?w=900&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit"},
-                    {"item": "Chunky Platform Boots", "price": "$110", "source": "Lewkin", "url": "https://lewkin.com/search?q=Platform+Boots", "img": "https://m.media-amazon.com/images/I/71p+Z+gX-pL._AC_UY1000_.jpg"}
+                    {"item": "Y2K Pleated Skirt", "price": "$58", "search": "Pleated Skirt"},
+                    {"item": "Crop Graphic Tee", "price": "$35", "search": "Crop Tee"},
+                    {"item": "Chunky Platform Boots", "price": "$110", "search": "Platform Boots"}
                 ]
             else:
                 closet = [
-                    {"item": "K-Pop Style Tee", "price": "$40", "source": "W Concept", "url": "https://us.wconcept.com/catalogsearch/result/?q=Kpop+Style", "img": "https://m.media-amazon.com/images/I/61p-lM-qZ8L._AC_UX569_.jpg"},
-                    {"item": "Streetwear Joggers", "price": "$65", "source": "Musinsa", "url": "https://global.musinsa.com/us/search/goods?keyword=Joggers", "img": "https://m.media-amazon.com/images/I/51+Tq5-g+ML._AC_UY1000_.jpg"}
+                    {"item": "K-Pop Style Tee", "price": "$40", "search": "Kpop Style"},
+                    {"item": "Streetwear Joggers", "price": "$65", "search": "Joggers"}
                 ]
+            
+            # Enrich with DiceBear & Links
+            for c in closet:
+                c["img"] = f"https://api.dicebear.com/7.x/shapes/svg?seed={requests.utils.quote(c['item']) + name}"
+                c["wconcept"] = f"https://us.wconcept.com/catalogsearch/result/?q={requests.utils.quote(c['search'])}"
+                c["musinsa"] = f"https://global.musinsa.com/main/search?q={requests.utils.quote(c['search'])}"
+                c["lewkin"] = f"https://lewkin.com/search?q={requests.utils.quote(c['search'])}"
+            
             artist_data[name]["closet"] = closet
         
         # Sort for dropdown
@@ -1233,16 +1244,21 @@ class KpopIntelligenceBot:
                  if(!data.closet || data.closet.length === 0) return '<div class="fallback-box">No outfit data available yet.</div>';
                  
                  return `<div class="news-grid" style="grid-template-columns: repeat(3, 1fr); display:grid; gap:20px;">` + data.closet.map(item => `
-                    <a href="${item.url}" target="_blank" class="ticket-row" style="display:flex; flex-direction:column; padding:0; height:300px; border:none; background:rgba(255,255,255,0.05);">
-                        <div style="height:180px; width:100%; overflow:hidden;">
-                            <img src="${item.img}" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="ticket-row" style="display:flex; flex-direction:column; padding:0; height:auto; border:none; background:rgba(255,255,255,0.05); overflow:hidden;">
+                        <div style="height:150px; width:100%; background:#1e293b; display:flex; align-items:center; justify-content:center;">
+                            <img src="${item.img}" style="width:80%; height:80%; object-fit:contain;">
                         </div>
-                        <div style="padding:16px; display:flex; flex-direction:column; gap:8px;">
-                            <div style="font-weight:700; font-size:1.1rem;">${item.item}</div>
-                            <div style="color:var(--text-muted); font-size:0.9rem;">From ${item.source}</div>
-                            <div style="color:var(--emerald); font-weight:800;">${item.price}</div>
+                        <div style="padding:16px; display:flex; flex-direction:column; gap:8px; flex:1;">
+                            <div style="font-weight:700; font-size:1.1rem; color:#fff;">${item.item}</div>
+                            <div style="color:var(--emerald); font-weight:800;">Estimated: ${item.price}</div>
+                            
+                            <div style="display:grid; gap:8px; margin-top:auto;">
+                                <a href="${item.wconcept}" target="_blank" class="buy-btn" style="background:#000; color:#fff; font-size:0.8rem;">Shop W Concept</a>
+                                <a href="${item.musinsa}" target="_blank" class="buy-btn" style="background:#fff; color:#000; border:1px solid #ccc; font-size:0.8rem;">Shop Musinsa</a>
+                                <a href="${item.lewkin}" target="_blank" class="buy-btn" style="background:#ff4081; color:#fff; font-size:0.8rem;">Shop Lewkin</a>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                  `).join('') + `</div>`;
             }
             
