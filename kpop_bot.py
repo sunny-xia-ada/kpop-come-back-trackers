@@ -372,7 +372,7 @@ class KpopIntelligenceBot:
                     distance_miles: 800,
                     prices: {{ "StubHub": 159.50, "Vivid Seats": 175, "Ticketmaster": 290, "SeatGeek": 275 }},
                     links: {{
-                        "StubHub": "https://www.stubhub.com/ph/bts-stanford-tickets-5-16-2026/event/160262168/",
+                        "StubHub": "https://www.stubhub.com/secure/search.us?q=BTS+Stanford+Stadium",
                         "Vivid Seats": "https://www.vividseats.com/bts---bangtan-boys-tickets-stanford-stanford-stadium-5-16-2026--concerts-k-pop/production/6517063?utm_content=%7BGOOGLE-ADS-CLICK-SOURCE%7D"
                     }},
                     last_updated: "Verified Match"
