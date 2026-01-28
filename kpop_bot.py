@@ -415,5 +415,10 @@ class KpopIntelligenceBot:
 if __name__ == "__main__":
     bot = KpopIntelligenceBot()
     # List of target artists
-    targets = ["BTS", "BLACKPINK", "ITZY", "ENHYPEN", "SEVENTEEN", "NewJeans"]
+    targets = [
+        "BTS", "BLACKPINK", "ITZY", "ENHYPEN", "SEVENTEEN", "NewJeans",
+        "BIBI", "aespa", "KISS OF LIFE", "XG", "TWICE", "NCT DREAM", 
+        "LE SSERAFIM", "TWS", "NCT WISH", "Cortis", "SAY MY NAME", "izna",
+        "All Day Project", "MEOVV", "Stray Kids", "IVE", "ATEEZ", "BABYMONSTER"
+    ]
     bot.run(targets)
