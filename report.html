@@ -696,8 +696,8 @@
                                 <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">新歌和舞台</div>
                             </button>
                             <button class="tab-btn ${currentTab === 'closet' ? 'active' : ''}" onclick="switchTab('closet')">
-                                <div>一丹的时尚雷达 ✨</div>
-                                <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">Fashion Radar</div>
+                                <div>Idol Closet & 一丹的时尚雷达 ✨</div>
+                                <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">偶像衣橱 & 时尚简评</div>
                             </button>
                         </div>
                         <div id="tab-content">
@@ -863,7 +863,10 @@
                  const editorNote = `
                      <div style="background:rgba(255,255,255,0.4); backdrop-filter:blur(20px); border-radius:24px; padding:32px; margin-bottom:32px; border:1px solid rgba(137,207,240,0.3);">
                          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
-                             <div style="font-size:1.5rem; font-weight:800; color:#1a0a1e;">一丹的时尚简评</div>
+                             <div>
+                                 <div style="font-size:1.5rem; font-weight:800; color:#1a0a1e;">一丹的时尚简评</div>
+                                 <div style="font-size:0.9rem; color:var(--text-muted); margin-top:4px;">Yidan's Fashion Editorial</div>
+                             </div>
                              <div style="background:linear-gradient(135deg, #89CFF0, #FFB6C1); color:#fff; padding:8px 20px; border-radius:30px; font-weight:800; font-size:1.1rem;">
                                  ${fashionAnalysis.style_score || '8.5/10'}
                              </div>
@@ -874,7 +877,7 @@
                          <div style="background:rgba(137,207,240,0.2); border-left:4px solid #89CFF0; padding:16px; border-radius:12px; margin-top:24px;">
                              <div style="font-weight:700; color:#1a0a1e; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
                                  <span>☔</span>
-                                 <span>Seattle Adaptation Tip</span>
+                                 <span>西雅图穿搭建议 / Seattle Adaptation Tip</span>
                              </div>
                              <div style="color:#4a3a4e; line-height:1.6; font-size:0.9rem;">
                                  ${fashionAnalysis.seattle_tip || 'Layer smartly for our Pacific Northwest weather!'}
@@ -885,8 +888,8 @@
                  
                  return editorNote + `
                      <div style="margin-bottom:20px; text-align:center;">
-                         <div style="font-size:1.3rem; font-weight:700; color:#1a0a1e; margin-bottom:8px;">✨ Top 10 Must-Buy Items ✨</div>
-                         <div style="font-size:0.9rem; color:var(--text-muted);">Curated by 一丹</div>
+                         <div style="font-size:1.3rem; font-weight:700; color:#1a0a1e; margin-bottom:8px;">✨ 十大必买单品 / Top 10 Must-Buy Items ✨</div>
+                         <div style="font-size:0.9rem; color:var(--text-muted);">一丹精选 / Curated by Yidan</div>
                      </div>
                      <div class="news-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); display:grid; gap:20px;">
                  ` + data.closet.map(item => {
