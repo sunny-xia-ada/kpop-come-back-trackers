@@ -458,9 +458,34 @@ class KpopIntelligenceBot:
 </html>
 """
         def build_artist_block(artist_name, data):
-            # Find best image for avatar (priority: Comeback -> Tour)
+            # Static Profile Images (Fallback)
+            PROFILE_IMAGES = {
+                "BTS": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/BTS_logo_%282017%29.png/600px-BTS_logo_%282017%29.png",
+                "BLACKPINK": "https://upload.wikimedia.org/wikipedia/commons/2/29/Blackpink_logo.svg", # SVG might need check, using logo
+                "SEVENTEEN": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Seventeen_Logo.jpg/640px-Seventeen_Logo.jpg",
+                "NewJeans": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/NewJeans_Logo.svg/1200px-NewJeans_Logo.svg.png",
+                "ENHYPEN": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Enhypen_logo.svg/1200px-Enhypen_logo.svg.png",
+                "ITZY": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Itzy_logo.svg/1200px-Itzy_logo.svg.png",
+                "NCT DREAM": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/NCT_Dream_logo.svg/1200px-NCT_Dream_logo.svg.png",
+                "TWICE": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Twice_Logo.png/640px-Twice_Logo.png",
+                "Stray Kids": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Stray_Kids_Logo.svg/1200px-Stray_Kids_Logo.svg.png",
+                "aespa": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Aespa_Logo.svg/1200px-Aespa_Logo.svg.png",
+                "IVE": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ive_Logo.svg/1200px-Ive_Logo.svg.png",
+                "LE SSERAFIM": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Le_Sserafim_Logo.svg/1200px-Le_Sserafim_Logo.svg.png",
+                "BABYMONSTER": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Babymonster_Logo.svg/1200px-Babymonster_Logo.svg.png",
+                "ATEEZ": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Ateez_logo.png/640px-Ateez_logo.png",
+                "NCT WISH": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/NCT_Wish_Logo.svg/1200px-NCT_Wish_Logo.svg.png",
+                "TWS": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/TWS_Logo.svg/1200px-TWS_Logo.svg.png",
+                "KISS OF LIFE": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kiss_of_Life_Logo.svg/1200px-Kiss_of_Life_Logo.svg.png",
+                "BIBI": "https://i.scdn.co/image/ab6761610000e5eb989ed05e1f059c60d5b6de3d", # Spotify
+                "XG": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/XG_Logo.svg/1200px-XG_Logo.svg.png",
+            }
+            
+            # Find best image for avatar
+            # Priority: 1. Scraped News Image  2. Static Profile Image  3. UI Avatar
             avatar_url = ""
-            # Check comeback first for freshest look
+            
+            # 1. Scraped News (Freshest)
             for item in data['comeback']:
                 if item.get("image_url"):
                     avatar_url = item["image_url"]
@@ -471,7 +496,16 @@ class KpopIntelligenceBot:
                         avatar_url = item["image_url"]
                         break
             
-            avatar_html = f'<img src="{avatar_url}" class="artist-avatar">' if avatar_url else '<div class="artist-avatar" style="display:flex;align-items:center;justify-content:center;">🎵</div>'
+            # 2. Static Fallback
+            if not avatar_url:
+                avatar_url = PROFILE_IMAGES.get(artist_name, "")
+            
+            # 3. Last Resort (UI Avatars)
+            if not avatar_url:
+                safe_name = requests.utils.quote(artist_name)
+                avatar_url = f"https://ui-avatars.com/api/?name={safe_name}&background=random&color=fff&size=128"
+            
+            avatar_html = f'<img src="{avatar_url}" class="artist-avatar">'
 
             # Tour Section
             tour_rows = []
