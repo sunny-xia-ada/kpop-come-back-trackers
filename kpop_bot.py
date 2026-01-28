@@ -547,26 +547,38 @@ class KpopIntelligenceBot:
             if name == "BTS":
                 fashion_analysis = {
                     "style_score": "9.5/10",
-                    "analysis": "BTS最新回归的美学风格巧妙地融合了复古美式与当代街头风，打造出既怀旧又前卫的轻松廓形。从破洞牛仔到oversized卫衣，每一件单品的选择都展现了对层次感和比例的精妙把握，绝非简单装饰。这是Corecore美学的极致体现：真实、自然、毫不费力的酷感。\n\nBTS的独特之处在于他们善于通过意想不到的细节提升基础单品：舞台灯光下闪耀的项链、让飘逸造型落地的厚底球鞋，或是讲述故事的复古T恤。这种美学既平易近人又精准如高级时装。这是有灵魂的街头风，因其真实而引起共鸣。\n\n<em>BTS's latest comeback aesthetic masterfully blends vintage Americana with contemporary streetwear, creating a relaxed yet intentional silhouette that feels both nostalgic and forward-thinking. The group's styling choices—from distressed denim to oversized hoodies—demonstrate a sophisticated understanding of layering and proportion, where each piece serves a purpose beyond mere decoration. This is corecore at its finest: authentic, lived-in, and effortlessly cool.\n\nWhat sets BTS apart is their ability to elevate casual basics through unexpected details: a chain necklace that catches stage lights, chunky sneakers that ground an otherwise ethereal look, or a perfectly worn-in graphic tee that tells a story. The aesthetic is democratic and accessible, yet executed with the precision of high fashion. It's streetwear with soul, and it resonates because it feels real.</em>",
-                    "seattle_tip": "针对西雅图多变的气候，建议用羊毛风衣替代轻薄牛仔夹克作为主要外套。结构化的廓形保持了同样的视觉分量，同时提供更好的防雨效果。保留厚底球鞋——它们非常适合湿滑路面——并在里面叠穿oversized卫衣，打造出适合太平洋西北地区细雨的标志性层次感造型。\n\n<em>For Seattle's unpredictable climate, swap the lightweight denim jacket for their wool trench coat as your primary layer. The structured silhouette maintains the same visual weight while offering superior rain protection. Keep the chunky sneakers—they're perfect for wet pavement—and add the oversized hoodie underneath for that signature layered look that works in our Pacific Northwest drizzle.</em>"
+                    "style_index": "Streetwear / 街头风",
+                    "analysis_cn": "BTS最新回归的美学风格巧妙地融合了复古美式与当代街头风，打造出既怀旧又前卫的轻松廓形。从破洞牛仔到oversized卫衣，每一件单品的选择都展现了对层次感和比例的精妙把握，绝非简单装饰。这是Corecore美学的极致体现：真实、自然、毫不费力的酷感。\n\nBTS的独特之处在于他们善于通过意想不到的细节提升基础单品：舞台灯光下闪耀的项链、让飘逸造型落地的厚底球鞋，或是讲述故事的复古T恤。这种美学既平易近人又精准如高级时装。这是有灵魂的街头风，因其真实而引起共鸣。",
+                    "analysis_en": "BTS's latest comeback aesthetic masterfully blends vintage Americana with contemporary streetwear, creating a relaxed yet intentional silhouette that feels both nostalgic and forward-thinking. The group's styling choices—from distressed denim to oversized hoodies—demonstrate a sophisticated understanding of layering and proportion, where each piece serves a purpose beyond mere decoration. This is corecore at its finest: authentic, lived-in, and effortlessly cool.\n\nWhat sets BTS apart is their ability to elevate casual basics through unexpected details: a chain necklace that catches stage lights, chunky sneakers that ground an otherwise ethereal look, or a perfectly worn-in graphic tee that tells a story. The aesthetic is democratic and accessible, yet executed with the precision of high fashion. It's streetwear with soul, and it resonates because it feels real.",
+                    "seattle_tip_cn": "针对西雅图多变的气候，建议用羊毛风衣替代轻薄牛仔夹克作为主要外套。结构化的廓形保持了同样的视觉分量，同时提供更好的防雨效果。保留厚底球鞋——它们非常适合湿滑路面——并在里面叠穿oversized卫衣，打造出适合太平洋西北地区细雨的标志性层次感造型。",
+                    "seattle_tip_en": "For Seattle's unpredictable climate, swap the lightweight denim jacket for their wool trench coat as your primary layer. The structured silhouette maintains the same visual weight while offering superior rain protection. Keep the chunky sneakers—they're perfect for wet pavement—and add the oversized hoodie underneath for that signature layered look that works in our Pacific Northwest drizzle."
                 }
             elif name == "NMIXX":
                 fashion_analysis = {
                     "style_score": "9.7/10",
-                    "analysis": "NMIXX最新的舞台呈现堪称'可控混乱'的大师课——Y2K办公室魅惑风与赛博朋克颓废风的刻意碰撞，看似矛盾却创造出魔力。百褶裙和oversized西装的利落剪裁与厚底靴、渔网袜的粗犷边缘形成绝妙对比，打造出既强势又俏皮的廓形。这是作为表演艺术的时尚，每件单品都为女性叛逆的宏大叙事添砖加瓦。\n\n天才之处在于平衡：每一件结构化西装都有crop tee来打破正式感；每一个精致配饰都有厚重靴子来稳住造型。NMIXX深谙现代女性气质不是在柔与刚之间二选一，而是同时拥抱两者。结果是一个拒绝被定义、因此而赋权的衣橱。\n\n<em>NMIXX's latest stage presence is a masterclass in controlled chaos—a deliberate collision of Y2K office siren aesthetics and cyber-punk grunge that shouldn't work, yet somehow creates magic. The sharp, tailored lines of pleated skirts and oversized blazers contrast beautifully with the raw edge of platform boots and fishnet tights, resulting in a silhouette that's both powerful and playful. This is fashion as performance art, where every piece contributes to a larger narrative of feminine rebellion.\n\nThe genius lies in the balance: for every structured blazer, there's a crop tee that breaks the formality. For every delicate accessory, there's a chunky boot that grounds the look. NMIXX understands that modern femininity isn't about choosing between soft and hard—it's about embracing both simultaneously. The result is a wardrobe that empowers through its refusal to be categorized.</em>",
-                    "seattle_tip": "西雅图的雨季需要策略性调整：用高腰短裤叠穿不透明打底裤替代迷你裙以保暖，让厚底靴成为首选——它们本身就防水且能在水坑上方增加高度。Oversized西装在这里成为秘密武器，提供结构感和遮蔽性的同时保持权力着装的锋芒。气温下降时在所有外面叠穿皮夹克。\n\n<em>Seattle's rain demands strategic adaptation: replace the mini skirts with high-waist shorts layered over opaque tights for warmth, and make the platform boots your go-to—they're already waterproof and add height above puddles. The oversized blazer becomes your secret weapon here, offering structure and coverage while maintaining that power-dressing edge. Layer the leather jacket over everything when temperatures drop.</em>"
+                    "style_index": "Avant-Garde / 前卫风格",
+                    "analysis_cn": "NMIXX最新的舞台呈现堪称'可控混乱'的大师课——Y2K办公室魅惑风与赛博朋克颓废风的刻意碰撞，看似矛盾却创造出魔力。百褶裙和oversized西装的利落剪裁与厚底靴、渔网袜的粗犷边缘形成绝妙对比，打造出既强势又俏皮的廓形。这是作为表演艺术的时尚，每件单品都为女性叛逆的宏大叙事添砖加瓦。\n\n天才之处在于平衡：每一件结构化西装都有crop tee来打破正式感；每一个精致配饰都有厚重靴子来稳住造型。NMIXX深谙现代女性气质不是在柔与刚之间二选一，而是同时拥抱两者。结果是一个拒绝被定义、因此而赋权的衣橱。",
+                    "analysis_en": "NMIXX's latest stage presence is a masterclass in controlled chaos—a deliberate collision of Y2K office siren aesthetics and cyber-punk grunge that shouldn't work, yet somehow creates magic. The sharp, tailored lines of pleated skirts and oversized blazers contrast beautifully with the raw edge of platform boots and fishnet tights, resulting in a silhouette that's both powerful and playful. This is fashion as performance art, where every piece contributes to a larger narrative of feminine rebellion.\n\nThe genius lies in the balance: for every structured blazer, there's a crop tee that breaks the formality. For every delicate accessory, there's a chunky boot that grounds the look. NMIXX understands that modern femininity isn't about choosing between soft and hard—it's about embracing both simultaneously. The result is a wardrobe that empowers through its refusal to be categorized.",
+                    "seattle_tip_cn": "西雅图的雨季需要策略性调整：用高腰短裤叠穿不透明打底裤替代迷你裙以保暖，让厚底靴成为首选——它们本身就防水且能在水坑上方增加高度。Oversized西装在这里成为秘密武器，提供结构感和遮蔽性的同时保持权力着装的锋芒。气温下降时在所有外面叠穿皮夹克。",
+                    "seattle_tip_en": "Seattle's rain demands strategic adaptation: replace the mini skirts with high-waist shorts layered over opaque tights for warmth, and make the platform boots your go-to—they're already waterproof and add height above puddles. The oversized blazer becomes your secret weapon here, offering structure and coverage while maintaining that power-dressing edge. Layer the leather jacket over everything when temperatures drop."
                 }
             elif name == "BLACKPINK":
                 fashion_analysis = {
                     "style_score": "10/10",
-                    "analysis": "BLACKPINK的美学是为Instagram时代重新定义的奢华——巴黎高级定制与首尔街头风格的无缝融合，既令人向往又触手可及。组合近期的造型选择展现了对投资型着装的完美理解：从香奈儿风格的粗花呢裙到建筑感风衣，每件单品的选择不仅考虑即时冲击力，更着眼于持久性。这是作为盔甲的时尚，自信才是终极配饰。\n\nBLACKPINK的风格超越简单追随潮流，在于她们对廓形的执着。高腰裤拉长比例，短款夹克勾勒线条，过膝长靴吸引目光——每个选择都经过深思熟虑，每个比例都精心计算。吸睛配饰（链条腰带、超大墨镜）增添个性却不压倒简洁线条。这是以极简主义精准度执行的极繁主义，绝对大师级。\n\n<em>BLACKPINK's aesthetic is luxury redefined for the Instagram age—a seamless blend of Parisian haute couture and Seoul street style that feels both aspirational and attainable. The group's recent styling choices demonstrate an impeccable understanding of investment dressing: each piece, from the Chanel-inspired tweed dress to the architectural trench coat, is selected not just for its immediate impact but for its longevity. This is fashion as armor, where confidence is the ultimate accessory.\n\nWhat elevates BLACKPINK's style beyond mere trend-following is their commitment to silhouette. High-waist pants elongate, crop jackets define, and thigh-high boots command attention—every choice is deliberate, every proportion calculated. The addition of statement accessories (chain belts, oversized sunglasses) adds personality without overwhelming the clean lines. It's maximalism executed with minimalist precision, and it's absolutely masterful.</em>",
-                    "seattle_tip": "在西雅图的气候下，oversized风衣成为你的statement单品——建筑感的垂坠既惊艳又防雨。用高品质美利奴羊毛上衣替代丝绸衬衫，在保持奢华美感的同时提供更好的保暖性。过膝长靴其实非常适合我们多雨的街道——只需喷上防水喷雾。保留西装用于叠穿，室内活动时不要回避厚底高跟鞋；它们是瞬间魅力的秘密武器。\n\n<em>For Seattle's climate, the oversized trench coat becomes your statement piece—its architectural draping looks stunning while keeping you dry. Swap the silk blouse for a high-quality merino wool alternative that maintains the luxe aesthetic with better insulation. The thigh-high boots are actually perfect for our rainy streets—just treat them with waterproof spray. Keep the blazer for layering, and don't shy away from the platform heels for indoor events; they're your secret weapon for instant glamour.</em>"
+                    "style_index": "Luxury / 奢华风",
+                    "analysis_cn": "BLACKPINK的美学是为Instagram时代重新定义的奢华——巴黎高级定制与首尔街头风格的无缝融合，既令人向往又触手可及。组合近期的造型选择展现了对投资型着装的完美理解：从香奈儿风格的粗花呢裙到建筑感风衣，每件单品的选择不仅考虑即时冲击力，更着眼于持久性。这是作为盔甲的时尚，自信才是终极配饰。\n\nBLACKPINK的风格超越简单追随潮流，在于她们对廓形的执着。高腰裤拉长比例，短款夹克勾勒线条，过膝长靴吸引目光——每个选择都经过深思熟虑，每个比例都精心计算。吸睛配饰（链条腰带、超大墨镜）增添个性却不压倒简洁线条。这是以极简主义精准度执行的极繁主义，绝对大师级。",
+                    "analysis_en": "BLACKPINK's aesthetic is luxury redefined for the Instagram age—a seamless blend of Parisian haute couture and Seoul street style that feels both aspirational and attainable. The group's recent styling choices demonstrate an impeccable understanding of investment dressing: each piece, from the Chanel-inspired tweed dress to the architectural trench coat, is selected not just for its immediate impact but for its longevity. This is fashion as armor, where confidence is the ultimate accessory.\n\nWhat elevates BLACKPINK's style beyond mere trend-following is their commitment to silhouette. High-waist pants elongate, crop jackets define, and thigh-high boots command attention—every choice is deliberate, every proportion calculated. The addition of statement accessories (chain belts, oversized sunglasses) adds personality without overwhelming the clean lines. It's maximalism executed with minimalist precision, and it's absolutely masterful.",
+                    "seattle_tip_cn": "在西雅图的气候下，oversized风衣成为你的statement单品——建筑感的垂坠既惊艳又防雨。用高品质美利奴羊毛上衣替代丝绸衬衫，在保持奢华美感的同时提供更好的保暖性。过膝长靴其实非常适合我们多雨的街道——只需喷上防水喷雾。保留西装用于叠穿，室内活动时不要回避厚底高跟鞋；它们是瞬间魅力的秘密武器。",
+                    "seattle_tip_en": "For Seattle's climate, the oversized trench coat becomes your statement piece—its architectural draping looks stunning while keeping you dry. Swap the silk blouse for a high-quality merino wool alternative that maintains the luxe aesthetic with better insulation. The thigh-high boots are actually perfect for our rainy streets—just treat them with waterproof spray. Keep the blazer for layering, and don't shy away from the platform heels for indoor events; they're your secret weapon for instant glamour."
                 }
             else:
                 fashion_analysis = {
                     "style_score": "8.5/10",
-                    "analysis": "This artist's K-pop aesthetic embraces the genre's signature blend of street style and stage presence, creating looks that transition seamlessly from rehearsal to performance. The styling choices reflect current trends while maintaining individual personality, with an emphasis on comfortable yet fashionable pieces that allow for movement and expression.\n\nThe wardrobe demonstrates smart basics elevated through thoughtful details—whether it's the fit of a bomber jacket or the wash of denim. This is approachable K-fashion at its best: trend-aware without being trend-dependent, and always prioritizing wearability alongside visual impact.",
-                    "seattle_tip": "For Seattle weather, focus on the layering pieces like hoodies and bomber jackets. These items work perfectly in our climate while maintaining the K-pop aesthetic. Waterproof your sneakers and invest in a quality umbrella to protect your looks from our frequent drizzle."
+                    "style_index": "K-Style / 韩流风",
+                    "analysis_cn": "这位艺人的K-pop美学完美融合了街头风格与舞台魅力，打造出从排练到演出无缝衔接的造型。穿搭选择既紧跟潮流又保持个性，注重舒适与时尚并重，让动作表达更加自如。\n\n衣橱展现了通过精心细节提升的聪明基础款——无论是bomber夹克的剪裁还是牛仔的水洗效果。这是最易接近的K-fashion：关注潮流但不依赖潮流，始终将实穿性与视觉冲击力并重。",
+                    "analysis_en": "This artist's K-pop aesthetic embraces the genre's signature blend of street style and stage presence, creating looks that transition seamlessly from rehearsal to performance. The styling choices reflect current trends while maintaining individual personality, with an emphasis on comfortable yet fashionable pieces that allow for movement and expression.\n\nThe wardrobe demonstrates smart basics elevated through thoughtful details—whether it's the fit of a bomber jacket or the wash of denim. This is approachable K-fashion at its best: trend-aware without being trend-dependent, and always prioritizing wearability alongside visual impact.",
+                    "seattle_tip_cn": "针对西雅图天气，重点关注卫衣和bomber夹克等叠穿单品。这些单品完美适应我们的气候，同时保持K-pop美感。为球鞋做好防水处理，并投资一把优质雨伞来保护造型免受频繁细雨侵扰。",
+                    "seattle_tip_en": "For Seattle weather, focus on the layering pieces like hoodies and bomber jackets. These items work perfectly in our climate while maintaining the K-pop aesthetic. Waterproof your sneakers and invest in a quality umbrella to protect your looks from our frequent drizzle."
                 }
             
             artist_data[name]["fashion_analysis"] = fashion_analysis
@@ -1357,33 +1369,47 @@ class KpopIntelligenceBot:
                 items = items.filter(item => new Date(item.published_at) > sixMonthsAgo);
             }
             
-            // 3. 一丹的时尚雷达 (FASHION RADAR LOGIC)
+             // 3. 一丹的时尚雷达 (FASHION RADAR LOGIC)
             if(tab === 'closet') {
                  if(!data.closet || data.closet.length === 0) return '<div class="fallback-box">No fashion data available yet.</div>';
                  
-                 // Editor's Note Section
+                 // Editor's Note Section - Bilingual
                  const fashionAnalysis = data.fashion_analysis || {};
                  const editorNote = `
                      <div style="background:rgba(255,255,255,0.4); backdrop-filter:blur(20px); border-radius:24px; padding:32px; margin-bottom:32px; border:1px solid rgba(137,207,240,0.3);">
                          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
                              <div>
-                                 <div style="font-size:1.5rem; font-weight:800; color:#1a0a1e;">一丹的时尚简评</div>
-                                 <div style="font-size:0.9rem; color:var(--text-muted); margin-top:4px;">Yidan's Fashion Editorial</div>
+                                 <div style="font-size:1.5rem; font-weight:800; color:#1a0a1e;">编者按 | Editor's Note</div>
+                                 <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:600;">
+                                     ${fashionAnalysis.style_index || 'K-Style / 韩流风'}
+                                 </div>
                              </div>
                              <div style="background:linear-gradient(135deg, #89CFF0, #FFB6C1); color:#fff; padding:8px 20px; border-radius:30px; font-weight:800; font-size:1.1rem;">
                                  ${fashionAnalysis.style_score || '8.5/10'}
                              </div>
                          </div>
-                         <div style="font-style:italic; line-height:1.8; color:#1a0a1e; margin-bottom:20px; font-size:0.95rem;">
-                             ${(fashionAnalysis.analysis || '').split('\\n').map(p => `<p style="margin-bottom:16px;">${p}</p>`).join('')}
+                         
+                         <!-- Chinese Analysis -->
+                         <div style="line-height:1.8; color:#1a0a1e; margin-bottom:24px; font-size:0.95rem;">
+                             ${(fashionAnalysis.analysis_cn || '').split('\\n').map(p => `<p style="margin-bottom:16px;">${p}</p>`).join('')}
                          </div>
+                         
+                         <!-- English Analysis -->
+                         <div style="font-style:italic; line-height:1.7; color:#4a3a4e; margin-bottom:20px; font-size:0.9rem; opacity:0.9;">
+                             ${(fashionAnalysis.analysis_en || '').split('\\n').map(p => `<p style="margin-bottom:14px;">${p}</p>`).join('')}
+                         </div>
+                         
+                         <!-- Seattle Layering Guide -->
                          <div style="background:rgba(137,207,240,0.2); border-left:4px solid #89CFF0; padding:16px; border-radius:12px; margin-top:24px;">
-                             <div style="font-weight:700; color:#1a0a1e; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                             <div style="font-weight:700; color:#1a0a1e; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
                                  <span>☔</span>
-                                 <span>西雅图穿搭建议 / Seattle Adaptation Tip</span>
+                                 <span>西雅图叠穿指南 | Seattle Layering Guide</span>
                              </div>
-                             <div style="color:#4a3a4e; line-height:1.6; font-size:0.9rem;">
-                                 ${fashionAnalysis.seattle_tip || 'Layer smartly for our Pacific Northwest weather!'}
+                             <div style="color:#1a0a1e; line-height:1.6; font-size:0.9rem; margin-bottom:10px;">
+                                 ${fashionAnalysis.seattle_tip_cn || ''}
+                             </div>
+                             <div style="color:#4a3a4e; line-height:1.6; font-size:0.85rem; font-style:italic; opacity:0.9;">
+                                 ${fashionAnalysis.seattle_tip_en || ''}
                              </div>
                          </div>
                      </div>
