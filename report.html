@@ -491,12 +491,16 @@
         
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
-                // STANFORD (Closest) - Vivid is Cheapest ($372)
+                // STANFORD (Closest) - StubHub is Cheapest ($159.50)
                 {
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
                     distance_miles: 800,
-                    prices: { "Vivid Seats": 372, "StubHub": 385, "Ticketmaster": 390, "SeatGeek": 380 },
-                    last_updated: "Verified"
+                    prices: { "StubHub": 159.50, "Vivid Seats": 175, "Ticketmaster": 290, "SeatGeek": 275 },
+                    links: {
+                        "StubHub": "https://www.stubhub.com/ph/bts-stanford-tickets-5-16-2026/event/160262168/",
+                        "Vivid Seats": "https://www.vividseats.com/bts---bangtan-boys-tickets-stanford-stanford-stadium-5-16-2026--concerts-k-pop/production/6517063?utm_content=%7BGOOGLE-ADS-CLICK-SOURCE%7D"
+                    },
+                    last_updated: "Verified Match"
                 },
                 // LOS ANGELES
                 {
@@ -723,7 +727,13 @@
                     const best = priceList[0]; // [Platform, Price]
                     const bestPlatform = best[0];
                     // Dynamic Link Logic: Link to the BEST (Lowest Price) platform
-                    const bestLink = getDynamicLink(bestPlatform, currentArtist);
+                    // Priority 1: Event-Specific Link (if exists for this platform)
+                    let bestLink = (t.links && t.links[bestPlatform]) ? t.links[bestPlatform] : null;
+                    
+                    // Priority 2: Generic Performer Link
+                    if (!bestLink) {
+                        bestLink = getDynamicLink(bestPlatform, currentArtist);
+                    }
                     
                     // Build Tags
                     const priceTags = priceList.map(([src, pri]) => `
@@ -735,7 +745,7 @@
 
                     // Top Pick Badge (Only #1) via Ranking (Closest)
                     const isTopPick = index === 0;
-                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ Best Choice for Yidan</div>` : '';
+                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ Best Value</div>` : '';
                     const rowClass = isTopPick ? 'ticket-row gold-tier' : 'ticket-row';
                     const distDisplay = t.distance_miles !== undefined ? `${t.distance_miles} mi` : '--';
 
