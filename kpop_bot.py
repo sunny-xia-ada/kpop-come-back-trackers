@@ -843,27 +843,27 @@ class KpopIntelligenceBot:
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
                 {
-                    date: "2026-09-12", city: "Seattle, WA", venue: "Lumen Field",
-                    distance_miles: 0,
-                    prices: { "StubHub": 315, "Ticketmaster": 350, "Vivid": 299, "SeatGeek": 325 },
+                    date: "2026-08-22", city: "Toronto, ON", venue: "Rogers Stadium",
+                    distance_miles: 2070,
+                    prices: { "StubHub": 310, "Ticketmaster": 340, "Vivid": 295, "SeatGeek": 320 },
+                    url: "https://www.ticketmaster.ca"
+                },
+                {
+                    date: "2026-08-23", city: "Toronto, ON", venue: "Rogers Stadium",
+                    distance_miles: 2070,
+                    prices: { "StubHub": 290, "Ticketmaster": 325, "Vivid": 280, "SeatGeek": 310 },
+                    url: "https://www.ticketmaster.ca"
+                },
+                {
+                    date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
+                    distance_miles: 2060,
+                    prices: { "StubHub": 558, "Ticketmaster": 610, "Vivid": 545, "SeatGeek": 570 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
-                    date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
-                    distance_miles: 800,
-                    prices: { "StubHub": 350, "Ticketmaster": 410, "Vivid": 335, "SeatGeek": 360 },
-                    url: "https://www.ticketmaster.com"
-                },
-                {
-                    date: "2026-05-23", city: "Las Vegas, NV", venue: "Allegiant Stadium",
-                    distance_miles: 1115,
-                    prices: { "StubHub": 495, "Ticketmaster": 550, "Vivid": 480, "SeatGeek": 510 },
-                    url: "https://www.ticketmaster.com"
-                },
-                {
-                    date: "2026-09-02", city: "Los Angeles, CA", venue: "SoFi Stadium",
-                    distance_miles: 1135,
-                    prices: { "StubHub": 70, "Ticketmaster": 180, "Vivid": 95, "SeatGeek": 105 },
+                    date: "2026-08-28", city: "Chicago, IL", venue: "Soldier Field",
+                    distance_miles: 2060,
+                    prices: { "StubHub": 520, "Ticketmaster": 590, "Vivid": 510, "SeatGeek": 535 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
@@ -873,27 +873,21 @@ class KpopIntelligenceBot:
                     url: "https://www.ticketmaster.com"
                 },
                 {
-                    date: "2026-05-02", city: "El Paso, TX", venue: "Sun Bowl Stadium",
-                    distance_miles: 1700,
-                    prices: { "StubHub": 180, "Ticketmaster": 220, "Vivid": 175, "SeatGeek": 190 },
+                    date: "2026-09-02", city: "Los Angeles, CA", venue: "SoFi Stadium",
+                    distance_miles: 1135,
+                    prices: { "StubHub": 70, "Ticketmaster": 180, "Vivid": 95, "SeatGeek": 105 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
-                    date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
-                    distance_miles: 2000,
-                    prices: { "StubHub": 558, "Ticketmaster": 610, "Vivid": 545, "SeatGeek": 570 },
+                    date: "2026-09-05", city: "Los Angeles, CA", venue: "SoFi Stadium",
+                    distance_miles: 1135,
+                    prices: { "StubHub": 350, "Ticketmaster": 380, "Vivid": 340, "SeatGeek": 360 },
                     url: "https://www.ticketmaster.com"
                 },
                 {
-                    date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
-                    distance_miles: 2800,
-                    prices: { "StubHub": 380, "Ticketmaster": 425, "Vivid": 365, "SeatGeek": 390 },
-                    url: "https://www.ticketmaster.com"
-                },
-                {
-                    date: "2026-04-26", city: "Tampa, FL", venue: "Raymond James Stadium",
-                    distance_miles: 3100,
-                    prices: { "StubHub": 198, "Ticketmaster": 250, "Vivid": 185, "SeatGeek": 200 },
+                    date: "2026-09-06", city: "Los Angeles, CA", venue: "SoFi Stadium",
+                    distance_miles: 1135,
+                    prices: { "StubHub": 380, "Ticketmaster": 410, "Vivid": 370, "SeatGeek": 395 },
                     url: "https://www.ticketmaster.com"
                 }
             ];
@@ -1034,7 +1028,7 @@ class KpopIntelligenceBot:
 
                     // Badges
                     const isTopPick = index === 0;
-                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ BEST VALUE</div>` : '';
+                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ ONE-DAN'S TOP PICK</div>` : '';
                     const rowClass = isTopPick ? 'ticket-row gold-tier' : 'ticket-row';
                     const distDisplay = t.distance_miles !== undefined ? `${t.distance_miles} mi` : '--';
 
