@@ -519,17 +519,17 @@ class KpopIntelligenceBot:
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a1628; /* Deep navy blue */
-            --surface: #1a2332;
-            --surface-glass: rgba(26, 35, 50, 0.4);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg: #FFE4E8; /* Baby pink background */
+            --surface: #FFD1DC;
+            --surface-glass: rgba(255, 209, 220, 0.4);
+            --text: #2d1b2e;
+            --text-muted: #6b5566;
             --baby-blue: #89CFF0;
             --pink: #FFB6C1;
             --emerald: #10b981;
             --gold: #f59e0b;
-            --border: rgba(137, 207, 240, 0.15);
-            --glass-strong: rgba(10, 22, 40, 0.9);
+            --border: rgba(137, 207, 240, 0.3);
+            --glass-strong: rgba(255, 228, 232, 0.95);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -537,7 +537,7 @@ class KpopIntelligenceBot:
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            background-image: radial-gradient(circle at 50% 0%, rgba(137, 207, 240, 0.15) 0%, var(--bg) 60%);
+            background-image: radial-gradient(circle at 50% 0%, rgba(137, 207, 240, 0.2) 0%, var(--bg) 60%);
             background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
