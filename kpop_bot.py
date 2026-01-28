@@ -1086,8 +1086,8 @@ class KpopIntelligenceBot:
                                 <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">巡演</div>
                             </button>
                             <button class="tab-btn ${currentTab === 'comeback' ? 'active' : ''}" onclick="switchTab('comeback')">
-                                <div>New Music</div>
-                                <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">新歌</div>
+                                <div>New Comeback Stage</div>
+                                <div style="font-size:0.85rem; opacity:0.8; margin-top:4px;">新歌和舞台</div>
                             </button>
                             <button class="tab-btn ${currentTab === 'closet' ? 'active' : ''}" onclick="switchTab('closet')">
                                 <div>Idol Closet 🛍️</div>
