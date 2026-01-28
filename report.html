@@ -483,7 +483,7 @@
         const SORTED_ARTISTS = ["ATEEZ", "All Day Project", "BABYMONSTER", "BIBI", "BLACKPINK", "BTS", "Cortis", "ENHYPEN", "ITZY", "IVE", "KISS OF LIFE", "LE SSERAFIM", "MEOVV", "NCT DREAM", "NCT WISH", "NewJeans", "SAY MY NAME", "SEVENTEEN", "Stray Kids", "TWICE", "TWS", "XG", "aespa", "izna"];
         
         // ---------------------------------------------------------
-        // BTS 2026 TOUR INJECTION (PROFESSIONAL DATA)
+        // BTS 2026 TOUR INJECTION (VERIFIED YIDAN DATA)
         // ---------------------------------------------------------
         if(KPOP_DATA['BTS']) {
             KPOP_DATA['BTS'].tour = [
@@ -491,43 +491,25 @@
                 {
                     date: "2026-05-16", city: "Stanford, CA", venue: "Stanford Stadium",
                     distance_miles: 800,
-                    prices: { "StubHub": 257, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 },
-                    url: "https://www.stubhub.com/bts-stanford-tickets-5-16-2026/event/159283741/?quantity=1"
+                    prices: { "StubHub": 257, "Ticketmaster": 290, "Vivid": 265, "SeatGeek": 275 }
                 },
-                // LOS ANGELES (West Coast Hub)
+                // LOS ANGELES (West Coast)
                 {
                     date: "2026-09-01", city: "Los Angeles, CA", venue: "SoFi Stadium",
                     distance_miles: 1100,
-                    prices: { "StubHub": 197, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 },
-                    url: "https://www.stubhub.com/bts-inglewood-tickets-9-1-2026/event/160262066/?quantity=1"
-                },
-                // LAS VEGAS (West)
-                {
-                    date: "2026-05-23", city: "Las Vegas, NV", venue: "Allegiant Stadium",
-                    distance_miles: 1100,
-                    prices: { "StubHub": 213, "Ticketmaster": 250, "Vivid": 220, "SeatGeek": 230 },
-                    url: "https://www.stubhub.com/bts-las-vegas-tickets-5-23-2026/event/159928374/?quantity=1"
+                    prices: { "StubHub": 197, "Ticketmaster": 450, "Vivid": 210, "SeatGeek": 205 }
                 },
                 // CHICAGO (Midwest)
                 {
                     date: "2026-08-27", city: "Chicago, IL", venue: "Soldier Field",
                     distance_miles: 2000,
-                    prices: { "StubHub": 329, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 },
-                    url: "https://www.stubhub.com/bts-chicago-tickets-8-27-2026/event/159827364/?quantity=1"
+                    prices: { "StubHub": 329, "Ticketmaster": 380, "Vivid": 345, "SeatGeek": 350 }
                 },
-                // NEW JERSEY (East)
+                // EAST RUTHERFORD (East Coast)
                 {
                     date: "2026-08-01", city: "E. Rutherford, NJ", venue: "MetLife Stadium",
                     distance_miles: 2800,
-                    prices: { "StubHub": 259, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 },
-                    url: "https://www.stubhub.com/bts-east-rutherford-tickets-8-1-2026/event/159736251/?quantity=1"
-                },
-                // TAMPA (South)
-                {
-                    date: "2026-04-25", city: "Tampa, FL", venue: "Raymond James Stadium",
-                    distance_miles: 3100,
-                    prices: { "StubHub": 206, "Ticketmaster": 240, "Vivid": 215, "SeatGeek": 225 },
-                    url: "https://www.stubhub.com/bts-tampa-tickets-4-25-2026/event/159625142/?quantity=1"
+                    prices: { "StubHub": 259, "Ticketmaster": 310, "Vivid": 275, "SeatGeek": 285 }
                 }
             ];
         }
@@ -629,6 +611,15 @@
             document.getElementById('tab-content').innerHTML = renderTabContent(data, tab);
         }
 
+        // HELPER: Dynamic Link Generator for Yidan
+        function getDynamicLink(platform) {
+            if(platform === 'StubHub') return "https://www.stubhub.com/bts-tickets/performer/1503185/?quantity=1";
+            if(platform === 'Ticketmaster') return "https://www.ticketmaster.com/bts-tickets/artist/1980648";
+            if(platform === 'Vivid') return "https://www.vividseats.com/search?searchTerm=BTS";
+            if(platform === 'SeatGeek') return "https://seatgeek.com/search?search=BTS";
+            return '#';
+        }
+
         // HELPER: Professional Unique City + Distance Sort
         function getProfessionalSort(items) {
             // 1. Group by City -> Best Deal
@@ -669,7 +660,8 @@
                     const priceList = Object.entries(t.prices).sort((a,b) => a[1] - b[1]);
                     const best = priceList[0]; // [Platform, Price]
                     const bestPlatform = best[0];
-                    // Link (Deep Link from Data)
+                    // Dynamic Link Logic: ALWAYS link to the platform with the BEST price
+                    const bestLink = getDynamicLink(bestPlatform);
                     
                     // Build Tags
                     const priceTags = priceList.map(([src, pri]) => `
@@ -681,7 +673,7 @@
 
                     // Top Pick Badge (Only #1)
                     const isTopPick = index === 0;
-                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ BEST CHOICE</div>` : '';
+                    const badgeHtml = isTopPick ? `<div class="gold-badge">⭐⭐⭐⭐⭐ Best Choice for Yidan</div>` : '';
                     const rowClass = isTopPick ? 'ticket-row gold-tier' : 'ticket-row';
                     const distDisplay = t.distance_miles !== undefined ? `${t.distance_miles} mi` : '--';
 
@@ -706,7 +698,7 @@
                                 <span>Best: <strong style="color:var(--emerald)">$${best[1]}</strong></span>
                                 <span>via ${bestPlatform}</span>
                             </div>
-                            <a href="${t.url || '#'}" target="_blank" class="buy-btn">Buy Ticket</a>
+                            <a href="${bestLink}" target="_blank" class="buy-btn">Buy Ticket</a>
                         </div>
                     `;
                 }).join('');
