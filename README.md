@@ -54,12 +54,15 @@ python kpop_bot.py
 Currently, the list of artists to track is defined in the `__main__` block at the bottom of `kpop_bot.py`:
 
 ```python
-targets = [
-    "BTS", "BLACKPINK", "ITZY", "ENHYPEN", "SEVENTEEN", "NewJeans",
-    "BIBI", "aespa", "KISS OF LIFE", "XG", "TWICE", "NCT DREAM",
-    "LE SSERAFIM", "TWS", "NCT WISH", "Cortis", "SAY MY NAME", "izna",
-    "All Day Project", "MEOVV", "Stray Kids", "IVE", "ATEEZ", "BABYMONSTER"
-]
+targets = {
+    # Boy Groups
+    "BTS": "Boy Group", "ENHYPEN": "Boy Group", "SEVENTEEN": "Boy Group", 
+    
+    # Girl Groups
+    "BLACKPINK": "Girl Group", "ITZY": "Girl Group", "NewJeans": "Girl Group",
+    
+    #... Add others as needed
+}
 ```
 
 Edit this list in `kpop_bot.py` to add or remove artists you want to track.
@@ -129,12 +132,15 @@ python kpop_bot.py
 目前，需要追踪的艺人列表定义在 `kpop_bot.py` 底部的 `__main__` 代码块中：
 
 ```python
-targets = [
-    "BTS", "BLACKPINK", "ITZY", "ENHYPEN", "SEVENTEEN", "NewJeans",
-    "BIBI", "aespa", "KISS OF LIFE", "XG", "TWICE", "NCT DREAM",
-    "LE SSERAFIM", "TWS", "NCT WISH", "Cortis", "SAY MY NAME", "izna",
-    "All Day Project", "MEOVV", "Stray Kids", "IVE", "ATEEZ", "BABYMONSTER"
-]
+targets = {
+    # Boy Groups (男团)
+    "BTS": "Boy Group", "ENHYPEN": "Boy Group", "SEVENTEEN": "Boy Group", 
+    
+    # Girl Groups (女团)
+    "BLACKPINK": "Girl Group", "ITZY": "Girl Group", "NewJeans": "Girl Group",
+    
+    #... Add others as needed
+}
 ```
 
 如需添加或删除追踪的艺人，请直接修改 `kpop_bot.py` 中的此列表。

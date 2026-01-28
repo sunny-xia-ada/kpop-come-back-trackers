@@ -156,8 +156,9 @@ class KpopIntelligenceBot:
                 
         return unique_items
 
-    def run(self, artists: List[str]):
+    def run(self, targets: Dict[str, str]):
         all_news = []
+        artists = list(targets.keys())
         
         for artist in artists:
             # Check for both Tour and Comeback
@@ -174,7 +175,7 @@ class KpopIntelligenceBot:
         self.generate_markdown(clean_news)
         
         # Output HTML Web Report
-        self.generate_html(clean_news)
+        self.generate_html(clean_news, targets)
         
         logger.info(f"Scan complete. Found {len(clean_news)} relevant intelligence items.")
         print(json.dumps(clean_news, indent=2))
@@ -203,7 +204,7 @@ class KpopIntelligenceBot:
         with open("summary.md", "w") as f:
             f.write("\n".join(md_lines))
 
-    def generate_html(self, items: List[Dict]):
+    def generate_html(self, items: List[Dict], categories: Dict[str, str]):
         html_template = """
 <!DOCTYPE html>
 <html lang="en">
@@ -217,9 +218,11 @@ class KpopIntelligenceBot:
             --card-bg: #ffffff;
             --text-primary: #111827;
             --text-secondary: #4b5563;
-            --accent: #d946ef; /* Pink/Purple */
+            --accent: #d946ef;
             --accent-glow: rgba(217, 70, 239, 0.3);
             --border: #e5e7eb;
+            --tour-color: #3b82f6;
+            --comeback-color: #ec4899;
         }
 
         body {
@@ -232,7 +235,7 @@ class KpopIntelligenceBot:
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -248,10 +251,18 @@ class KpopIntelligenceBot:
         h1 {
             font-size: 2.5rem;
             margin: 0;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, #111 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
         }
 
         .meta {
@@ -259,103 +270,125 @@ class KpopIntelligenceBot:
             font-size: 0.9rem;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 24px;
-        }
-
-        .card {
+        .artist-section {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            border-color: var(--accent);
+        .artist-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .tag {
-            display: inline-block;
+        .artist-badge {
+            font-size: 0.8rem;
             padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            border-radius: 999px;
+            background: #f3f4f6;
+            color: var(--text-secondary);
             font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 12px;
         }
 
-        .tag.tour { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .tag.comeback { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
 
-        .artist {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        @media (max-width: 768px) {
+            .split-layout { grid-template-columns: 1fr; }
+        }
+
+        .column h3 {
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .title {
-            font-size: 1.1rem;
-            font-weight: 700;
+            color: var(--text-secondary);
             margin: 0 0 16px 0;
-            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .title a {
-            color: var(--text-primary);
+        .column-content {
+            min-height: 100px;
+        }
+
+        .news-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
             text-decoration: none;
-            transition: color 0.2s;
+            color: var(--text-primary);
         }
 
-        .title a:hover {
+        .news-title:hover {
             color: var(--accent);
         }
 
-        .source {
-            font-size: 0.85rem;
+        .news-source {
+            font-size: 0.8rem;
             color: var(--text-secondary);
+        }
+
+        .cities-list {
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .ticket-buttons {
             display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
         }
 
-        .source::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--accent);
+        .btn-tm {
+            background-color: #026cdf;
+            color: white;
         }
+        .btn-tm:hover { background-color: #0257b4; }
 
-        .metadata {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-            font-size: 0.9rem;
+        .btn-sh {
+            background-color: #6432a1;
+            color: white;
         }
+        .btn-sh:hover { background-color: #4b267a; }
 
-        .metadata-item {
-            display: flex;
-            gap: 8px;
-            margin-top: 4px;
-            color: var(--text-secondary);
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-secondary);
+        .empty-col {
+            color: #d1d5db;
             font-style: italic;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -375,50 +408,134 @@ class KpopIntelligenceBot:
 </body>
 </html>
 """
-        
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
         
-        if not items:
-            content = '<div class="empty-state">No active intelligence found in this scan.</div>'
-        else:
-            cards = []
-            for item in items:
-                tag_class = "tour" if "Tour" in item['topic'] else "comeback"
-                
-                meta_html = ""
-                if item['extracted_cities']:
-                    meta_html += f'<div class="metadata-item"><span>🏙️</span> <span>{", ".join(item["extracted_cities"])}</span></div>'
-                if item['extracted_dates']:
-                    meta_html += f'<div class="metadata-item"><span>📅</span> <span>{", ".join(item["extracted_dates"])}</span></div>'
-                
-                if meta_html:
-                    meta_html = f'<div class="metadata">{meta_html}</div>'
+        # Group items by Artist
+        artist_data = {}
+        for item in items:
+            name = item['artist']
+            if name not in artist_data:
+                artist_data[name] = {"tour": [], "comeback": []}
+            
+            if "Tour" in item['topic']:
+                artist_data[name]["tour"].append(item)
+            else:
+                artist_data[name]["comeback"].append(item)
+        
+        # Build Content separated by Category
+        categories_order = ["Girl Group", "Boy Group", "Co-ed Group", "Soloist"]
+        grouped_html = []
 
-                card = f"""
-                <div class="card">
-                    <span class="artist">{item['artist']}</span>
-                    <span class="tag {tag_class}">{item['topic']}</span>
-                    <h3 class="title"><a href="{item['url']}" target="_blank">{item['title']}</a></h3>
-                    <div class="source">{item['source']}</div>
-                    {meta_html}
+        # Sort artists alphabetically within current active artists list
+        active_artists = sorted(artist_data.keys())
+
+        # Iterate by Category
+        for cat in categories_order:
+            cat_artists = [a for a in active_artists if categories.get(a, "Unknown") == cat]
+            if not cat_artists:
+                continue
+
+            section_html = [f"<h2>{cat}s</h2>"]
+            
+            for artist in cat_artists:
+                data = artist_data[artist]
+                
+                # --- TOUR COLUMN ---
+                tour_html = []
+                if not data["tour"]:
+                    tour_html.append('<div class="empty-col">No active tour news found.</div>')
+                else:
+                    # Collect all unique cities
+                    all_cities = set()
+                    for t in data["tour"]:
+                        all_cities.update(t['extracted_cities'])
+                    
+                    if all_cities:
+                        tour_html.append(f'<div class="cities-list"><strong>Cities:</strong> {", ".join(sorted(all_cities))}</div>')
+                    
+                    # Ticket Buttons
+                    tm_link = f"https://www.ticketmaster.com/search?q={requests.utils.quote(artist)}"
+                    sh_link = f"https://www.stubhub.com/secure/search?q={requests.utils.quote(artist)}"
+                    
+                    tour_html.append(f'''
+                        <div class="ticket-buttons">
+                            <a href="{tm_link}" target="_blank" class="btn btn-tm">Ticketmaster</a>
+                            <a href="{sh_link}" target="_blank" class="btn btn-sh">StubHub</a>
+                        </div>
+                    ''')
+
+                    # List Articles
+                    for t in data["tour"][:3]: # Limit to 3 recent articles
+                         tour_html.append(f'''
+                            <div class="news-item">
+                                <a href="{t['url']}" target="_blank" class="news-title">{t['title']}</a>
+                                <span class="news-source">{t['source']} • {t['published_at'][:16]}</span>
+                            </div>
+                        ''')
+
+                # --- COMEBACK COLUMN ---
+                comeback_html = []
+                if not data["comeback"]:
+                    comeback_html.append('<div class="empty-col">No recent comeback news.</div>')
+                else:
+                    for c in data["comeback"][:5]: # Limit to 5
+                         comeback_html.append(f'''
+                            <div class="news-item">
+                                <a href="{c['url']}" target="_blank" class="news-title">{c['title']}</a>
+                                <span class="news-source">{c['source']} • {c['published_at'][:16]}</span>
+                            </div>
+                        ''')
+
+                artist_block = f"""
+                <div class="artist-section">
+                    <div class="artist-header">
+                        {artist}
+                        <span class="artist-badge">{categories.get(artist, "Artist")}</span>
+                    </div>
+                    <div class="split-layout">
+                        <div class="column">
+                            <h3>🌍 US Tour</h3>
+                            <div class="column-content">{''.join(tour_html)}</div>
+                        </div>
+                        <div class="column">
+                            <h3>🎵 New Comeback</h3>
+                            <div class="column-content">{''.join(comeback_html)}</div>
+                        </div>
+                    </div>
                 </div>
                 """
-                cards.append(card)
+                section_html.append(artist_block)
             
-            content = f'<div class="grid">{"".join(cards)}</div>'
+            grouped_html.append("".join(section_html))
             
-        final_html = html_template.replace("{generated_time}", timestamp).replace("{content}", content)
+        final_content = "".join(grouped_html) if grouped_html else '<div class="empty-state">No meaningful intelligence found for any targets.</div>'
+        final_html = html_template.replace("{generated_time}", timestamp).replace("{content}", final_content)
         
         with open("report.html", "w") as f:
             f.write(final_html)
 
 if __name__ == "__main__":
     bot = KpopIntelligenceBot()
-    # List of target artists
-    targets = [
-        "BTS", "BLACKPINK", "ITZY", "ENHYPEN", "SEVENTEEN", "NewJeans",
-        "BIBI", "aespa", "KISS OF LIFE", "XG", "TWICE", "NCT DREAM", 
-        "LE SSERAFIM", "TWS", "NCT WISH", "Cortis", "SAY MY NAME", "izna",
-        "All Day Project", "MEOVV", "Stray Kids", "IVE", "ATEEZ", "BABYMONSTER"
-    ]
+    
+    # Categorized Targets
+    targets = {
+        # Boy Groups
+        "BTS": "Boy Group", "ENHYPEN": "Boy Group", "SEVENTEEN": "Boy Group",
+        "NCT DREAM": "Boy Group", "TWS": "Boy Group", "NCT WISH": "Boy Group",
+        "Cortis": "Boy Group", "Stray Kids": "Boy Group", "ATEEZ": "Boy Group",
+        
+        # Girl Groups
+        "BLACKPINK": "Girl Group", "ITZY": "Girl Group", "NewJeans": "Girl Group",
+        "aespa": "Girl Group", "KISS OF LIFE": "Girl Group", "XG": "Girl Group",
+        "TWICE": "Girl Group", "LE SSERAFIM": "Girl Group", "SAY MY NAME": "Girl Group",
+        "izna": "Girl Group", "MEOVV": "Girl Group", "IVE": "Girl Group",
+        "BABYMONSTER": "Girl Group",
+        
+        # Soloists
+        "BIBI": "Soloist", 
+        
+        # Co-ed
+        "All Day Project": "Co-ed Group"
+    }
+
     bot.run(targets)
