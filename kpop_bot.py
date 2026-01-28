@@ -355,11 +355,11 @@ class KpopIntelligenceBot:
 
         html_template = """
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Pop Intelligence</title>
+    <title>一丹的追星机器人</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -372,13 +372,13 @@ class KpopIntelligenceBot:
             --pink: #ec4899;
             --glass: rgba(30, 41, 59, 0.7);
             --glass-strong: rgba(15, 23, 42, 0.85);
-            --border: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.08); /* Thinner border */
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -395,31 +395,31 @@ class KpopIntelligenceBot:
             top: 24px;
             z-index: 100;
             background: var(--glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 12px 24px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 28px;
             border-radius: 999px;
             border: 1px solid var(--border);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             display: flex;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
         }
 
         .nav-logo {
             font-weight: 800;
-            background: linear-gradient(135deg, var(--violet), var(--pink));
+            background: linear-gradient(135deg, #a78bfa, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
         }
 
         select {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 10px 36px 10px 16px;
+            padding: 10px 40px 10px 18px;
             border-radius: 20px;
             font-family: inherit;
             font-size: 0.9rem;
@@ -429,36 +429,43 @@ class KpopIntelligenceBot:
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 10px center;
+            background-position: right 12px center;
             background-size: 16px;
-            min-width: 220px;
-            transition: all 0.2s;
+            min-width: 240px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         select:hover {
             background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        select:focus {
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+            border-color: var(--violet);
         }
 
         /* Hero Container */
         .main-stage {
-            margin-top: 120px;
+            margin-top: 130px;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1150px;
             padding: 0 24px;
             animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Hero Card */
         #hero-card {
-            background: var(--surface);
-            border-radius: 32px;
+            background: rgba(30, 41, 59, 0.6); /* More transparent base */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 36px;
             border: 1px solid var(--border);
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
             display: grid;
-            grid-template-columns: 340px 1fr;
-            min-height: 580px;
+            grid-template-columns: 360px 1fr;
+            min-height: 620px;
             position: relative;
         }
         
@@ -470,7 +477,7 @@ class KpopIntelligenceBot:
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15), transparent 60%);
+            background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.12), transparent 50%);
             z-index: 0;
             pointer-events: none;
         }
@@ -478,9 +485,9 @@ class KpopIntelligenceBot:
         /* Left Side: Avatar & Stats (Glass Sidebar) */
         .hero-profile {
             background: var(--glass-strong);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 48px 32px;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            padding: 56px 40px; /* Increased padding */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -491,71 +498,72 @@ class KpopIntelligenceBot:
         }
         
         .hero-avatar {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 190px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 50px rgba(139, 92, 246, 0.4);
-            margin-bottom: 28px;
+            border: 4px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.35);
+            margin-bottom: 32px;
             background-color: var(--surface);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
         .hero-avatar:hover {
-            transform: scale(1.02);
+            transform: scale(1.05) rotate(2deg);
         }
 
         .hero-name {
-            font-size: 2.2rem;
+            font-size: 2.4rem; /* Slightly larger */
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 12px;
             letter-spacing: -0.04em;
-            background: linear-gradient(180deg, #fff, #cbd5e1);
+            background: linear-gradient(180deg, #fff 20%, #cbd5e1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            word-break: break-word; /* Handle long names */
         }
 
         .hero-badge {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 99px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            background: rgba(236, 72, 153, 0.15);
+            background: rgba(236, 72, 153, 0.1);
             color: #fce7f3;
-            border: 1px solid rgba(236, 72, 153, 0.3);
+            border: 1px solid rgba(236, 72, 153, 0.25);
             margin-bottom: auto; /* Push buttons down */
         }
 
         /* Right Side: Content */
         .hero-content {
-            padding: 40px;
+            padding: 48px;
             display: flex;
             flex-direction: column;
-            background: rgba(15, 23, 42, 0.6); /* Slightly darker content area */
+            background: rgba(15, 23, 42, 0.4);
             z-index: 1;
         }
 
         /* Tabs */
         .tabs {
             display: flex;
-            gap: 32px;
+            gap: 36px;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 32px;
+            margin-bottom: 36px;
         }
 
         .tab-btn {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            padding-bottom: 14px;
+            padding-bottom: 16px;
             cursor: pointer;
             position: relative;
-            transition: all 0.2s;
+            transition: all 0.3s;
             letter-spacing: -0.01em;
         }
 
@@ -570,29 +578,30 @@ class KpopIntelligenceBot:
             width: 100%;
             height: 2px;
             background: var(--pink);
-            box-shadow: 0 0 12px var(--pink);
+            box-shadow: 0 0 16px var(--pink);
         }
 
         /* News Grid */
         .news-grid {
             display: grid;
-            gap: 16px;
+            gap: 20px; /* Increased gap */
             overflow-y: auto;
-            padding-right: 8px;
-            max-height: 500px;
+            padding-right: 12px;
+            max-height: 520px;
         }
         
         /* Scrollbar */
-        .news-grid::-webkit-scrollbar { width: 5px; }
+        .news-grid::-webkit-scrollbar { width: 4px; }
         .news-grid::-webkit-scrollbar-track { background: transparent; }
-        .news-grid::-webkit-scrollbar-thumb { background: var(--surface-hover); border-radius: 3px; }
+        .news-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        .news-grid::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 
         .news-item {
             display: flex;
-            gap: 16px;
-            padding: 18px;
+            gap: 20px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
+            border-radius: 18px;
             border: 1px solid rgba(255, 255, 255, 0.03);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
@@ -603,18 +612,19 @@ class KpopIntelligenceBot:
 
         .news-item:hover {
             background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(236, 72, 153, 0.3);
-            box-shadow: 0 0 24px rgba(236, 72, 153, 0.15);
-            transform: translateY(-2px);
+            border-color: rgba(236, 72, 153, 0.2);
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.1);
+            transform: scale(1.01) translateY(-2px);
         }
 
         .news-thumb {
-            width: 80px;
-            height: 80px;
-            border-radius: 10px;
+            width: 88px;
+            height: 88px;
+            border-radius: 12px;
             object-fit: cover;
-            background: linear-gradient(135deg, #2e1065, #000); /* Purple gradient placeholder */
+            background: linear-gradient(135deg, #1e1b4b, #000); /* Deep violet placeholder */
             flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .news-info {
@@ -626,14 +636,14 @@ class KpopIntelligenceBot:
 
         .news-title {
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 6px;
-            line-height: 1.45;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            line-height: 1.5; /* Relaxed leading */
             color: #f1f5f9;
         }
 
         .news-meta {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -641,34 +651,39 @@ class KpopIntelligenceBot:
         }
         
         .local-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #10b981, #059669);
-            color: white;
-            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #10b981, #34d399); /* Emerald Gradient */
+            color: #022c22;
+            padding: 3px 8px;
             border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
         }
 
         /* Buttons */
         .ticket-row {
-            margin-top: 32px;
+            margin-top: 40px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .btn {
             display: block;
             width: 100%;
-            padding: 14px;
-            border-radius: 14px;
+            padding: 15px;
+            border-radius: 16px;
             text-align: center;
             font-weight: 700;
             text-decoration: none;
             font-size: 0.95rem;
             transition: all 0.2s;
+            letter-spacing: -0.01em;
         }
 
         .btn-tm {
@@ -678,7 +693,7 @@ class KpopIntelligenceBot:
         
         .btn-tm:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
         }
 
         .btn-sh {
@@ -688,8 +703,8 @@ class KpopIntelligenceBot:
         }
         
         .btn-sh:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--text);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         /* Animations */
@@ -704,17 +719,17 @@ class KpopIntelligenceBot:
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 60px 0;
+            padding: 80px 0;
             color: var(--text-muted);
             font-style: italic;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
 
     <div class="nav-container">
-        <div class="nav-logo">K-POP INTEL</div>
+        <div class="nav-logo">一丹的追星机器人</div>
         <select id="artist-select">
             <!-- Options populated by JS -->
         </select>
@@ -729,7 +744,7 @@ class KpopIntelligenceBot:
     <script>
         // Injected Data
         const KPOP_DATA = {kpop_json};
-        const SORTED_ARTISTS = {artists_json}; // List of all names
+        const SORTED_ARTISTS = {artists_json};
         
         // DOM Elements
         const select = document.getElementById('artist-select');
@@ -764,7 +779,7 @@ class KpopIntelligenceBot:
                 if (cat === 'Girl Group') groups['Girl Group'].push(artist);
                 else if (cat === 'Boy Group') groups['Boy Group'].push(artist);
                 else if (cat === 'Soloist') groups['Soloist'].push(artist);
-                else groups['Other'].push(artist);
+                else groups['Other'].push(artist); // Catches Co-ed and others
             });
 
             // Helper to add optgroup
@@ -784,16 +799,17 @@ class KpopIntelligenceBot:
             addGroup('Girl Groups', groups['Girl Group'], '✨');
             addGroup('Boy Groups', groups['Boy Group'], '🔥');
             addGroup('Soloists', groups['Soloist'], '🎤');
-            addGroup('Other', groups['Other'], '🎵');
+            addGroup('Co-ed & Others', groups['Other'], '🎵');
         }
 
         function renderArtist(name) {
             const data = KPOP_DATA[name];
             if (!data) return;
 
-            // Preload Image Fallback Logic for HTML string
+            // Preload Image Fallback Logic
             const safeName = encodeURIComponent(name);
-            const fallbackUrl = `https://ui-avatars.com/api/?name=${safeName}&background=8b5cf6&color=fff&size=200`;
+            // Matches site theme (Violet/White)
+            const fallbackUrl = `https://ui-avatars.com/api/?name=${safeName}&background=8b5cf6&color=fff&size=256&font-size=0.4`;
             
             // Ticket Links
             const tmLink = `https://www.ticketmaster.com/search?q=${encodeURIComponent(name)}`;
@@ -811,7 +827,7 @@ class KpopIntelligenceBot:
                     <div class="hero-badge">${data.category}</div>
                     
                     <div class="ticket-row">
-                        <a href="${tmLink}" target="_blank" class="btn btn-tm">Buy Tickets</a>
+                        <a href="${tmLink}" target="_blank" class="btn btn-tm">Get Tickets</a>
                         <a href="${shLink}" target="_blank" class="btn btn-sh">Compare</a>
                     </div>
                 </div>
@@ -829,7 +845,7 @@ class KpopIntelligenceBot:
             `;
             
             heroCard.innerHTML = html;
-            window.currentArtistData = data; // Store for tab switching
+            window.currentArtistData = data; 
         }
 
         function renderNewsItems(items, type) {
@@ -844,7 +860,7 @@ class KpopIntelligenceBot:
             return items.map(item => {
                 const img = item.image_url ? `<img src="${item.image_url}" class="news-thumb" onerror="this.style.display='none'">` : `<div class="news-thumb"></div>`;
                 
-                // Seattle detection logic for badge
+                // Seattle detection
                 const isSeattle = (item.title && item.title.includes('Seattle')) || 
                                   (item.extracted_cities && item.extracted_cities.includes('Seattle'));
                 
@@ -870,12 +886,9 @@ class KpopIntelligenceBot:
         }
 
         window.switchTab = function(tabName) {
-            // Update Tab classes
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // Find the button that was clicked and activate it
-            // We use a simple check based on text content since we know the order/text
             buttons.forEach(btn => {
                 if ((tabName === 'tour' && btn.innerText.includes('Tour')) || 
                     (tabName === 'comeback' && btn.innerText.includes('Music'))) {
@@ -883,15 +896,13 @@ class KpopIntelligenceBot:
                 }
             });
             
-            // Render Content
             const content = document.getElementById('tab-content');
             const data = window.currentArtistData[tabName];
             
             content.innerHTML = renderNewsItems(data, tabName);
             
-            // Re-trigger animation
             content.classList.remove('fade-in');
-            void content.offsetWidth; // trigger reflow
+            void content.offsetWidth; 
             content.classList.add('fade-in');
         }
         
